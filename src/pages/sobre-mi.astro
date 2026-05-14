@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const titulo = 'Sobre mí · Psicóloga experta en TCA y salud mental';
+const descripcion =
+  'Conoce mi formación y enfoque terapéutico como psicóloga especializada en TCA, ansiedad y otras dificultades emocionales.';
+const canonica = `${Astro.site}sobre-mi/`;
+const imagenOG = `${Astro.site}open-graph/sobre-mi.png/`;
+
+const esquema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rosa María Ruiz Cano, Psicóloga General Sanitaria',
+  jobTitle: 'Psicóloga General Sanitaria',
+  url: `${Astro.site}sobre-mi/`,
+  image: imagenOG,
+  sameAs: [
+    'https://www.instagram.com/con.agallas/',
+    'https://www.linkedin.com/in/rosa-maría-ruiz-cano/',
+  ],
+  worksFor: {
+    '@type': 'MedicalBusiness',
+    name: 'Rosa María Ruiz Cano, Psicóloga General Sanitaria',
+    '@id': `${Astro.site}#localbusiness`,
+    image: imagenOG,
+    telephone: '+34674307408',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'C. Nécora, 7, Chana',
+      addressLocality: 'Granada',
+      postalCode: '18003',
+      addressCountry: 'ES',
+    },
+  },
+};
+---
+
+<Layout
+  titulo={titulo}
+  descripcion={descripcion}
+  canonica={canonica}
+  imagenOG={imagenOG}
+  esquema={esquema}
+/>

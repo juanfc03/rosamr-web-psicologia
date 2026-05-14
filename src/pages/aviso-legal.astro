@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const titulo = 'Aviso legal — Información del sitio web';
+const descripcion =
+  'Datos legales del sitio web, titularidad, condiciones de uso, propiedad intelectual y limitaciones de responsabilidad.';
+const canonica = `${Astro.site}aviso-legal/`;
+const robots = 'noindex, follow';
+---
+
+<Layout
+  titulo={titulo}
+  descripcion={descripcion}
+  robots={robots}
+  canonica={canonica}
+/>
+

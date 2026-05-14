@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const titulo = 'Política de privacidad — Tratamiento de datos personales';
+const descripcion =
+  'Detalles sobre el tratamiento de datos personales, finalidades, base legal, conservación, seguridad y derechos del usuario.';
+const canonica = `${Astro.site}politica-de-privacidad/`;
+const robots = 'noindex, follow';
+---
+
+<Layout
+  titulo={titulo}
+  descripcion={descripcion}
+  robots={robots}
+  canonica={canonica}
+/>

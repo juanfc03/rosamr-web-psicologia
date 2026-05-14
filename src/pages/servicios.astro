@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const titulo = 'Servicios de psicología: TCA, ansiedad y pareja';
+const descripcion =
+  'Terapia especializada en TCA y atención profesional para ansiedad, estrés, adicciones, pareja y violencia de género. Sesiones presenciales y online.';
+const canonica = `${Astro.site}servicios/`;
+const imagenOG = `${Astro.site}open-graph/servicios.png/`;
+
+const esquema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Psicología Clínica y Sanitaria',
+  provider: {
+    '@type': 'MedicalBusiness',
+    name: 'Rosa María Ruiz Cano, Psicóloga General Sanitaria',
+    '@id': `${Astro.site}#localbusiness`,
+    image: imagenOG,
+    telephone: '+34674307408',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'C. Nécora, 7, Chana',
+      addressLocality: 'Granada',
+      postalCode: '18003',
+      addressCountry: 'ES',
+    },
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Granada',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de Psicología',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Trastornos de conducta alimentaria (TCA)',
+          description:
+            'Acompañamiento en anorexia, bulimia, trastorno por atracón, ortorexia, vigorexia y problemas de imagen corporal.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Ansiedad y estrés',
+          description:
+            'Tratamiento para ansiedad generalizada, ataques de pánico y estrés mantenido.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Habilidades sociales y fobias',
+          description:
+            'Trabajo sobre la adquisición de habilidades sociales, límites y fobias específicas.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Problemas de pareja, duelo y burnout',
+          description:
+            'Terapia para conflictos de pareja, procesos de duelo y agotamiento emocional o laboral.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Violencia de género',
+          description: 'Terapia para víctimas de violencia de género.',
+        },
+      },
+    ],
+  },
+};
+---
+
+<Layout
+  titulo={titulo}
+  descripcion={descripcion}
+  canonica={canonica}
+  imagenOG={imagenOG}
+  esquema={esquema}
+/>
+

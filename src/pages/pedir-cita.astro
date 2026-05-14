@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const titulo = 'Pedir cita | Psicóloga especialista en TCA — Rosa Ruiz';
+const descripcion =
+  'Reserva tu cita con una psicóloga especializada en TCA, ansiedad y estrés. Atención cercana, horarios flexibles y acompañamiento profesional.';
+const canonica = `${Astro.site}pedir-cita/`;
+const imagenOG = `${Astro.site}open-graph/pedir-cita.png/`;
+
+const esquema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  mainEntity: {
+    '@type': 'MedicalBusiness',
+    name: 'Rosa María Ruiz Cano, Psicóloga General Sanitaria',
+    '@id': `${Astro.site}#localbusiness`,
+    telephone: '+34674307408',
+    email: 'rosamruizpsicologa@gmail.com',
+    url: Astro.site,
+    image: imagenOG,
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'C. Nécora, 7, Chana',
+      addressLocality: 'Granada',
+      postalCode: '18003',
+      addressCountry: 'ES',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Granada' },
+      { '@type': 'Country', name: 'ES', description: 'Online' },
+    ],
+    openingHoursSpecification: [
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Monday', opens: '09:00', closes: '20:30' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday', opens: '09:00', closes: '20:30' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Wednesday', opens: '09:00', closes: '20:30' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '09:00', closes: '20:30' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '09:00', closes: '20:30' },
+    ],
+    sameAs: [
+      'https://www.instagram.com/con.agallas/',
+      'https://www.linkedin.com/in/rosa-maría-ruiz-cano/',
+    ],
+  },
+};
+---
+
+<Layout
+  titulo={titulo}
+  descripcion={descripcion}
+  canonica={canonica}
+  imagenOG={imagenOG}
+  esquema={esquema}
+/>
+

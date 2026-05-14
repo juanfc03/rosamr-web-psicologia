@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const titulo = 'Política de cookies — Rosa María Ruiz Cano';
+const descripcion =
+  'Información completa sobre el uso de cookies, finalidades, tipos, consentimiento y opciones para gestionar o desactivar cookies.';
+const canonica = `${Astro.site}politica-de-cookies/`;
+const robots = 'noindex, follow';
+---
+
+<Layout
+  titulo={titulo}
+  descripcion={descripcion}
+  robots={robots}
+  canonica={canonica}
+/>
