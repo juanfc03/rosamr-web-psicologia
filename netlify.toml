@@ -1,0 +1,18 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.processing.html]
+  pretty_urls = false
+
+[[redirects]]
+  from = "https://www.rosamruizpsicologa.es/*"
+  to = "https://rosamruizpsicologa.es/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
