@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 
 const titulo = 'Pedir cita | Psicóloga especialista en TCA — Rosa Ruiz';
 const descripcion =
@@ -31,11 +31,36 @@ const esquema = {
       { '@type': 'Country', name: 'ES', description: 'Online' },
     ],
     openingHoursSpecification: [
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Monday', opens: '09:00', closes: '20:30' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Tuesday', opens: '09:00', closes: '20:30' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Wednesday', opens: '09:00', closes: '20:30' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Thursday', opens: '09:00', closes: '20:30' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '09:00', closes: '20:30' },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Monday',
+        opens: '09:00',
+        closes: '20:30',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Tuesday',
+        opens: '09:00',
+        closes: '20:30',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Wednesday',
+        opens: '09:00',
+        closes: '20:30',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Thursday',
+        opens: '09:00',
+        closes: '20:30',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Friday',
+        opens: '09:00',
+        closes: '20:30',
+      },
     ],
     sameAs: [
       'https://www.instagram.com/con.agallas/',
@@ -52,4 +77,3 @@ const esquema = {
   imagenOG={imagenOG}
   esquema={esquema}
 />
-

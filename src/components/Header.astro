@@ -1,0 +1,214 @@
+---
+import Menu from '@/components/icons/Menu.astro';
+import Instagram from '@/components/icons/Instagram.astro';
+import Linkedin from '@/components/icons/Linkedin.astro';
+import Chevron from '@/components/icons/Chevron.astro';
+
+type ElementoNavegacion =
+  | { etiqueta: string; href: string }
+  | { etiqueta: string; hijas: { etiqueta: string; href: string }[] };
+
+type EnlaceSocial = {
+  href: string;
+  descripcion: string;
+  Icono: typeof Instagram;
+};
+
+const navegacion = [
+  {
+    etiqueta: 'Inicio',
+    hijas: [
+      { etiqueta: 'Presentación', href: '/#presentacion' },
+      { etiqueta: 'Opiniones', href: '/#opiniones' },
+      { etiqueta: 'Precios', href: '/#precios' },
+      { etiqueta: 'Localización', href: '/#localizacion' },
+    ],
+  },
+  { etiqueta: 'Sobre mí', href: '/sobre-mi/' },
+  {
+    etiqueta: 'Servicios',
+    hijas: [
+      { etiqueta: 'Trastornos alimentarios', href: '/servicios/#tca' },
+      { etiqueta: 'Ansiedad y estrés', href: '/servicios/#ansiedad-estres' },
+      {
+        etiqueta: 'Habilidades sociales y fobias',
+        href: '/servicios/#habilidades-sociales-fobias',
+      },
+      {
+        etiqueta: 'Pareja, duelo, burnout',
+        href: '/servicios/#pareja-duelo-burnout',
+      },
+      { etiqueta: 'Violencia de género', href: '/servicios/#violencia-genero' },
+    ],
+  },
+  { etiqueta: 'Preguntas frecuentes', href: '/preguntas-frecuentes/' },
+  { etiqueta: 'Contacto', href: '/pedir-cita/' },
+] as const satisfies readonly ElementoNavegacion[];
+
+const redes = {
+  instagram: {
+    href: 'https://www.instagram.com/con.agallas/',
+    descripcion: 'Instagram de Rosa María Ruiz Cano',
+    Icono: Instagram,
+  },
+  linkedin: {
+    href: 'https://www.linkedin.com/in/rosa-maría-ruiz-cano/',
+    descripcion: 'LinkedIn de Rosa María Ruiz Cano',
+    Icono: Linkedin,
+  },
+} as const satisfies Record<string, EnlaceSocial>;
+
+const rutaActual = Astro.url.pathname + Astro.url.hash;
+
+function esActivo(item: (typeof navegacion)[number]): boolean {
+  if ('href' in item) {
+    return rutaActual === item.href;
+  }
+  const rutaBase = item.hijas[0].href.split('#')[0];
+  if (rutaActual === rutaBase) return true;
+  return item.hijas.some(hija => rutaActual === hija.href);
+}
+---
+
+<header
+  class="sticky top-0 inset-s-0 z-20 w-full border-b border-gray-400/40 bg-white/30 backdrop-blur-md"
+>
+  <div class="flex items-center justify-between p-3 md:p-3.5">
+    <a href="/" class="inline-flex items-center justify-center gap-3 p-1">
+      <img
+        src="/logo.webp"
+        alt="Logo de Rosa María Ruiz Cano"
+        class="h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 w-auto"
+        width="345"
+        height="320"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <span class="font-semibold leading-snug tracking-tight text-muted text-h4"
+        >Rosa M. Ruiz Cano</span
+      >
+    </a>
+
+    <!-- Navegación escritorio -->
+    <nav
+      class="hidden xl:flex items-center justify-center gap-6 xl:gap-12 font-medium text-body"
+      aria-label="Navegación principal"
+    >
+      {
+        navegacion.map(item =>
+          'href' in item ? (
+            <a
+              href={item.href}
+              aria-current={esActivo(item) ? 'page' : undefined}
+              class={`px-3 py-2 text-body focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${esActivo(item) ? 'text-primary font-semibold' : 'hover:text-primary/70'}`}
+            >
+              {item.etiqueta}
+            </a>
+          ) : (
+            <details class="relative group" name="navegacion-principal">
+              <summary
+                class={`flex items-center gap-1 cursor-pointer list-none rounded-md px-3 py-2 text-body focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${esActivo(item) ? 'text-primary font-semibold' : 'hover:text-primary/70'}`}
+                aria-current={esActivo(item) ? 'page' : undefined}
+              >
+                {item.etiqueta}
+                <Chevron class="transition-transform duration-200 group-open:rotate-180 xl:size-7" />
+              </summary>
+              <div class="absolute left-0 top-full min-w-48 rounded-lg border border-gray-200 bg-white/90 shadow-lg opacity-0 -translate-y-1 desplegable">
+                <ul>
+                  {item.hijas.map(hija => (
+                    <li>
+                      <a
+                        href={hija.href}
+                        class="block px-4 py-2 text-small text-body hover:bg-gray-100 hover:text-primary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                      >
+                        {hija.etiqueta}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+          ),
+        )
+      }
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <button
+        type="button"
+        id="open-mobile-menu"
+        aria-label="Abrir menú de navegación"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        class="inline-flex items-center justify-center xl:hidden cursor-pointer size-10 sm:size-11 md:size-12 lg:size-13 rounded-lg text-muted hover:bg-white/70 focus:outline-none focus:ring-2 focus:ring-gray-300"
+      >
+        <Menu class="size-5 sm:size-6 md:size-7 lg:size-8" />
+      </button>
+      {
+        Object.values(redes).map(({ href, descripcion, Icono }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="me noopener noreferrer"
+            aria-label={`${descripcion} (se abre en una pestaña nueva)`}
+            class="group inline-flex items-center justify-center p-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+          >
+            <Icono class="text-body transition-transform duration-150 ease-out group-hover:scale-110 group-active:scale-95 size-6 sm:size-6 md:size-7 lg:size-8 xl:size-9" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <nav
+    id="mobile-menu"
+    aria-label="Navegación principal móvil"
+    class="hidden rounded-lg p-4 text-sm sm:text-base md:text-lg lg:text-xl font-medium bg-white/30"
+  >
+    <ul class="space-y-1.5">
+      {
+        navegacion.map(item =>
+          'href' in item ? (
+            <li>
+              <a
+                href={item.href}
+                aria-current={esActivo(item) ? 'page' : undefined}
+                class={`block rounded-md px-3 py-2 text-body focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${esActivo(item) ? 'text-primary font-semibold' : 'hover:text-primary/70'}`}
+              >
+                {item.etiqueta}
+              </a>
+            </li>
+          ) : (
+            <li class="rounded-md">
+              <details class="group desplegable-movil-detalle">
+                <summary
+                  class={`flex items-center cursor-pointer list-none rounded-md px-3 py-2 text-body focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 ${esActivo(item) ? 'text-primary font-semibold' : 'hover:text-primary/70'}`}
+                  aria-current={esActivo(item) ? 'page' : undefined}
+                >
+                  {item.etiqueta}
+                  <Chevron class="ms-1 transition-transform group-open:rotate-180 size-3 sm:size-4 md:size-5 lg:size-6" />
+                </summary>
+                <div class="opacity-0 -translate-y-1 desplegable">
+                  <ul class="ms-3 ps-3 py-1 border-s border-gray-200">
+                    {item.hijas.map(hija => (
+                      <li>
+                        <a
+                          href={hija.href}
+                          class="block px-2 py-2 text-small hover:text-primary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
+                        >
+                          {hija.etiqueta}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
+            </li>
+          ),
+        )
+      }
+    </ul>
+  </nav>
+</header>
+
+<script src="../scripts/header.ts"></script>
