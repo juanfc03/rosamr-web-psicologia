@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #d59fac;
+  --color-primario: #d59fac;
 
-  --color-heading: var(--color-gray-800);
-  --color-body: var(--color-gray-700);
-  --color-muted: var(--color-gray-600);
-  --color-subtle: var(--color-gray-500);
+  --color-titulo: var(--color-gray-800);
+  --color-cuerpo: var(--color-gray-700);
+  --color-atenuado: var(--color-gray-600);
+  --color-sutil: var(--color-gray-500);
 }
 
 html {
@@ -44,30 +44,30 @@ html {
   );
 }
 
-@utility text-body {
+@utility text-tam-principal {
   @apply text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl;
 }
 
-@utility text-h1 {
+@utility text-tam-grande {
   @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
 }
 
-@utility text-h2 {
+@utility text-tam-mayor {
   @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
 }
 
-@utility text-h3 {
+@utility text-tam-mediano {
   @apply text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl;
 }
 
-@utility text-h4 {
+@utility text-tam-base {
   @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
 }
 
-@utility text-small {
+@utility text-tam-reducido {
   @apply text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl;
 }
 
-@utility text-legal {
+@utility text-tam-legal {
   @apply text-[11px] sm:text-xs md:text-sm lg:text-[15px] xl:text-base;
 }
