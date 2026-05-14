@@ -1,0 +1,58 @@
+---
+import Chevron from '@/components/icons/Chevron.astro';
+
+import { preguntas } from '@/data/faq';
+---
+
+<section
+  aria-labelledby="preguntas-titulo"
+  class="mx-auto lg:max-w-5/6 px-4 sm:px-6 md:px-8"
+>
+  <header class="space-y-2 md:space-y-4 md:mb-5 mb-6">
+    <h1
+      id="preguntas-titulo"
+      class="font-semibold text-tam-mediano text-oscuro"
+    >
+      Preguntas frecuentes sobre la terapia y cómo
+      <span class="text-primario">pedir cita</span>
+    </h1>
+
+    <p class="text-tam-principal leading-relaxed text-cuerpo">
+      Resolvemos dudas sobre cómo pedir cita, sesiones presenciales en Granada y
+      por videollamada, duración (60 min), precios orientativos, privacidad y
+      tratamientos para TCA, ansiedad y estrés. Si tienes alguna otra consulta
+      no dudes en contactarme.
+    </p>
+  </header>
+
+  <ul
+    class="rounded-2xl border border-white/30 bg-white/20 shadow-lg divide-y divide-gray-300/40"
+  >
+    {
+      preguntas.map(({ pregunta, respuesta }, idx) => (
+        <li>
+          <details class="group" open={idx === 0}>
+            <summary
+              class="flex cursor-pointer items-center justify-between gap-3 px-4 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm sm:px-6 sm:py-4"
+              aria-expanded={idx === 0 ? 'true' : 'false'}
+              aria-controls={`faq-respuesta-${idx}`}
+            >
+              <span class="font-medium text-tam-principal text-oscuro">
+                {pregunta}
+              </span>
+              <Chevron class="size-3.5 shrink-0 sm:size-4 md:size-5 lg:size-6 xl:size-7" />
+            </summary>
+
+            <div
+              id={`faq-respuesta-${idx}`}
+              class="overflow-hidden px-4 pb-4 text-tam-principal leading-relaxed text-cuerpo sm:px-6 sm:pb-5"
+              set:html={respuesta}
+            />
+          </details>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<script src="../scripts/faq-acordeon.ts"></script>
