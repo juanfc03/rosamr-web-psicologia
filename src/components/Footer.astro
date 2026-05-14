@@ -26,9 +26,9 @@ const redes = [
     class="grid grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2 sm:gap-10 sm:px-6 sm:py-10 lg:grid-cols-4 lg:px-8"
   >
     <section aria-label="Contacto" class="space-y-3">
-      <p class="font-semibold text-tam-principal text-oscuro">
+      <h2 class="font-semibold text-tam-principal text-oscuro">
         Rosa María Ruiz Cano
-      </p>
+      </h2>
       <p class="font-normal text-tam-reducido text-atenuado">
         Psicóloga General Sanitaria
       </p>
@@ -56,7 +56,7 @@ const redes = [
           <li>
             <a
               href="mailto:rosamruizpsicologa@gmail.com"
-              aria-label="Enviar correo electrónico a Rosa María Ruiz"
+              aria-label="Enviar correo a rosamruizpsicologa@gmail.com"
               class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm py-1"
             >
               rosamruizpsicologa@gmail.com
@@ -96,6 +96,7 @@ const redes = [
             <li>
               <a
                 href={item.href}
+                aria-current={Astro.url.pathname === item.href ? 'page' : undefined}
                 class="text-cuerpo hover:text-primario hover:underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm"
               >
                 {item.label}
