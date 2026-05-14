@@ -1,6 +1,6 @@
 const SELECTOR_DESPLEGABLES = 'details[name="navegacion-principal"]';
-const ID_MENU_MOVIL = 'mobile-menu';
-const ID_BOTON_MOVIL = 'open-mobile-menu';
+const ID_MENU_MOVIL = 'menu-movil';
+const ID_BOTON_MOVIL = 'abrir-menu-movil';
 const DURACION_APERTURA = 200;
 const DURACION_CIERRE = 150;
 
@@ -36,6 +36,7 @@ function obtenerMenu(detalle: HTMLDetailsElement) {
 }
 
 function abrirDesplegable(menu: HTMLElement) {
+  menu.classList.remove('invisible');
   animar(menu, fotogramasApertura, DURACION_APERTURA);
 }
 
@@ -48,6 +49,7 @@ function cerrarDesplegable(detalle: HTMLDetailsElement) {
 
   animar(menu, fotogramasCierre, DURACION_CIERRE).finished.then(() => {
     detalle.open = false;
+    menu.classList.add('invisible');
   }).catch(() => {});
 }
 
@@ -262,3 +264,5 @@ document.addEventListener('astro:page-load', () => {
   inicializarMenuMovil();
   registrarClickFuera();
 });
+
+export {};

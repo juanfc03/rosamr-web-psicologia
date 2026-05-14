@@ -1,4 +1,4 @@
-const footerYear = document.getElementById('footer-year');
-if (footerYear) {
-  footerYear.textContent = new Date().getFullYear().toString();
+const anioPie = document.getElementById('anio-pie');
+if (anioPie) {
+  anioPie.textContent = new Date().getFullYear().toString();
 }

@@ -19,14 +19,16 @@ const redes = [
 ] as const satisfies readonly EnlaceFooter[];
 ---
 
-<footer class="w-full border-t border-gray-400/40 bg-gray-200/10 text-titulo">
+<footer
+  class="w-full border-t border-gray-400/40 bg-gray-200/10 text-oscuro mt-14 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-28"
+>
   <div
     class="grid grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2 sm:gap-10 sm:px-6 sm:py-10 lg:grid-cols-4 lg:px-8"
   >
     <section aria-label="Contacto" class="space-y-3">
-      <h2 class="font-semibold text-tam-principal text-titulo">
+      <p class="font-semibold text-tam-principal text-oscuro">
         Rosa María Ruiz Cano
-      </h2>
+      </p>
       <p class="font-normal text-tam-reducido text-atenuado">
         Psicóloga General Sanitaria
       </p>
@@ -39,13 +41,14 @@ const redes = [
       <address
         class="flex flex-col gap-y-1 text-tam-reducido text-cuerpo not-italic"
       >
-        <strong class="block font-medium text-titulo">Contacto:</strong>
+        <span class="block font-medium text-oscuro">Contacto:</span>
         <span class="block">Granada, España</span>
-        <ul class="space-y-3.5">
+        <ul class="space-y-4">
           <li>
             <a
               href="tel:+34674307408"
-              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+              aria-label="Llamar por teléfono a Rosa María Ruiz"
+              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm py-1"
             >
               Llamar por teléfono
             </a>
@@ -53,7 +56,8 @@ const redes = [
           <li>
             <a
               href="mailto:rosamruizpsicologa@gmail.com"
-              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+              aria-label="Enviar correo electrónico a Rosa María Ruiz"
+              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm py-1"
             >
               rosamruizpsicologa@gmail.com
             </a>
@@ -64,7 +68,7 @@ const redes = [
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Hablar por WhatsApp (se abre en una pestaña nueva)"
-              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm py-1"
             >
               Hablar por WhatsApp
             </a>
@@ -72,7 +76,8 @@ const redes = [
           <li>
             <a
               href="/pedir-cita/"
-              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+              aria-label="Formulario de contacto para pedir cita"
+              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm py-1"
             >
               Formulario de contacto
             </a>
@@ -82,7 +87,7 @@ const redes = [
     </section>
 
     <nav aria-label="Páginas legales" class="space-y-3 text-tam-reducido">
-      <h2 class="font-semibold text-tam-principal text-titulo">
+      <h2 class="font-semibold text-tam-principal text-oscuro">
         Páginas legales
       </h2>
       <ul class="space-y-2">
@@ -91,7 +96,7 @@ const redes = [
             <li>
               <a
                 href={item.href}
-                class="text-cuerpo hover:text-primario hover:underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+                class="text-cuerpo hover:text-primario hover:underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm"
               >
                 {item.label}
               </a>
@@ -102,14 +107,14 @@ const redes = [
     </nav>
 
     <section aria-label="Información legal" class="space-y-3 text-tam-reducido">
-      <h2 class="font-semibold text-tam-principal text-titulo">
+      <h2 class="font-semibold text-tam-principal text-oscuro">
         Información legal
       </h2>
       <dl class="space-y-2">
         <dt class="text-cuerpo">N.º de colegiada:</dt>
-        <dd class="font-medium text-titulo">AO-13788</dd>
+        <dd class="font-medium text-oscuro">AO-13788</dd>
         <dt class="text-cuerpo">Colegio Oficial de Psicología:</dt>
-        <dd class="font-medium text-titulo">Andalucía Occidental</dd>
+        <dd class="font-medium text-oscuro">Andalucía Occidental</dd>
       </dl>
 
       <p class="text-tam-legal leading-snug text-atenuado">
@@ -119,7 +124,7 @@ const redes = [
     </section>
 
     <section aria-label="Redes" class="space-y-3 text-tam-reducido">
-      <h2 class="font-semibold text-tam-principal text-titulo">Redes</h2>
+      <h2 class="font-semibold text-tam-principal text-oscuro">Redes</h2>
       <ul class="space-y-2">
         {
           redes.map(red => (
@@ -129,7 +134,7 @@ const redes = [
                 target="_blank"
                 rel="me noopener noreferrer"
                 aria-label={`${red.label} (se abre en una pestaña nueva)`}
-                class="inline-flex items-center gap-2 text-cuerpo hover:text-primario focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+                class="inline-flex items-center gap-2 text-cuerpo hover:text-primario focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm"
               >
                 <span
                   class="block size-2.5 rounded-full bg-primario"
@@ -155,7 +160,7 @@ const redes = [
       class="flex flex-col items-center justify-between gap-4 px-4 py-4 text-center text-tam-legal text-cuerpo sm:flex-row sm:px-6 sm:py-6 sm:text-left lg:px-8"
     >
       <small class="leading-snug">
-        &copy; <span id="footer-year">{new Date().getFullYear()}</span> Rosa María
+        &copy; <span id="anio-pie">{new Date().getFullYear()}</span> Rosa María
         Ruiz Cano &middot; Todos los derechos reservados
       </small>
 
@@ -166,7 +171,7 @@ const redes = [
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn de Juan Fernández Ceacero (se abre en una pestaña nueva)"
-          class="text-primario hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+          class="text-primario hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm"
         >
           Juan
         </a>

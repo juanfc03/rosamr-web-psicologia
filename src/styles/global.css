@@ -3,7 +3,7 @@
 @theme {
   --color-primario: #d59fac;
 
-  --color-titulo: var(--color-gray-800);
+  --color-oscuro: var(--color-gray-800);
   --color-cuerpo: var(--color-gray-700);
   --color-atenuado: var(--color-gray-600);
   --color-sutil: var(--color-gray-500);
@@ -33,6 +33,10 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .group-open\:rotate-180 {
+    transition: none;
   }
 }
 
