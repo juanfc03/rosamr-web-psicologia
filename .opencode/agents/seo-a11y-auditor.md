@@ -3,7 +3,7 @@ name: seo-a11y-auditor
 description: World-class Technical SEO and WCAG 2.2 Accessibility Expert. Audits HTML files and orchestrates skills.
 mode: subagent
 model: opencode-go/deepseek-v4-pro
-reasoning_effort: medium
+reasoningEffort: medium
 temperature: 0.1
 tools:
   bash: true
