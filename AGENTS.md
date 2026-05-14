@@ -21,10 +21,17 @@
 - Commits use **Conventional Commits** with messages in **Spanish** (see `.opencode/commands/super-commit.md`)
 - Example: `feat: añadir página de servicios`
 
+## Responsive design
+- All pages MUST be responsive (mobile-first)
+- Use Tailwind breakpoints: `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px)
+
 ## Tailwind v4 notes
 - Global styles are in `src/styles/global.css` with `@import "tailwindcss"`
-- Use CSS `@theme { ... }` to customize design tokens, not a JS config file
-- Utility classes work the same as v3; the differences are in the config layer
+- Use CSS `@theme { ... }` to define design tokens (replaces `tailwind.config.js`)
+- Use `@utility nombre { ... }` for custom utilities that support variants (`hover:`, `lg:`, etc.)
+- `@apply` is available inside `@utility` blocks and custom CSS rules
+- No `@layer base/components/utilities` — Tailwind v4 uses native CSS cascade layers
+- Utility classes in HTML templates (`flex`, `p-4`, etc.) work the same as v3
 
 ## Key dependencies
 - `jspdf` — client-side PDF generation

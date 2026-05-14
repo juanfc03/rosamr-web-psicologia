@@ -7,9 +7,25 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://rosamruizpsicologa.es',
+  trailingSlash: 'always',
+
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
-  integrations: [sitemap()]
+  build: {
+    inlineStylesheets: 'always',
+  },
+
+  integrations: [
+    sitemap({
+      serialize(item) {
+        if (/aviso-legal|politica-de-cookies|politica-de-privacidad/.test(item.url)) {
+          return undefined;
+        }
+        return item;
+      },
+    }),
+  ],
 });

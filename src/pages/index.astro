@@ -1,8 +1,89 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const titulo = 'Especialista en TCA · Psicóloga en Granada y online';
+const descripcion =
+  'Psicóloga en Granada especialista en trastornos de la conducta alimentaria (TCA). Terapia online y presencial para ansiedad, estrés, adicciones y dificultades emocionales.';
+const canonica = `${Astro.site}`;
+const imagenOG = `${Astro.site}open-graph/index.png/`;
+
+const esquema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'Rosa María Ruiz Cano, Psicóloga General Sanitaria',
+  description: descripcion,
+  image: imagenOG,
+  '@id': `${Astro.site}#localbusiness`,
+  url: Astro.site,
+  telephone: '+34674307408',
+  email: 'rosamruizpsicologa@gmail.com',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'C. Nécora, 7, Chana',
+    addressLocality: 'Granada',
+    postalCode: '18003',
+    addressCountry: 'ES',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 37.1862377,
+    longitude: -3.6157803,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Granada' },
+    { '@type': 'Country', name: 'ES', description: 'Online' },
+  ],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Monday',
+      opens: '09:00',
+      closes: '20:30',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Tuesday',
+      opens: '09:00',
+      closes: '20:30',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Wednesday',
+      opens: '09:00',
+      closes: '20:30',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Thursday',
+      opens: '09:00',
+      closes: '20:30',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Friday',
+      opens: '09:00',
+      closes: '20:30',
+    },
+  ],
+  knowsAbout: [
+    'Trastornos de la conducta alimentaria',
+    'Ansiedad',
+    'Depresión',
+    'Estrés',
+    'Adicciones',
+  ],
+  sameAs: [
+    'https://www.instagram.com/con.agallas/',
+    'https://www.linkedin.com/in/rosa-maría-ruiz-cano/',
+  ],
+};
 ---
 
-<Layout />
+<Layout
+  titulo={titulo}
+  descripcion={descripcion}
+  canonica={canonica}
+  imagenOG={imagenOG}
+  esquema={esquema}
+/>
