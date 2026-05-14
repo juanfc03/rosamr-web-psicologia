@@ -59,9 +59,9 @@ function ocultarMenuMovil() {
   if (!menuMovil || !botonMovil) return;
   if (menuMovil.classList.contains('hidden')) return;
 
+  menuMovil.inert = true;
   animar(menuMovil, fotogramasCierre, DURACION_CIERRE).finished.then(() => {
     menuMovil.classList.add('hidden');
-    menuMovil.inert = true;
   }).catch(() => {});
   botonMovil.setAttribute('aria-expanded', 'false');
   botonMovil.setAttribute('aria-label', 'Abrir menú de navegación');

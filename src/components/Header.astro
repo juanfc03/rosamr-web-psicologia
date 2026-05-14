@@ -128,6 +128,7 @@ const claseInactiva = 'hover:text-primario/70';
                     <li>
                       <a
                         href={hija.href}
+                        aria-current={rutaActual === hija.href ? 'location' : undefined}
                         class="block px-4 py-2 text-tam-reducido text-cuerpo hover:bg-gray-100 hover:text-primario/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro"
                       >
                         {hija.etiqueta}
@@ -202,6 +203,7 @@ const claseInactiva = 'hover:text-primario/70';
                       <li>
                         <a
                           href={hija.href}
+                          aria-current={rutaActual === hija.href ? 'location' : undefined}
                           class="block px-2 py-2 text-tam-reducido hover:text-primario/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro"
                         >
                           {hija.etiqueta}
