@@ -1,0 +1,178 @@
+---
+type EnlaceFooter = {
+  label: string;
+  href: string;
+};
+
+const legal = [
+  { label: 'Política de Cookies', href: '/politica-de-cookies/' },
+  { label: 'Política de Privacidad', href: '/politica-de-privacidad/' },
+  { label: 'Aviso legal', href: '/aviso-legal/' },
+] as const satisfies readonly EnlaceFooter[];
+
+const redes = [
+  { label: 'Instagram', href: 'https://www.instagram.com/con.agallas/' },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/rosa-maría-ruiz-cano/',
+  },
+] as const satisfies readonly EnlaceFooter[];
+---
+
+<footer class="w-full border-t border-gray-400/40 bg-gray-200/10 text-titulo">
+  <div
+    class="grid grid-cols-1 gap-8 px-4 py-8 sm:grid-cols-2 sm:gap-10 sm:px-6 sm:py-10 lg:grid-cols-4 lg:px-8"
+  >
+    <section aria-label="Contacto" class="space-y-3">
+      <h2 class="font-semibold text-tam-principal text-titulo">
+        Rosa María Ruiz Cano
+      </h2>
+      <p class="font-normal text-tam-reducido text-atenuado">
+        Psicóloga General Sanitaria
+      </p>
+
+      <p class="text-tam-reducido leading-relaxed text-cuerpo">
+        Acompañamiento psicológico profesional y humano. Sesiones online y
+        presenciales bajo confidencialidad.
+      </p>
+
+      <address
+        class="flex flex-col gap-y-1 text-tam-reducido text-cuerpo not-italic"
+      >
+        <strong class="block font-medium text-titulo">Contacto:</strong>
+        <span class="block">Granada, España</span>
+        <ul class="space-y-3.5">
+          <li>
+            <a
+              href="tel:+34674307408"
+              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+            >
+              Llamar por teléfono
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:rosamruizpsicologa@gmail.com"
+              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+            >
+              rosamruizpsicologa@gmail.com
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://wa.me/34674307408?text=¡Hola Rosa!"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Hablar por WhatsApp (se abre en una pestaña nueva)"
+              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+            >
+              Hablar por WhatsApp
+            </a>
+          </li>
+          <li>
+            <a
+              href="/pedir-cita/"
+              class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+            >
+              Formulario de contacto
+            </a>
+          </li>
+        </ul>
+      </address>
+    </section>
+
+    <nav aria-label="Páginas legales" class="space-y-3 text-tam-reducido">
+      <h2 class="font-semibold text-tam-principal text-titulo">
+        Páginas legales
+      </h2>
+      <ul class="space-y-2">
+        {
+          legal.map(item => (
+            <li>
+              <a
+                href={item.href}
+                class="text-cuerpo hover:text-primario hover:underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <section aria-label="Información legal" class="space-y-3 text-tam-reducido">
+      <h2 class="font-semibold text-tam-principal text-titulo">
+        Información legal
+      </h2>
+      <dl class="space-y-2">
+        <dt class="text-cuerpo">N.º de colegiada:</dt>
+        <dd class="font-medium text-titulo">AO-13788</dd>
+        <dt class="text-cuerpo">Colegio Oficial de Psicología:</dt>
+        <dd class="font-medium text-titulo">Andalucía Occidental</dd>
+      </dl>
+
+      <p class="text-tam-legal leading-snug text-atenuado">
+        La información que compartas será tratada con absoluta confidencialidad
+        y conforme a la normativa vigente en materia de protección de datos.
+      </p>
+    </section>
+
+    <section aria-label="Redes" class="space-y-3 text-tam-reducido">
+      <h2 class="font-semibold text-tam-principal text-titulo">Redes</h2>
+      <ul class="space-y-2">
+        {
+          redes.map(red => (
+            <li>
+              <a
+                href={red.href}
+                target="_blank"
+                rel="me noopener noreferrer"
+                aria-label={`${red.label} (se abre en una pestaña nueva)`}
+                class="inline-flex items-center gap-2 text-cuerpo hover:text-primario focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+              >
+                <span
+                  class="block size-2.5 rounded-full bg-primario"
+                  aria-hidden="true"
+                />
+                <span>{red.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="text-tam-legal leading-snug text-atenuado">
+        No ofrezco atención psicológica de urgencia por redes sociales. En caso
+        de riesgo inmediato para tu seguridad o la de otra persona, contacta con
+        emergencias de tu país.
+      </p>
+    </section>
+  </div>
+
+  <div class="w-full border-t border-gray-400/40 bg-gray-100">
+    <div
+      class="flex flex-col items-center justify-between gap-4 px-4 py-4 text-center text-tam-legal text-cuerpo sm:flex-row sm:px-6 sm:py-6 sm:text-left lg:px-8"
+    >
+      <small class="leading-snug">
+        &copy; <span id="footer-year">{new Date().getFullYear()}</span> Rosa María
+        Ruiz Cano &middot; Todos los derechos reservados
+      </small>
+
+      <p class="leading-snug">
+        Hecho con cariño por
+        <a
+          href="https://www.linkedin.com/in/juan-fernández-ceacero-890627379"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn de Juan Fernández Ceacero (se abre en una pestaña nueva)"
+          class="text-primario hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm"
+        >
+          Juan
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="../scripts/footer-actualizar-fecha.ts"></script>

@@ -33,6 +33,28 @@
 - No `@layer base/components/utilities` — Tailwind v4 uses native CSS cascade layers
 - Utility classes in HTML templates (`flex`, `p-4`, etc.) work the same as v3
 
+### Color tokens (all Spanish names)
+
+| Token | Value | Utility |
+|-------|-------|---------|
+| `--color-primario` | `#d59fac` | `text-primario`, `bg-primario`, `ring-primario/40`, etc. |
+| `--color-titulo` | `var(--color-gray-800)` | `text-titulo` |
+| `--color-cuerpo` | `var(--color-gray-700)` | `text-cuerpo` |
+| `--color-atenuado` | `var(--color-gray-600)` | `text-atenuado` |
+| `--color-sutil` | `var(--color-gray-500)` | `text-sutil` |
+
+### Font size utilities (scale: smallest → largest)
+
+| Utility | Equivalent Tailwind scale |
+|---------|---------------------------|
+| `text-tam-legal` | 11px → 16px |
+| `text-tam-reducido` | 12px → 20px |
+| `text-tam-principal` | 14px → 24px |
+| `text-tam-base` | 16px → 30px |
+| `text-tam-mediano` | 18px → 36px |
+| `text-tam-mayor` | 20px → 48px |
+| `text-tam-grande` | 24px → 60px |
+
 ## SEO metadata conventions
 
 Every page defines these frontmatter variables and passes them to `<Layout>`:
@@ -70,3 +92,38 @@ All schemas referencing the business use `@id: '${Astro.site}#localbusiness'` fo
 - `pretty_urls = false` — Astro handles trailing slashes via `trailingSlash: 'always'`
 - `www.` → non-www redirect via `[[redirects]]` with domain-level `from`
 - `public/robots.txt` allows full crawling and points to sitemap-index.xml
+
+## Component conventions
+
+### Header (`src/components/Header.astro`)
+- Sticky header with desktop dropdown navigation and mobile hamburger menu
+- Navigation data defined in frontmatter via `navegacion[]` array with `as const satisfies`
+- Social links via `redes` object with `EnlaceSocial` type
+- Active route detection with `esActivo()` using `Astro.url.pathname`
+- Uses `aria-current="page"` on active links and `<summary>` elements
+- Import icons from `@/components/icons/`
+- Client interactivity via `src/scripts/header.ts` (dropdowns, mobile menu, focus trap, Escape)
+
+### Footer (`src/components/Footer.astro`)
+- Placed after `<main>` in `Layout.astro`
+- Four-column responsive grid: Contacto, Páginas legales, Información legal, Redes
+- NAP data (Name, Address, Phone) in `<address>` with `tel:` and `mailto:` links
+- Legal links, social links, and copyright with dynamic year
+- Year auto-updated by `src/scripts/footer-actualizar-fecha.ts` on page load
+- Uses semantic HTML: `<address>`, `<dl>`, `<small>` for copyright, `<strong>` for labels
+- All link classes must include `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primario/40 rounded-sm`
+
+## Accessibility conventions
+- All interactive elements (`<a>`, `<button>`, `<summary>`) must have `focus-visible` ring styles
+- External links (`target="_blank"`) require `aria-label="... (se abre en una pestaña nueva)"`
+- Social links use `rel="me noopener noreferrer"`
+- Sections use `aria-label` for accessible names
+- Decorative SVGs use `aria-hidden="true"`
+- `<main>` has `id="contenido-principal"` for skip-to-content link
+- Skip-to-content link at top of `<body>` in Layout
+
+## Scripts
+| File | Purpose |
+|------|---------|
+| `src/scripts/header.ts` | Desktop dropdown animations, mobile menu toggle, focus trap, click-outside, Escape handling |
+| `src/scripts/footer-actualizar-fecha.ts` | Updates copyright year dynamically on page load |
