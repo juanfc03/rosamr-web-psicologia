@@ -18,6 +18,7 @@ export default defineConfig({
       cssVariable: '--font-onest',
       weights: ['100 900'],
       fallbacks: ['Arial', 'Helvetica Neue', 'system-ui', 'sans-serif'],
+      display: 'fallback',
     },
   ],
 
