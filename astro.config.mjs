@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import { fileURLToPath } from 'node:url';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -10,6 +10,16 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://rosamruizpsicologa.es',
   trailingSlash: 'always',
+
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Onest',
+      cssVariable: '--font-onest',
+      weights: ['100 900'],
+      fallbacks: ['Arial', 'Helvetica Neue', 'system-ui', 'sans-serif'],
+    },
+  ],
 
   vite: {
     plugins: [tailwindcss()],

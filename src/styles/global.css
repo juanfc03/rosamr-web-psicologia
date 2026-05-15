@@ -10,23 +10,7 @@
 }
 
 html {
-  font-family:
-    'Segoe UI Variable Text',
-    'Segoe UI Variable Display',
-    'Segoe UI',
-    -apple-system,
-    BlinkMacSystemFont,
-    'SF Pro Text',
-    system-ui,
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    'Noto Sans',
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    sans-serif;
-
+  font-family: var(--font-onest);
   scroll-behavior: smooth;
 }
 
