@@ -50,6 +50,7 @@ function cerrarDesplegable(detalle: HTMLDetailsElement) {
   animar(menu, fotogramasCierre, DURACION_CIERRE).finished.then(() => {
     detalle.open = false;
     menu.classList.add('invisible');
+    detalle.querySelector('summary')?.focus();
   }).catch(() => {});
 }
 
