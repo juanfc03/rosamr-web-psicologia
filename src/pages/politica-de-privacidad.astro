@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Privacy from '@/components/paginas-legales/Privacy.astro';
 
 const titulo = 'Política de privacidad — Tratamiento de datos personales';
 const descripcion =
@@ -13,4 +14,6 @@ const robots = 'noindex, follow';
   descripcion={descripcion}
   robots={robots}
   canonica={canonica}
-/>
+>
+  <Privacy />
+</Layout>

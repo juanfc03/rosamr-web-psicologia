@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Cookies from '@/components/paginas-legales/Cookies.astro';
 
 const titulo = 'Política de cookies — Rosa María Ruiz Cano';
 const descripcion =
@@ -13,4 +14,6 @@ const robots = 'noindex, follow';
   descripcion={descripcion}
   robots={robots}
   canonica={canonica}
-/>
+>
+  <Cookies />
+</Layout>
