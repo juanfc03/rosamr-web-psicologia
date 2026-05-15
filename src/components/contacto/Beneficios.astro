@@ -1,0 +1,87 @@
+---
+import Monitor from '@/components/icons/Monitor.astro';
+import Corazon from '@/components/icons/Corazon.astro';
+import Escudo from '@/components/icons/Escudo.astro';
+import Mensaje from '@/components/icons/Mensaje.astro';
+---
+
+<aside
+  aria-label="Beneficios de la consulta"
+  class="space-y-6 sm:space-y-8 lg:space-y-10"
+>
+  <div
+    class="bg-white/20 rounded-2xl border border-white/30 shadow-lg p-6 sm:p-8"
+  >
+    <Monitor
+      class="size-8 sm:size-9 md:size-10 lg:size-11 xl:size-12 text-primario mb-4"
+    />
+    <h2 class="text-tam-principal font-semibold text-oscuro mb-2">
+      Online y presencial
+    </h2>
+    <p class="text-tam-reducido text-atenuado leading-relaxed">
+      Sesiones online desde cualquier lugar o presenciales en Granada. Tú eliges
+      cómo y desde dónde quieres que trabajemos, con la misma cercanía y
+      profesionalidad.
+    </p>
+  </div>
+
+  <div
+    class="bg-white/20 rounded-2xl border border-white/30 shadow-lg p-6 sm:p-8"
+  >
+    <Corazon
+      class="size-8 sm:size-9 md:size-10 lg:size-11 xl:size-12 text-primario mb-4"
+    />
+    <h2 class="text-tam-principal font-semibold text-oscuro mb-2">
+      Especialista en TCA
+    </h2>
+    <p class="text-tam-reducido text-atenuado leading-relaxed">
+      Experiencia en trastornos de la conducta alimentaria, ansiedad, estrés,
+      adicciones y otras dificultades emocionales. Atención personalizada y
+      basada en la evidencia.
+    </p>
+  </div>
+
+  <div
+    class="bg-white/20 rounded-2xl border border-white/30 shadow-lg p-6 sm:p-8"
+  >
+    <Escudo
+      class="size-8 sm:size-9 md:size-10 lg:size-11 xl:size-12 text-primario mb-4"
+    />
+    <h2 class="text-tam-principal font-semibold text-oscuro mb-2">
+      Confidencialidad total
+    </h2>
+    <p class="text-tam-reducido text-atenuado leading-relaxed">
+      Todo lo que compartas está protegido por el secreto profesional. Un
+      espacio seguro, sin juicios, donde puedes expresarte con total libertad.
+    </p>
+  </div>
+
+  <div
+    class="bg-white/20 rounded-2xl border border-white/30 shadow-lg p-6 sm:p-8"
+  >
+    <Mensaje
+      class="size-8 sm:size-9 md:size-10 lg:size-11 xl:size-12 text-primario mb-4"
+    />
+    <h2 class="text-tam-principal font-semibold text-oscuro mb-2">
+      Contacto directo
+    </h2>
+    <p class="text-tam-reducido text-atenuado leading-relaxed">
+      Respuesta rápida por
+      <a
+        href="https://wa.me/34674307408?text=¡Hola Rosa!"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp (se abre en una nueva pestaña)"
+        class="text-primario underline underline-offset-2 hover:brightness-110"
+        >WhatsApp</a
+      >
+      o
+      <a
+        href="mailto:rosamruizpsicologa@gmail.com"
+        class="text-primario underline underline-offset-2 hover:brightness-110"
+        >Email</a
+      >. Normalmente te contacto en menos de 24 horas para coordinar día y hora
+      que mejor se adapte a ti.
+    </p>
+  </div>
+</aside>

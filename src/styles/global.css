@@ -34,10 +34,6 @@ html {
   html {
     scroll-behavior: auto;
   }
-
-  .group-open\:rotate-180 {
-    transition: none;
-  }
 }
 
 @utility bg-main-gradient {

@@ -37,6 +37,8 @@ This project uses Tailwind CSS v4 syntax, not v3:
 - Custom utilities use `@utility name { ... }` syntax in CSS, not the plugin API.
 - Import is `@import 'tailwindcss'`, not `@tailwind base/components/utilities`.
 - No `tailwind.config.js` file exists — all config lives in `global.css`.
+- Component-specific styles go in their `<style>` block, not in `global.css`. Use `@reference "@/styles/global.css"` to access project tokens and utilities without duplicating CSS. `@apply` works inside plain CSS classes (`.clase { @apply ... }`), but `@utility` only works in the root file that has `@import "tailwindcss"`.
+- Astro scopes component `<style>` blocks by default — correct for component-specific styles.
 
 ## Custom Design Tokens
 
@@ -54,7 +56,7 @@ Defined in `src/styles/global.css`:
 - Prettier config: single quotes, no parens on single arrow params
 - All external links use `target="_blank" rel="noopener noreferrer"` with Spanish aria-labels noting new tab
 - Accessibility: skip-to-content link, `aria-label` on icon-only buttons, `aria-current="page"` on active nav links (not on `<summary>`), `aria-expanded` on FAQ `<summary>`, `prefers-reduced-motion` respected
-- Focus styles: `focus-visible:ring-2 focus-visible:ring-oscuro` pattern throughout
+- Focus styles: `focus-visible:ring-2 focus-visible:ring-primario` pattern throughout
 
 ## TypeScript Conventions
 
@@ -86,3 +88,15 @@ Use the skill tool when a task matches one of the available skills in `.opencode
 Use the Astro docs MCP to verify framework APIs and config options instead of guessing. Prefer `Astro_docs_search_astro_docs` over inventing Astro-specific syntax.
 
 **Always verify browser support and API status before flagging issues.** Do not assume a feature is experimental or unsupported without checking current data (e.g. caniuse, MDN). Outdated assumptions lead to false positives. When in doubt, check the latest compatibility tables.
+
+## SVG Icon Pattern
+
+All in `src/components/icons/`: `const { class: className = '' } = Astro.props` → `class={className}` + `aria-hidden="true"`. Inherit color via `currentColor`.
+
+## Two-column sticky with CSS Grid
+
+For `position: sticky` to work on a grid item, add `self-start` to the item (prevents `align-items: stretch` from stretching it to the full row height, which would disable sticky). E.g.: `lg:self-start lg:sticky lg:top-36`.
+
+## Focus ring
+
+The project uses `focus-visible:ring-2 focus-visible:ring-primario` as the standard (not `ring-oscuro`) by the user's express decision.

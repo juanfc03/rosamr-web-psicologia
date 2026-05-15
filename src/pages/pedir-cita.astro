@@ -1,9 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import FormularioContacto from '@/components/contacto/Form.astro';
+import FormLegal from '@/components/contacto/FormLegal.astro';
+import Beneficios from '@/components/contacto/Beneficios.astro';
 
-const titulo = 'Pedir cita | Psicóloga especialista en TCA — Rosa Ruiz';
+const titulo = 'Pedir cita — Psicóloga en Granada especialista en TCA';
 const descripcion =
-  'Reserva tu cita con una psicóloga especializada en TCA, ansiedad y estrés. Atención cercana, horarios flexibles y acompañamiento profesional.';
+  'Pide cita con Rosa Ruiz, psicóloga en Granada especialista en TCA. Sesiones online y presenciales. Contacto directo por WhatsApp o formulario. Respuesta en 24 h.';
 const canonica = `${Astro.site}pedir-cita/`;
 const imagenOG = `${Astro.site}open-graph/pedir-cita.png/`;
 
@@ -76,4 +79,22 @@ const esquema = {
   canonica={canonica}
   imagenOG={imagenOG}
   esquema={esquema}
-/>
+>
+  <h1 class="sr-only">
+    Pedir cita · Psicóloga en Granada especialista en TCA — Rosa María Ruiz Cano
+  </h1>
+
+  <section class="mx-auto lg:max-w-5/6 px-4 sm:px-6 md:px-8">
+    <div class="lg:grid lg:grid-cols-[1fr_1fr] lg:gap-12 xl:gap-16">
+      <div class="lg:self-start lg:sticky lg:top-36">
+        <Beneficios />
+      </div>
+
+      <div class="mt-12 sm:mt-16 lg:mt-0">
+        <FormularioContacto>
+          <FormLegal />
+        </FormularioContacto>
+      </div>
+    </div>
+  </section>
+</Layout>
