@@ -10,17 +10,20 @@ const CLAVE_ALMACEN = 'consent-cookies';
 function cargarGoogleAnalytics(): void {
   if (document.getElementById('gtag-js')) return;
 
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args: unknown[]) {
+    (window.dataLayer as unknown[]).push(args);
+  }
+  gtag('consent', 'default', { analytics_storage: 'denied' });
+
   const script = document.createElement('script');
   script.id = 'gtag-js';
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${ID_ANALITICA}`;
   document.head.appendChild(script);
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag(...args: unknown[]) {
-    (window.dataLayer as unknown[]).push(args);
-  }
   gtag('js', new Date());
+  gtag('consent', 'update', { analytics_storage: 'granted' });
   gtag('config', ID_ANALITICA);
 }
 
