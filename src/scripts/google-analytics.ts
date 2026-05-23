@@ -14,6 +14,12 @@ function cargarGoogleAnalytics(): void {
   function gtag(...args: unknown[]) {
     (window.dataLayer as unknown[]).push(args);
   }
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+  });
 
   const script = document.createElement('script');
   script.id = 'gtag-js';
@@ -22,7 +28,12 @@ function cargarGoogleAnalytics(): void {
   document.head.appendChild(script);
 
   gtag('js', new Date());
-  gtag('consent', 'update', { analytics_storage: 'granted' });
+  gtag('consent', 'update', {
+    analytics_storage: 'granted',
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+  });
   gtag('config', ID_ANALITICA);
 }
 
