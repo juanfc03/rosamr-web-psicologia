@@ -7,24 +7,25 @@ declare global {
 const ID_ANALITICA = 'G-JMTQFPHQY1';
 const CLAVE_ALMACEN = 'consent-cookies';
 
-function gtag(...args: unknown[]): void {
-  (window.dataLayer as unknown[]).push(args);
-}
-
 function actualizarConsentimiento(): void {
-  gtag('consent', 'update', {
-    analytics_storage: 'granted',
-    ad_storage: 'granted',
-    ad_user_data: 'granted',
-    ad_personalization: 'granted',
-  });
-  gtag('config', ID_ANALITICA);
+  window.dataLayer.push([
+    'consent',
+    'update',
+    {
+      analytics_storage: 'granted',
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+    },
+  ]);
+  window.dataLayer.push(['config', ID_ANALITICA]);
 }
 
 function cargarGoogleAnalytics(): void {
   if (document.getElementById('gtag-js')) return;
 
-  gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(['js', new Date()]);
   actualizarConsentimiento();
 
   const script = document.createElement('script');
