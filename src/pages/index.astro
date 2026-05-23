@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import MainPage from '@/components/MainPage.astro';
 
 const titulo = 'Especialista en TCA · Psicóloga en Granada y online';
 const descripcion =
@@ -86,4 +87,6 @@ const esquema = {
   canonica={canonica}
   imagenOG={imagenOG}
   esquema={esquema}
-/>
+>
+  <MainPage />
+</Layout>

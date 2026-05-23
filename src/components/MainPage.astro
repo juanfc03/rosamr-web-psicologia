@@ -1,0 +1,425 @@
+---
+import { Image } from 'astro:assets';
+import img from '@/assets/rosa-maria-ruiz-cano-psicologa-granada-frontal.jpeg';
+import FlechaDerecha from '@/components/icons/FlechaDerecha.astro';
+import Estrella from '@/components/icons/Estrella.astro';
+import Localizacion from '@/components/icons/Localizacion.astro';
+import Badge from '@/components/utils/Badge.astro';
+import Pill from '@/components/utils/Pill.astro';
+
+type Opinion = {
+  texto: string;
+  tipoPaciente: string;
+  puntuacion: number;
+};
+
+const opiniones = [
+  {
+    texto:
+      'Desde el primer momento, Rosa transmitió cercanía y confianza. Llevaba tiempo arrastrando ciertas emociones y, en poco tiempo, noté una mejoría significativa. Me siento más fuerte y acompañada. Su trato cálido y respetuoso hace que una se sienta cómoda y comprendida. Ha sido un apoyo esencial y una guía fundamental.',
+    tipoPaciente: 'Paciente con problemas de imagen corporal',
+    puntuacion: 5,
+  },
+  {
+    texto:
+      'Rosa es una profesional excepcional, cercana y muy implicada. Ofrece el tratamiento más adecuado y hace que el proceso resulte más llevadero. Valoro especialmente su dominio de las técnicas terapéuticas y la claridad con la que me enseñó a aplicarlas.',
+    tipoPaciente: 'Consultante con inseguridad en contextos sociales',
+    puntuacion: 5,
+  },
+  {
+    texto:
+      'Rosa es una gran profesional. Su cercanía y asertividad facilitan cada sesión y ayudan a avanzar hacia los objetivos terapéuticos. En mi caso, me está proporcionando herramientas muy útiles para trabajar los aspectos que más me afectan en el día a día. Muy recomendable.',
+    tipoPaciente: 'Usuario atravesando conflictos de pareja',
+    puntuacion: 5,
+  },
+] as const satisfies readonly Opinion[];
+
+type Tarifa = {
+  titulo: string;
+  descripcion: string;
+  precio: string;
+  duracion: string;
+};
+
+const tarifas = [
+  {
+    titulo: 'Sesión presencial',
+    descripcion: 'Consulta en el Centro de Psicología Ángela Medina.',
+    precio: '60 €',
+    duracion: '/ 60 minutos',
+  },
+  {
+    titulo: 'Sesión online',
+    descripcion:
+      'Atención psicológica por videollamada, con la misma duración y estructura.',
+    precio: '60 €',
+    duracion: '/ 60 minutos',
+  },
+] as const satisfies readonly Tarifa[];
+
+const MAP_EMBED =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3178.588981992678!2d-3.6157803!3d37.1862377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fddd7b389109%3A0x2d344db660ca25a0!2sCentro%20de%20Psicolog%C3%ADa%20%C3%81ngela%20Medina!5e0!3m2!1sen!2ses!4v1761856653627!5m2!1sen!2ses';
+
+const obtenerEstrellas = (n: number) =>
+  Array.from({ length: 5 }, (_, i) => i < n);
+---
+
+<!-- Presentación -->
+<section
+  id="presentacion"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8"
+  aria-labelledby="titulo-presentacion"
+>
+  <div class="grid items-center gap-8 lg:grid-cols-12">
+    <div class="order-1 lg:order-2 lg:col-span-5">
+      <div class="mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+        <figure class="m-0">
+          <div
+            class="relative overflow-hidden rounded-3xl bg-linear-to-br from-primario/15 via-white to-primario/10 p-1 shadow-xl"
+          >
+            <div class="overflow-hidden rounded-[20px] bg-white">
+              <Image
+                src={img}
+                width={1200}
+                height={1600}
+                quality={75}
+                widths={[320, 480, 640, 800]}
+                sizes="(min-width:1024px) 38vw, calc(100vw - 2rem)"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                alt="Rosa María Ruiz Cano, psicóloga especialista en TCA y ansiedad en Granada"
+                class="w-full aspect-3/4 object-cover"
+              />
+            </div>
+          </div>
+          <figcaption class="sr-only">
+            Foto profesional de Rosa María Ruiz Cano en la clínica.
+          </figcaption>
+        </figure>
+        <div class="mt-4 flex justify-center">
+          <Badge>Psicología basada en evidencia científica</Badge>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-2 lg:order-1 lg:col-span-7">
+      <header class="space-y-4">
+        <h1
+          id="titulo-presentacion"
+          class="text-tam-mediano font-semibold leading-tight md:leading-snug text-oscuro p-0.5"
+        >
+          Rosa María Ruiz Cano, <span class="text-primario"
+            >psicóloga general sanitaria</span
+          >
+        </h1>
+
+        <div
+          class="space-y-4 text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
+        >
+          <p>
+            Como <strong>psicóloga general sanitaria</strong> especializada en TCA
+            , violencia de género y terapia emocional, acompaño a personas que atraviesan
+            <span class="text-primario">trastornos alimentarios</span> y dificultades
+            relacionadas con el estrés o el malestar emocional. Ofrezco terapia presencial
+            en Granada y sesiones online, adaptándome a cada situación y necesidad.
+            También llevo casos de adicciones y problemas de pareja, entre otros.
+            Me apasiona comprender las historias personales detrás de cada síntoma
+            y acompañar a las personas en el proceso de construir un mayor equilibrio
+            emocional. Trabajo desde la empatía, la escucha activa y el respeto absoluto
+            hacia el ritmo de cada paciente.
+            <br /><br />
+            Creo firmemente que la terapia es un espacio de colaboración, por eso
+            me gusta que cada proceso sea un <span class="text-primario"
+              >trabajo conjunto</span
+            >
+            en el que tú tengas un papel activo. Juntos podemos analizar lo que te
+            preocupa, identificar los patrones que se repiten y encontrar estrategias
+            que te ayuden a recuperar bienestar, sentido y dirección en tu vida.
+          </p>
+
+          <p>
+            Trabajo desde un enfoque basado en la <strong
+              >evidencia científica</strong
+            > y en el uso del <strong>análisis funcional</strong> de la conducta,
+            integrando herramientas de las <strong
+              >terapias de tercera generación</strong
+            >. Todo ello adaptado a tus necesidades, sin juicios, desde una
+            mirada humana y cercana.
+            <br /><br />
+            Mi objetivo es que la terapia se convierta en un espacio seguro donde
+            puedas conocerte mejor, comprender tus emociones y aprender a vivir de
+            una forma más libre, coherente y amable contigo misma/o.
+          </p>
+        </div>
+      </header>
+
+      <div class="flex items-center gap-3 mt-6">
+        <a
+          href="/pedir-cita/"
+          class="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 text-tam-principal font-medium text-white bg-primario rounded-lg hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primario"
+        >
+          Pedir cita
+          <FlechaDerecha class="ms-2 size-2 sm:size-2.5 md:size-3 lg:size-4" />
+        </a>
+
+        <a
+          href="/sobre-mi/"
+          class="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 text-tam-principal font-medium text-primario bg-white/80 rounded-lg ring-1 ring-primario/25 hover:text-primario/80 focus-visible:ring-2 focus-visible:ring-primario"
+          aria-label="Saber más sobre Rosa María Ruiz Cano"
+        >
+          Saber más
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Opiniones -->
+<section
+  id="opiniones"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-14 sm:mt-16 md:mt-20 lg:mt-24"
+  aria-labelledby="titulo-opiniones"
+>
+  <header class="max-w-3xl space-y-4">
+    <div class="flex flex-wrap items-center gap-3">
+      <Pill>Opiniones de pacientes</Pill>
+      <Badge>Opiniones anónimas y adaptadas</Badge>
+    </div>
+
+    <h2
+      class="text-tam-mediano font-semibold tracking-tight text-oscuro text-balance"
+      id="titulo-opiniones"
+    >
+      Opiniones de pacientes sobre mi
+      <span class="text-primario">terapia psicológica</span>
+    </h2>
+    <p class="leading-relaxed text-cuerpo text-tam-principal p-1">
+      Estas opiniones reflejan la experiencia anónima de pacientes que han
+      realizado terapia psicológica en Granada o en formato online conmigo.
+      Incluyen procesos relacionados con TCA, ansiedad, estrés y otras
+      dificultades emocionales. El contenido está adaptado para preservar la
+      confidencialidad. Si quieres leer más valoraciones verificadas, puedes
+      hacerlo en Doctoralia.
+    </p>
+  </header>
+
+  <div
+    class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mt-4 sm:mt-5 md:mt-6 rounded-2xl border border-dashed border-slate-200 bg-white/70 p-3.5 sm:p-4 md:p-5 shadow-sm shadow-slate-200/60"
+  >
+    <p class="leading-relaxed text-cuerpo text-tam-principal">
+      Por privacidad, las opiniones se muestran sin nombre ni datos que permitan
+      identificar a las personas. Si quieres consultar más valoraciones externas
+      y verificadas, puedes hacerlo a través de la plataforma Doctoralia.
+    </p>
+    <a
+      href="https://www.doctoralia.es/rosa-m-ruiz/psicologo/granada"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Ver opiniones verificadas en Doctoralia (se abre en una pestaña nueva)"
+      class="inline-flex items-center justify-center rounded-lg border border-primario/40 bg-white/70 px-3 py-1.5 md:px-4 md:py-2 transition hover:border-primario hover:text-primario/90 text-primario font-medium text-tam-reducido"
+    >
+      Ver opiniones en Doctoralia
+      <span class="ms-1 sm:ms-1.5 text-tam-reducido" aria-hidden="true">↗</span>
+    </a>
+  </div>
+
+  <div class="mt-7 md:mt-10 grid gap-4 md:gap-6 lg:grid-cols-3">
+    {
+      opiniones.map(op => (
+        <article
+          class="flex flex-col rounded-3xl border border-white/80 bg-white/80
+                      shadow-sm shadow-slate-200/70 transition hover:-translate-y-1
+                      hover:border-primario/50 hover:bg-white hover:shadow-md hover:shadow-pink-200/50
+                      p-3 sm:p-4 md:p-5"
+        >
+          <div class="flex items-center gap-1 md:gap-1.5 mb-1.5 md:mb-2">
+            {obtenerEstrellas(op.puntuacion).map(llena => (
+              <Estrella
+                filled={llena}
+                class="size-2.5 sm:size-3.5 md:size-5 lg:size-6"
+              />
+            ))}
+          </div>
+          <p class="sr-only">{op.puntuacion} de 5 estrellas</p>
+          <p class="mb-3 md:mb-4 leading-relaxed text-cuerpo text-tam-principal">
+            {op.texto}
+          </p>
+          <p class="mt-auto font-medium text-atenuado text-tam-reducido">
+            {op.tipoPaciente}
+          </p>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<!-- Precios -->
+<section
+  id="precios"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-14 sm:mt-16 md:mt-20 lg:mt-24"
+  aria-labelledby="titulo-tarifas"
+>
+  <header class="max-w-3xl space-y-4">
+    <h2
+      id="titulo-tarifas"
+      class="text-tam-mediano font-semibold tracking-tight text-oscuro text-balance"
+    >
+      Precio de las sesiones de terapia, tanto
+      <span class="text-primario">presencial como online</span>
+    </h2>
+
+    <p class="leading-relaxed text-cuerpo text-tam-principal">
+      Las sesiones duran aproximadamente <strong>60 minutos</strong>. El precio
+      es el mismo en formato presencial u online para que puedas elegir el que
+      mejor encaje contigo.
+    </p>
+  </header>
+
+  <div class="mt-8 grid max-w-3xl gap-5 sm:grid-cols-2">
+    {
+      tarifas.map(t => (
+        <article class="flex flex-col rounded-2xl border border-white/70 bg-white/70 p-5 shadow-md shadow-slate-200/70">
+          <h3 class="font-semibold text-oscuro text-tam-base">{t.titulo}</h3>
+
+          <p class="mt-1 md:mt-1.5 text-atenuado text-tam-principal">
+            {t.descripcion}
+          </p>
+
+          <p
+            class="mt-3.5 md:mt-4 font-semibold text-oscuro text-xl sm:text-2xl md:text-3xl lg:text-[32px]"
+            aria-label="Precio: 60 euros"
+          >
+            {t.precio}
+            <span class="ms-1 md:ms-1.5 font-normal text-atenuado text-tam-reducido">
+              {t.duracion}
+            </span>
+          </p>
+        </article>
+      ))
+    }
+  </div>
+
+  <p class="mt-4 md:mt-5 max-w-3xl leading-snug text-sutil text-tam-legal">
+    Si tienes dudas sobre el formato que mejor se adapta a ti o sobre la forma
+    de pago, puedes consultarlo al pedir tu cita.
+  </p>
+  <div class="mt-6">
+    <a
+      href="/servicios/"
+      class="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 rounded-lg bg-primario text-white font-medium text-tam-principal hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primario"
+    >
+      Ver todos los servicios de terapia psicológica
+      <FlechaDerecha class="ms-2 size-2 sm:size-2.5 md:size-3 lg:size-4" />
+    </a>
+  </div>
+</section>
+
+<!-- Localización -->
+<section
+  id="localizacion"
+  aria-labelledby="titulo-localizacion"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-14 sm:mt-16 md:mt-20 lg:mt-24"
+>
+  <header class="flex items-center justify-between gap-3">
+    <h2
+      id="titulo-localizacion"
+      class="text-tam-mediano font-semibold tracking-tight text-oscuro"
+    >
+      Consulta presencial en Granada, <span class="text-primario"
+        >Centro Ángela Medina</span
+      >
+    </h2>
+    <Badge>Chana, Granada</Badge>
+  </header>
+
+  <div class="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch">
+    <div class="space-y-3 min-w-0 lg:basis-[40%]">
+      <h3 class="font-semibold text-tam-base text-oscuro">
+        Consulta presencial
+      </h3>
+      <p class="text-tam-principal leading-relaxed text-cuerpo">
+        Te atiendo en <strong>Centro de Psicología Ángela Medina</strong>, un
+        espacio tranquilo y luminoso situado en el barrio de la Chana.
+      </p>
+      <ul class="text-tam-principal leading-relaxed text-cuerpo">
+        <li>• Cita previa · Horario flexible</li>
+        <li>• Sesiones <em>online</em> y presenciales</li>
+      </ul>
+      <address class="not-italic text-tam-principal">
+        <span class="block font-medium text-oscuro">Centro Ángela Medina</span>
+        <span class="block text-cuerpo">C. Nécora, 7, Chana, 18003 Granada</span
+        >
+      </address>
+      <p class="mt-2">
+        <a
+          href="https://maps.app.goo.gl/vGoAevhNLdV6HE2i8"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primario underline underline-offset-2 hover:brightness-110"
+          aria-label="Abrir Centro Ángela Medina en Google Maps (se abre en nueva pestaña)"
+        >
+          Abrir en Google Maps
+        </a>
+      </p>
+
+      <p class="text-tam-legal text-atenuado">
+        El mapa de Google se bloquea hasta que aceptes cookies de terceros.
+        Puedes cambiar tu decisión desde la
+        <a
+          href="/politica-de-cookies/"
+          class="text-primario underline underline-offset-2"
+          >política de cookies</a
+        >.
+      </p>
+    </div>
+
+    <div class="min-w-0 lg:basis-[60%]">
+      <div
+        class="relative overflow-hidden bg-gray-100 rounded-xl ring-1 ring-gray-300/60"
+      >
+        <iframe
+          id="mapa-iframe"
+          data-mapa-src={MAP_EMBED}
+          title="Mapa — Centro de Psicología Ángela Medina, Chana, Granada"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          class="block w-full aspect-video"
+          aria-hidden="true"></iframe>
+
+        <div
+          id="mapa-capa"
+          class="absolute inset-0 flex items-center justify-center p-4 overflow-y-auto bg-white/40 backdrop-blur-md"
+        >
+          <div
+            class="m-auto max-w-md max-h-[85vh] p-2 text-center bg-white/70 rounded-2xl border border-white/50 shadow-xl sm:p-6"
+          >
+            <div
+              class="inline-flex items-center justify-center p-3 mb-3 bg-primario/10 rounded-full ring-1 ring-primario/20 sm:mb-4"
+            >
+              <Localizacion class="size-6 text-primario md:size-7" />
+            </div>
+            <h4 class="font-semibold text-tam-principal text-oscuro">
+              Mapa de Google
+            </h4>
+            <p class="mt-1 text-tam-reducido text-cuerpo">
+              Debes aceptar las cookies para poder ver mapa.
+            </p>
+          </div>
+        </div>
+
+        <noscript>
+          <div class="absolute inset-0 grid place-items-center p-4 bg-white/80">
+            <p class="text-tam-principal text-center text-cuerpo">
+              El mapa necesita JavaScript para gestionar el consentimiento.
+              Puedes ver la dirección arriba o abrir Google Maps manualmente.
+            </p>
+          </div>
+        </noscript>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../scripts/localizacion.ts"></script>
