@@ -58,6 +58,7 @@ const claseInactiva = 'hover:text-primario/70';
             <a
               href={item.href}
               aria-current={esActivo(item) ? 'page' : undefined}
+              data-astro-reload={item.href === '/pedir-cita/' ? true : undefined}
               class:list={{
                 [claseBaseNavegacion]: true,
                 [claseActiva]: esActivo(item),
@@ -138,6 +139,7 @@ const claseInactiva = 'hover:text-primario/70';
               <a
                 href={item.href}
                 aria-current={esActivo(item) ? 'page' : undefined}
+                data-astro-reload={item.href === '/pedir-cita/' ? true : undefined}
                 class={`block rounded-md px-3 py-2 text-tam-principal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro ${esActivo(item) ? claseActiva : claseInactiva}`}
               >
                 {item.etiqueta}
