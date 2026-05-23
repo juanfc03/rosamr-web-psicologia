@@ -19,6 +19,10 @@ function inicializarFormulario(): void {
 
   if (!formulario || !toast) return;
 
+  if (toast.parentElement !== document.body) {
+    document.body.appendChild(toast);
+  }
+
   let temporizadorToast: ReturnType<typeof setTimeout>;
 
   const mostrarToast = (mensaje: string, tipo: 'exito' | 'error'): void => {
