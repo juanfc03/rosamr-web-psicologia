@@ -6,6 +6,8 @@ const DURACION_TOAST = 5000;
 
 const MENSAJE_EXITO =
   'Gracias por tu mensaje. Te contactaré pronto para coordinar día y hora.';
+const MENSAJE_RECAPTCHA =
+  'Por favor, completa el control de seguridad (reCAPTCHA) antes de enviar.';
 const MENSAJE_ERROR =
   'Hubo un error al enviar el formulario. Inténtalo de nuevo o contacta por WhatsApp o Email.';
 
@@ -13,7 +15,7 @@ function inicializarFormulario(): void {
   const formulario = document.forms.namedItem(
     'contacto',
   ) as HTMLFormElement | null;
-  const toast = document.getElementById(ID_TOAST);
+  const toast = document.getElementById(ID_TOAST) as HTMLElement | null;
 
   if (!formulario || !toast) return;
 
@@ -32,24 +34,43 @@ function inicializarFormulario(): void {
     }, DURACION_TOAST);
   };
 
-  formulario.addEventListener('submit', (evento) => {
+  formulario.addEventListener('submit', (evento: SubmitEvent): void => {
     evento.preventDefault();
 
-    const datos = new FormData(evento.target as HTMLFormElement);
+    const formularioObjetivo = evento.target as HTMLFormElement;
 
+    const campoRecaptcha =
+      formularioObjetivo.querySelector<HTMLTextAreaElement>(
+        '[name="g-recaptcha-response"]',
+      );
+    const tokenRecaptcha: string = campoRecaptcha ? campoRecaptcha.value : '';
+
+    if (!tokenRecaptcha.trim()) {
+      mostrarToast(MENSAJE_RECAPTCHA, 'error');
+      return;
+    }
+
+    const datos: FormData = new FormData(formularioObjetivo);
     const pares: string[][] = [];
-    datos.forEach((valor, clave) => pares.push([clave, String(valor)]));
+
+    datos.forEach((valor: FormDataEntryValue, clave: string): void => {
+      pares.push([clave, String(valor)]);
+    });
 
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(pares).toString(),
     })
-      .then(() => {
+      .then((respuesta: Response): void => {
+        if (!respuesta.ok) {
+          throw new Error('Netlify form submission status error');
+        }
+
         formulario.reset();
         mostrarToast(MENSAJE_EXITO, 'exito');
       })
-      .catch(() => {
+      .catch((): void => {
         mostrarToast(MENSAJE_ERROR, 'error');
       });
   });
