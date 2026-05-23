@@ -26,12 +26,12 @@ function cargarGoogleAnalytics(): void {
 
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push(['js', new Date()]);
-  actualizarConsentimiento();
 
   const script = document.createElement('script');
   script.id = 'gtag-js';
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${ID_ANALITICA}`;
+  script.onload = () => actualizarConsentimiento();
   document.head.appendChild(script);
 }
 
