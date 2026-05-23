@@ -14,7 +14,6 @@ function cargarGoogleAnalytics(): void {
   function gtag(...args: unknown[]) {
     (window.dataLayer as unknown[]).push(args);
   }
-  gtag('consent', 'default', { analytics_storage: 'denied' });
 
   const script = document.createElement('script');
   script.id = 'gtag-js';
