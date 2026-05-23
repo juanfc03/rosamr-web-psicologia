@@ -1,46 +1,48 @@
-# Astro Starter Kit: Basics
+# Rosa María Ruiz Cano — Psicóloga General Sanitaria
 
-```sh
-npm create astro@latest -- --template basics
+Web profesional de Rosa María Ruiz Cano, psicóloga general sanitaria especializada en TCA, ansiedad y violencia de género. Consulta presencial en Granada y sesiones online.
+
+## Stack
+
+- **Framework:** [Astro 6](https://astro.build)
+- **Estilos:** [Tailwind CSS v4](https://tailwindcss.com) via `@tailwindcss/vite`
+- **Despliegue:** [Netlify](https://netlify.com)
+- **Node:** ≥ 22.12.0
+
+## Comandos
+
+| Comando | Acción |
+|---------|--------|
+| `npm run dev` | Servidor de desarrollo en `localhost:4321` |
+| `npm run build` | Build de producción en `dist/` |
+| `npm run preview` | Previsualizar el build localmente |
+| `npx astro check` | Verificación de tipos TypeScript |
+
+## Estructura
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+├── public/           # Assets estáticos (favicon, manifest, fuentes)
+├── src/
+│   ├── assets/       # Imágenes y recursos procesados por Astro
+│   ├── components/   # Componentes Astro reutilizables
+│   │   ├── icons/    # Iconos SVG como componentes
+│   │   ├── paginas-legales/  # Aviso legal, cookies, privacidad
+│   │   └── utils/    # Componentes de utilidad (Badge, Pill, BannerCookies)
+│   ├── data/         # Datos tipados (FAQ, cookies, navegación, servicios)
+│   ├── layouts/      # Layout único (Layout.astro)
+│   ├── pages/        # Rutas de la web
+│   ├── scripts/      # TypeScript del lado cliente
+│   └── styles/       # CSS global con tokens de Tailwind
+└── astro.config.mjs  # Configuración de Astro
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Convenciones
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Nombrado en **español** para funciones, variables y tipos
+- TypeScript estricto sin `any`
+- Componentes de datos con `as const satisfies`
+- Enlaces externos con `target="_blank" rel="noopener noreferrer"` y `aria-label` en español
+- Foco visible: `focus-visible:ring-2 focus-visible:ring-primario`
+- Secciones con `mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8`
+- Tailwind v4 con tokens personalizados en `@theme {}` dentro de `global.css`
