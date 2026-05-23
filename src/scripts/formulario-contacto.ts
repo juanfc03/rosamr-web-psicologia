@@ -9,7 +9,7 @@ const MENSAJE_EXITO =
 const MENSAJE_ERROR =
   'Hubo un error al enviar el formulario. Inténtalo de nuevo o contacta por WhatsApp o Email.';
 
-function inicializarFormulario() {
+function inicializarFormulario(): void {
   const formulario = document.forms.namedItem(
     'contacto',
   ) as HTMLFormElement | null;
@@ -19,7 +19,7 @@ function inicializarFormulario() {
 
   let temporizadorToast: ReturnType<typeof setTimeout>;
 
-  const mostrarToast = (mensaje: string, tipo: 'exito' | 'error') => {
+  const mostrarToast = (mensaje: string, tipo: 'exito' | 'error'): void => {
     clearTimeout(temporizadorToast);
     toast.textContent = mensaje;
     toast.className = toast.className
@@ -37,10 +37,13 @@ function inicializarFormulario() {
 
     const datos = new FormData(evento.target as HTMLFormElement);
 
+    const pares: string[][] = [];
+    datos.forEach((valor, clave) => pares.push([clave, String(valor)]));
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(datos as any).toString(),
+      body: new URLSearchParams(pares).toString(),
     })
       .then(() => {
         formulario.reset();

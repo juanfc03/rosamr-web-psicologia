@@ -18,7 +18,7 @@ const fotogramasCierre: Keyframe[] = [
   { opacity: 0, transform: 'translateY(-0.25rem)' },
 ];
 
-function animar(elemento: HTMLElement, fotogramas: Keyframe[], duracion: number) {
+function animar(elemento: HTMLElement, fotogramas: Keyframe[], duracion: number): Animation {
   limpiarAnimaciones(elemento);
   return elemento.animate(fotogramas, {
     duration: prefiereMovimientoReducido ? 0 : duracion,
@@ -27,20 +27,20 @@ function animar(elemento: HTMLElement, fotogramas: Keyframe[], duracion: number)
   });
 }
 
-function limpiarAnimaciones(elemento: HTMLElement) {
+function limpiarAnimaciones(elemento: HTMLElement): void {
   elemento.getAnimations().forEach(a => a.cancel());
 }
 
-function obtenerMenu(detalle: HTMLDetailsElement) {
+function obtenerMenu(detalle: HTMLDetailsElement): HTMLElement | null {
   return detalle.querySelector<HTMLElement>('.desplegable');
 }
 
-function abrirDesplegable(menu: HTMLElement) {
+function abrirDesplegable(menu: HTMLElement): void {
   menu.classList.remove('invisible');
   animar(menu, fotogramasApertura, DURACION_APERTURA);
 }
 
-function cerrarDesplegable(detalle: HTMLDetailsElement) {
+function cerrarDesplegable(detalle: HTMLDetailsElement): void {
   const menu = obtenerMenu(detalle);
   if (!menu) {
     detalle.open = false;
@@ -54,7 +54,7 @@ function cerrarDesplegable(detalle: HTMLDetailsElement) {
   }).catch(() => {});
 }
 
-function ocultarMenuMovil() {
+function ocultarMenuMovil(): void {
   const menuMovil = document.getElementById(ID_MENU_MOVIL);
   const botonMovil = document.getElementById(ID_BOTON_MOVIL);
   if (!menuMovil || !botonMovil) return;
@@ -95,7 +95,7 @@ function trampaDeFoco(
   }
 }
 
-function inicializarDesplegables() {
+function inicializarDesplegables(): void {
   const detalles = document.querySelectorAll<HTMLDetailsElement>(
     SELECTOR_DESPLEGABLES,
   );
@@ -125,7 +125,7 @@ function inicializarDesplegables() {
   });
 }
 
-function inicializarMenuMovil() {
+function inicializarMenuMovil(): void {
   const boton = document.getElementById(ID_BOTON_MOVIL);
   const menu = document.getElementById(ID_MENU_MOVIL);
   if (!boton || !menu) return;
@@ -213,7 +213,7 @@ function inicializarMenuMovil() {
 
 let oyenteRegistrado = false;
 
-function registrarClickFuera() {
+function registrarClickFuera(): void {
   if (oyenteRegistrado) return;
   oyenteRegistrado = true;
 

@@ -11,7 +11,7 @@ function duracion(ms: number): number {
   return prefiereMovimientoReducido ? 0 : ms;
 }
 
-function limpiarAnimaciones(elemento: HTMLElement) {
+function limpiarAnimaciones(elemento: HTMLElement): void {
   elemento.getAnimations().forEach(a => a.cancel());
 }
 
@@ -161,7 +161,7 @@ function cerrarConAnimacion(detalle: HTMLDetailsElement): Promise<void> {
   });
 }
 
-function inicializarAcordeon() {
+function inicializarAcordeon(): void {
   const detalles = [
     ...document.querySelectorAll<HTMLDetailsElement>(SELECTOR_FAQ),
   ];
