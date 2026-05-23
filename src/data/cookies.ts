@@ -59,9 +59,9 @@ export const cookies = [
     intrusion: 'Nivel 3',
   },
   {
-    nombre: '__Secure-ENID',
-    duracion: '13 meses',
-    proposito: 'Preferencias del usuario y seguridad al usar Google Maps',
+    nombre: '__Secure-BUCKET',
+    duracion: '2 semanas',
+    proposito: 'Utilizada por Google para pruebas A/B y segmentación',
     intrusion: 'Nivel 3',
   },
   {
@@ -115,6 +115,13 @@ export const cookies = [
     intrusion: 'Nivel 3',
   },
   {
+    nombre: 'SOCS',
+    duracion: '10 meses',
+    proposito:
+      'Almacena las preferencias de consentimiento de cookies del usuario (Google)',
+    intrusion: 'Nivel 3',
+  },
+  {
     nombre: 'SSID',
     duracion: '13 meses',
     proposito:
@@ -122,9 +129,17 @@ export const cookies = [
     intrusion: 'Nivel 3',
   },
   {
-    nombre: 'UULE',
-    duracion: '~5 horas',
-    proposito: 'Personaliza resultados locales (Google Maps)',
+    nombre: '_ga',
+    duracion: '13 meses',
+    proposito:
+      'Cookie principal de Google Analytics para distinguir usuarios únicos',
+    intrusion: 'Nivel 3',
+  },
+  {
+    nombre: '_ga_JMTQFPHQY1',
+    duracion: '13 meses',
+    proposito:
+      'Cookie de Google Analytics 4 para mantener el estado de la sesión',
     intrusion: 'Nivel 3',
   },
 ] as const satisfies readonly TipoCookie[];
