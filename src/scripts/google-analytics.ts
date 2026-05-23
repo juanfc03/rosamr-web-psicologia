@@ -24,14 +24,14 @@ function actualizarConsentimiento(): void {
 function cargarGoogleAnalytics(): void {
   if (document.getElementById('gtag-js')) return;
 
+  gtag('js', new Date());
+  actualizarConsentimiento();
+
   const script = document.createElement('script');
   script.id = 'gtag-js';
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${ID_ANALITICA}`;
   document.head.appendChild(script);
-
-  gtag('js', new Date());
-  actualizarConsentimiento();
 }
 
 function inicializar(): void {
