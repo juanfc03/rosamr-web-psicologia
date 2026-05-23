@@ -7,27 +7,11 @@ declare global {
 const ID_ANALITICA = 'G-JMTQFPHQY1';
 const CLAVE_ALMACEN = 'consent-cookies';
 
-function cargarGoogleAnalytics(): void {
-  if (document.getElementById('gtag-js')) return;
+function gtag(...args: unknown[]): void {
+  (window.dataLayer as unknown[]).push(args);
+}
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag(...args: unknown[]) {
-    (window.dataLayer as unknown[]).push(args);
-  }
-  gtag('consent', 'default', {
-    analytics_storage: 'denied',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-  });
-
-  const script = document.createElement('script');
-  script.id = 'gtag-js';
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${ID_ANALITICA}`;
-  document.head.appendChild(script);
-
-  gtag('js', new Date());
+function actualizarConsentimiento(): void {
   gtag('consent', 'update', {
     analytics_storage: 'granted',
     ad_storage: 'granted',
@@ -37,9 +21,26 @@ function cargarGoogleAnalytics(): void {
   gtag('config', ID_ANALITICA);
 }
 
+function cargarGoogleAnalytics(): void {
+  if (document.getElementById('gtag-js')) return;
+
+  const script = document.createElement('script');
+  script.id = 'gtag-js';
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${ID_ANALITICA}`;
+  document.head.appendChild(script);
+
+  gtag('js', new Date());
+  actualizarConsentimiento();
+}
+
 function inicializar(): void {
   if (localStorage.getItem(CLAVE_ALMACEN) === 'accepted') {
-    cargarGoogleAnalytics();
+    if (document.getElementById('gtag-js')) {
+      actualizarConsentimiento();
+    } else {
+      cargarGoogleAnalytics();
+    }
   }
 
   window.addEventListener('cookie-consent', ((
