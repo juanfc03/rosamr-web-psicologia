@@ -1,0 +1,169 @@
+---
+import { Image } from 'astro:assets';
+import imgTca from '@/assets/ilustracion-trastornos-conducta-alimentaria.png';
+import Pill from '@/components/utils/Pill.astro';
+import { bloquesServicios, problemasRelacionComida } from '@/data/servicios';
+---
+
+<section
+  id="servicios"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8"
+  aria-labelledby="titulo-servicios"
+>
+  <header class="max-w-3xl space-y-4">
+    <Pill>Servicios psicológicos</Pill>
+    <h1
+      id="titulo-servicios"
+      class="text-tam-mediano font-semibold tracking-tight text-oscuro text-balance"
+    >
+      Servicios de acompañamiento <span class="text-primario">psicológico</span> adaptados
+      a tu historia
+    </h1>
+    <p class="leading-relaxed text-cuerpo text-tam-principal">
+      Trabajo con personas que atraviesan dificultades relacionadas con la
+      comida, la imagen corporal, la ansiedad, el estrés y otros momentos
+      complejos de la vida. Aquí puedes ver algunas de las áreas en las que más
+      suelo acompañar.
+    </p>
+  </header>
+
+  <!-- TCA -->
+  <article class="mt-10 md:mt-14 border-b border-slate-200 pb-10 md:pb-14">
+    <div
+      class="grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start"
+    >
+      <div class="space-y-4">
+        <h2
+          id="tca"
+          class="text-tam-base font-semibold text-oscuro scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
+        >
+          Trastornos de conducta alimentaria (TCA)
+        </h2>
+
+        <p class="leading-relaxed text-cuerpo text-tam-principal">
+          Trabajo con personas que viven una relación difícil con la comida y el
+          cuerpo. El objetivo es comprender la función de lo que ocurre y
+          construir una forma más segura y amable de relacionarte contigo.
+        </p>
+
+        <ul class="space-y-1.5 text-atenuado text-tam-reducido">
+          <li class="inline-flex gap-2">
+            <span
+              class="mt-1.5 inline-block size-1.5 rounded-full bg-slate-300"
+              aria-hidden="true"></span>Acompañamiento en anorexia, bulimia,
+            trastorno por atracón, ortorexia o vigorexia.
+          </li>
+          <li class="inline-flex gap-2">
+            <span
+              class="mt-1.5 inline-block size-1.5 rounded-full bg-slate-300"
+              aria-hidden="true"></span>Trabajo con la imagen corporal, la
+            culpa, el control y la autoexigencia relacionada con la comida.
+          </li>
+        </ul>
+
+        <h3
+          class="text-tam-reducido font-semibold tracking-tight text-oscuro mt-6"
+        >
+          Dificultades frecuentes en la relación con la comida
+        </h3>
+
+        <p class="leading-relaxed text-cuerpo text-tam-principal">
+          La relación con la comida y con el cuerpo suele estar cargada de
+          historias y aprendizajes personales. En esta área trabajamos no solo
+          los síntomas, sino la función de cada conducta y la construcción de
+          alternativas más seguras.
+        </p>
+
+        <div class="grid gap-3 sm:grid-cols-2 mt-4">
+          {
+            problemasRelacionComida.map(item => (
+              <article class="rounded-2xl border border-dashed border-slate-200 bg-white/70 p-4 shadow-sm shadow-slate-200/60">
+                <h4 class="mb-1.5 font-semibold text-oscuro text-tam-reducido">
+                  {item.titulo}
+                </h4>
+                <p class="leading-relaxed text-cuerpo text-tam-legal">
+                  {item.texto}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        <p class="leading-relaxed text-atenuado text-tam-reducido mt-4">
+          Cada proceso es único. Si te ves reflejada/o en alguna de estas
+          descripciones o tienes dudas sobre si tu caso encaja aquí, podemos
+          valorarlo juntos en una primera consulta.
+        </p>
+      </div>
+
+      <figure class="relative">
+        <div
+          class="pointer-events-none absolute -inset-6 -z-10 rounded-3xl bg-linear-to-br from-primario/10 via-primario/20 to-primario/5 blur-2xl"
+          aria-hidden="true"
+        >
+        </div>
+
+        <div
+          class="overflow-hidden rounded-3xl border border-dashed border-slate-200 bg-white/80 shadow-md shadow-pink-200/60"
+        >
+          <Image
+            src={imgTca}
+            alt="Ilustración de una persona en un entorno tranquilo, representando la especialización en TCA y la relación con la comida y el cuerpo"
+            width={1845}
+            height={1536}
+            quality={75}
+            widths={[480, 640, 800, 960]}
+            sizes="(min-width:1024px) 38vw, 85vw"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+
+        <figcaption
+          class="mt-3 flex items-center justify-between text-tam-reducido text-atenuado"
+        >
+          <span>
+            Especialización en TCA y en los problemas derivados de la relación
+            con la comida y el cuerpo.
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- Otros servicios -->
+  <div
+    class="mt-10 md:mt-14 grid gap-10 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-12"
+  >
+    {
+      bloquesServicios.map(bloque => (
+        <article class="border-b border-slate-200 pb-10 md:pb-12">
+          <h2
+            id={bloque.id}
+            class="text-tam-base font-semibold text-oscuro scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
+          >
+            {bloque.titulo}
+          </h2>
+
+          <p class="mt-3 leading-relaxed text-cuerpo text-tam-principal">
+            {bloque.descripcion}
+          </p>
+
+          <ul class="mt-3 space-y-1.5 text-atenuado text-tam-reducido">
+            {bloque.bullets.map(item => (
+              <li class="inline-flex gap-2">
+                <span
+                  class="mt-1.5 inline-block size-1.5 rounded-full bg-slate-300"
+                  aria-hidden="true"
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>

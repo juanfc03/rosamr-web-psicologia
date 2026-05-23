@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import Services from '@/components/Services.astro';
 
 const titulo = 'Servicios de psicología: TCA, ansiedad y pareja';
 const descripcion =
@@ -89,4 +90,6 @@ const esquema = {
   canonica={canonica}
   imagenOG={imagenOG}
   esquema={esquema}
-/>
+>
+  <Services />
+</Layout>
