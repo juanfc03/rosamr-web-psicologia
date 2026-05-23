@@ -1,32 +1,63 @@
 declare global {
   interface Window {
     dataLayer: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
-const ID_ANALITICA = 'G-JMTQFPHQY1';
 const CLAVE_ALMACEN = 'consent-cookies';
+const COOKIES_GA = ['_ga', '_ga_JMTQFPHQY1'];
+
+function enviarGtag(...args: unknown[]): void {
+  if (typeof window.gtag === 'function') {
+    window.gtag(...args);
+  }
+}
 
 function actualizarConsentimiento(): void {
-  window.dataLayer.push(['consent', 'update', {
+  enviarGtag('consent', 'update', {
     analytics_storage: 'granted',
     ad_storage: 'granted',
     ad_user_data: 'granted',
     ad_personalization: 'granted',
-  }]);
-  window.dataLayer.push(['js', new Date()]);
-  window.dataLayer.push(['config', ID_ANALITICA]);
+  });
+}
+
+function denegarConsentimiento(): void {
+  enviarGtag('consent', 'update', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+  });
+
+  const dominio = window.location.hostname;
+  const rutas = ['/', `;domain=${dominio}`];
+
+  for (const nombre of COOKIES_GA) {
+    for (const ruta of rutas) {
+      document.cookie = `${nombre}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/${ruta}`;
+    }
+  }
 }
 
 function inicializar(): void {
-  if (localStorage.getItem(CLAVE_ALMACEN) === 'accepted') {
+  const consentimiento = localStorage.getItem(CLAVE_ALMACEN);
+
+  if (consentimiento === 'accepted') {
     actualizarConsentimiento();
+  } else {
+    denegarConsentimiento();
   }
 
   window.addEventListener('cookie-consent', ((
     e: CustomEvent<{ accepted: boolean }>,
   ) => {
-    if (e.detail.accepted) actualizarConsentimiento();
+    if (e.detail.accepted) {
+      actualizarConsentimiento();
+    } else {
+      denegarConsentimiento();
+    }
   }) as EventListener);
 }
 
