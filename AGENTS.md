@@ -28,6 +28,7 @@
 - `src/data/faq.ts` — FAQ content as typed array (`preguntas`). Data files use `as const satisfies` pattern.
 - `src/scripts/` — client-side TS scripts loaded via `<script src="...">` in components.
 - `src/styles/global.css` — Tailwind import + custom `@theme` tokens + custom `@utility` definitions.
+- All page sections use `mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8` for consistent width control without breakpoint jumps.
 
 ## Tailwind v4 Conventions
 
@@ -96,6 +97,10 @@ All in `src/components/icons/`: `const { class: className = '' } = Astro.props` 
 ## Two-column sticky with CSS Grid
 
 For `position: sticky` to work on a grid item, add `self-start` to the item (prevents `align-items: stretch` from stretching it to the full row height, which would disable sticky). E.g.: `lg:self-start lg:sticky lg:top-36`.
+
+## Section Width Pattern
+
+All page sections use `mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8` for consistent width control. The content is full-width until 1536px, then capped. No `xl:max-w-5/6` — it causes a ~148px jump at the xl breakpoint.
 
 ## Focus ring
 
