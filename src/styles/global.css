@@ -7,19 +7,6 @@
   --color-cuerpo: var(--color-gray-700);
   --color-atenuado: var(--color-gray-600);
   --color-sutil: var(--color-gray-500);
-
-  --animate-fade-subir: fade-subir 0.6s ease-out forwards;
-}
-
-@keyframes fade-subir {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 html {
@@ -30,15 +17,6 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  #contenido-principal section,
-  #contenido-principal section article {
-    opacity: 1 !important;
-  }
-
-  .animate-fade-subir {
-    animation: none;
   }
 }
 

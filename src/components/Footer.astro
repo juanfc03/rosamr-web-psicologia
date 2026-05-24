@@ -61,7 +61,6 @@ import stampMundopsicologos from '@/assets/mundopsicologos-stamp.png';
           <li>
             <a
               href="/pedir-cita/"
-              data-astro-reload
               aria-label="Formulario de contacto para pedir cita"
               class="text-primario underline underline-offset-2 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro rounded-sm py-1"
             >
@@ -164,10 +163,10 @@ import stampMundopsicologos from '@/assets/mundopsicologos-stamp.png';
     <div
       class="flex flex-col items-center justify-between gap-4 px-4 py-4 text-center text-tam-legal text-cuerpo sm:flex-row sm:px-6 sm:py-6 sm:text-left lg:px-8"
     >
-      <small class="leading-snug">
+      <p class="leading-snug">
         &copy; <span id="anio-pie">{new Date().getFullYear()}</span> Rosa María Ruiz
         Cano &middot; Todos los derechos reservados
-      </small>
+      </p>
 
       <p class="leading-snug">
         Hecho con cariño por

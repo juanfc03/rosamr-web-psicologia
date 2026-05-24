@@ -6,8 +6,6 @@ const DURACION_TOAST = 5000;
 
 const MENSAJE_EXITO =
   'Gracias por tu mensaje. Te contactaré pronto para coordinar día y hora.';
-const MENSAJE_RECAPTCHA =
-  'Por favor, completa el control de seguridad (reCAPTCHA) antes de enviar.';
 const MENSAJE_ERROR =
   'Hubo un error al enviar el formulario. Inténtalo de nuevo o contacta por WhatsApp o Email.';
 
@@ -42,17 +40,6 @@ function inicializarFormulario(): void {
     evento.preventDefault();
 
     const formularioObjetivo = evento.target as HTMLFormElement;
-
-    const campoRecaptcha =
-      formularioObjetivo.querySelector<HTMLTextAreaElement>(
-        '[name="g-recaptcha-response"]',
-      );
-    const tokenRecaptcha: string = campoRecaptcha ? campoRecaptcha.value : '';
-
-    if (!tokenRecaptcha.trim()) {
-      mostrarToast(MENSAJE_RECAPTCHA, 'error');
-      return;
-    }
 
     const datos: FormData = new FormData(formularioObjetivo);
     const pares: string[][] = [];
