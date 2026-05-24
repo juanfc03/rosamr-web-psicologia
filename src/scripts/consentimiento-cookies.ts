@@ -24,12 +24,6 @@ function inicializar(): void {
 
   if (!consentimiento) {
     banner.classList.remove('hidden');
-  } else {
-    window.dispatchEvent(
-      new CustomEvent('cookie-consent', {
-        detail: { accepted: consentimiento === 'accepted' },
-      }),
-    );
   }
 
   document

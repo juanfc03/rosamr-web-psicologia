@@ -8,6 +8,8 @@ declare global {
 const CLAVE_ALMACEN = 'consent-cookies';
 const COOKIES_GA = ['_ga', '_ga_JMTQFPHQY1'];
 
+let inicializado = false;
+
 function enviarGtag(...args: unknown[]): void {
   if (typeof window.gtag === 'function') {
     window.gtag(...args);
@@ -42,6 +44,9 @@ function denegarConsentimiento(): void {
 }
 
 function inicializar(): void {
+  if (inicializado) return;
+  inicializado = true;
+
   const consentimiento = localStorage.getItem(CLAVE_ALMACEN);
 
   if (consentimiento === 'accepted') {
@@ -50,16 +55,18 @@ function inicializar(): void {
     denegarConsentimiento();
   }
 
-  window.addEventListener('cookie-consent', ((
-    e: CustomEvent<{ accepted: boolean }>,
-  ) => {
-    if (e.detail.accepted) {
-      actualizarConsentimiento();
-    } else {
-      denegarConsentimiento();
-    }
-  }) as EventListener);
+  enviarGtag('event', 'page_view');
 }
+
+window.addEventListener('cookie-consent', ((
+  e: CustomEvent<{ accepted: boolean }>,
+) => {
+  if (e.detail.accepted) {
+    actualizarConsentimiento();
+  } else {
+    denegarConsentimiento();
+  }
+}) as EventListener);
 
 document.addEventListener('astro:page-load', inicializar);
 

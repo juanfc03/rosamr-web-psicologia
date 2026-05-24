@@ -82,20 +82,39 @@ const {
 
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
+      function gtag() {
+        dataLayer.push(arguments);
+      }
       gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
       });
-    </script>
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-JMTQFPHQY1"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-JMTQFPHQY1');
+      gtag('config', 'G-JMTQFPHQY1', { send_page_view: false });
+      (function cargarGTM() {
+        var cargado = false;
+        function ejecutar() {
+          if (cargado) return;
+          cargado = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JMTQFPHQY1';
+          document.head.appendChild(s);
+        }
+        if ('PerformanceObserver' in window) {
+          var timeout = setTimeout(ejecutar, 5000);
+          new PerformanceObserver(function () {
+            clearTimeout(timeout);
+            ejecutar();
+          }).observe({ type: 'largest-contentful-paint', buffered: true });
+        } else if ('requestIdleCallback' in window) {
+          requestIdleCallback(ejecutar, { timeout: 2000 });
+        } else {
+          window.addEventListener('load', ejecutar);
+        }
+      })();
     </script>
 
     <ClientRouter />
@@ -115,6 +134,5 @@ const {
 
     <script src="../scripts/consentimiento-cookies.ts"></script>
     <script src="../scripts/google-analytics.ts"></script>
-    <script src="../scripts/revelar-secciones.ts"></script>
   </body>
 </html>
