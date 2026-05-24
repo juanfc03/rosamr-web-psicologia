@@ -3,7 +3,6 @@ import { defineConfig, fontProviders } from 'astro/config';
 import { fileURLToPath } from 'node:url';
 
 import tailwindcss from '@tailwindcss/vite';
-import basicSsl from '@vitejs/plugin-basic-ssl';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -24,7 +23,7 @@ export default defineConfig({
   ],
 
   vite: {
-    plugins: [tailwindcss(), basicSsl()],
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -39,7 +38,11 @@ export default defineConfig({
   integrations: [
     sitemap({
       serialize(item) {
-        if (/aviso-legal|politica-de-cookies|politica-de-privacidad/.test(item.url)) {
+        if (
+          /aviso-legal|politica-de-cookies|politica-de-privacidad/.test(
+            item.url,
+          )
+        ) {
           return undefined;
         }
         return item;
