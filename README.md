@@ -4,7 +4,7 @@ Página web profesional de Rosa María Ruiz Cano, psicóloga general sanitaria e
 
 ## Stack
 
-- **Framework:** [Astro 6](https://astro.build)
+- **Framework:** [Astro 7](https://astro.build)
 - **Estilos:** [Tailwind CSS v4](https://tailwindcss.com) via `@tailwindcss/vite`
 - **Despliegue:** [Netlify](https://netlify.com) (hosting, formularios y redirecciones)
 - **Generación OG Images:** [astro-og-canvas](https://www.npmjs.com/package/astro-og-canvas)
