@@ -30,7 +30,6 @@ const paginas = {
 };
 
 export const { getStaticPaths, GET } = await OGImageRoute({
-  param: 'route',
   pages: paginas,
 
   getImageOptions: (_ruta, pagina) => ({
