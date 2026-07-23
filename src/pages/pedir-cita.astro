@@ -4,11 +4,12 @@ import FormularioContacto from '@/components/contacto/Form.astro';
 import FormLegal from '@/components/contacto/FormLegal.astro';
 import Beneficios from '@/components/contacto/Beneficios.astro';
 
-const titulo = 'Pedir cita — Psicóloga en Granada especialista en TCA';
+const titulo = 'Rosa María Ruiz Cano · Pide cita con tu psicóloga en Granada y online';
 const descripcion =
-  'Pide cita con Rosa Ruiz, psicóloga en Granada especialista en TCA. Sesiones online y presenciales. Contacto directo por WhatsApp o formulario. Respuesta en 24 h.';
+  'Pide cita con Rosa María Ruiz, psicóloga general sanitaria en Granada especialista en TCA. Sesiones online y presenciales. Contacto por WhatsApp o formulario.';
 const canonica = `${Astro.site}pedir-cita/`;
-const imagenOG = `${Astro.site}open-graph/pedir-cita.png/`;
+const imagenOG = `${Astro.site}open-graph/pedir-cita.png`;
+const altImagenOG = 'Reserva de cita con Rosa María Ruiz Cano, psicóloga en Granada';
 
 const esquema = {
   '@context': 'https://schema.org',
@@ -78,6 +79,7 @@ const esquema = {
   descripcion={descripcion}
   canonica={canonica}
   imagenOG={imagenOG}
+  altImagenOG={altImagenOG}
   esquema={esquema}
 >
   <h1 class="sr-only">

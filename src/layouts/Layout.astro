@@ -13,6 +13,7 @@ interface Props {
   robots?: string;
   canonica: string;
   imagenOG?: string;
+  altImagenOG?: string;
   esquema?: Record<string, unknown>;
 }
 
@@ -23,6 +24,7 @@ const {
   robots = 'index, follow',
   canonica,
   imagenOG,
+  altImagenOG = 'Rosa María Ruiz Cano, psicóloga general sanitaria en Granada',
   esquema,
 } = Astro.props;
 ---
@@ -49,6 +51,7 @@ const {
       imagenOG && (
         <>
           <meta property="og:image" content={imagenOG} />
+          <meta property="og:image:alt" content={altImagenOG} />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
         </>
@@ -59,6 +62,7 @@ const {
     <meta name="twitter:title" content={titulo} />
     <meta name="twitter:description" content={descripcion} />
     {imagenOG && <meta name="twitter:image" content={imagenOG} />}
+    {imagenOG && <meta name="twitter:image:alt" content={altImagenOG} />}
 
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
@@ -85,35 +89,27 @@ const {
       function gtag() {
         dataLayer.push(arguments);
       }
+      window.gtag = gtag;
+
+      var consentimientoGuardado = localStorage.getItem('consent-cookies');
+      var estadoInicial =
+        consentimientoGuardado === 'accepted' ? 'granted' : 'denied';
+
       gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
+        analytics_storage: estadoInicial,
+        ad_storage: estadoInicial,
+        ad_user_data: estadoInicial,
+        ad_personalization: estadoInicial,
       });
+
       gtag('js', new Date());
       gtag('config', 'G-JMTQFPHQY1', { send_page_view: false });
-      (function cargarGTM() {
-        var cargado = false;
-        function ejecutar() {
-          if (cargado) return;
-          cargado = true;
-          var s = document.createElement('script');
-          s.async = true;
-          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JMTQFPHQY1';
-          document.head.appendChild(s);
-        }
-        if ('PerformanceObserver' in window) {
-          var timeout = setTimeout(ejecutar, 5000);
-          new PerformanceObserver(function () {
-            clearTimeout(timeout);
-            ejecutar();
-          }).observe({ type: 'largest-contentful-paint', buffered: true });
-        } else if ('requestIdleCallback' in window) {
-          requestIdleCallback(ejecutar, { timeout: 2000 });
-        } else {
-          window.addEventListener('load', ejecutar);
-        }
+
+      (function cargarGoogleAnalytics() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JMTQFPHQY1';
+        document.head.appendChild(s);
       })();
     </script>
 
@@ -132,7 +128,7 @@ const {
 
     <BannerCookies />
 
-    <script src="../scripts/consentimiento-cookies.ts"></script>
     <script src="../scripts/google-analytics.ts"></script>
+    <script src="../scripts/consentimiento-cookies.ts"></script>
   </body>
 </html>

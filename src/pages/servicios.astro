@@ -2,11 +2,12 @@
 import Layout from '@/layouts/Layout.astro';
 import Services from '@/components/Services.astro';
 
-const titulo = 'Servicios de psicología: TCA, ansiedad y pareja';
+const titulo = 'Rosa María Ruiz Cano · Servicios de psicología en Granada (TCA y ansiedad)';
 const descripcion =
-  'Terapia especializada en TCA y atención profesional para ansiedad, estrés, adicciones, pareja y violencia de género. Sesiones presenciales y online.';
+  'Servicios de psicología en Granada y online: TCA, ansiedad, estrés, adicciones, pareja, fobias, duelo y violencia de género. Sesiones presenciales y online.';
 const canonica = `${Astro.site}servicios/`;
-const imagenOG = `${Astro.site}open-graph/servicios.png/`;
+const imagenOG = `${Astro.site}open-graph/servicios.png`;
+const altImagenOG = 'Servicios de psicología de Rosa María Ruiz Cano en Granada';
 
 const esquema = {
   '@context': 'https://schema.org',
@@ -89,6 +90,7 @@ const esquema = {
   descripcion={descripcion}
   canonica={canonica}
   imagenOG={imagenOG}
+  altImagenOG={altImagenOG}
   esquema={esquema}
 >
   <Services />

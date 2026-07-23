@@ -8,11 +8,14 @@ declare global {
 const CLAVE_ALMACEN = 'consent-cookies';
 const COOKIES_GA = ['_ga', '_ga_JMTQFPHQY1'];
 
-let inicializado = false;
+let oyenteRegistrado = false;
 
 function enviarGtag(...args: unknown[]): void {
   if (typeof window.gtag === 'function') {
     window.gtag(...args);
+  } else {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(args);
   }
 }
 
@@ -34,19 +37,21 @@ function denegarConsentimiento(): void {
   });
 
   const dominio = window.location.hostname;
-  const rutas = ['/', `;domain=${dominio}`];
+  const dominios = [dominio, `.${dominio}`, ''];
+  const rutas = ['/', ''];
 
   for (const nombre of COOKIES_GA) {
-    for (const ruta of rutas) {
-      document.cookie = `${nombre}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/${ruta}`;
+    for (const d of dominios) {
+      for (const r of rutas) {
+        const sufijoDominio = d ? `;domain=${d}` : '';
+        const sufijoRuta = r ? `;path=${r}` : ';path=/';
+        document.cookie = `${nombre}=; expires=Thu, 01 Jan 1970 00:00:00 UTC${sufijoRuta}${sufijoDominio}`;
+      }
     }
   }
 }
 
-function inicializar(): void {
-  if (inicializado) return;
-  inicializado = true;
-
+function procesarNavegacion(): void {
   const consentimiento = localStorage.getItem(CLAVE_ALMACEN);
 
   if (consentimiento === 'accepted') {
@@ -55,19 +60,32 @@ function inicializar(): void {
     denegarConsentimiento();
   }
 
-  enviarGtag('event', 'page_view');
+  enviarGtag('event', 'page_view', {
+    page_title: document.title,
+    page_location: window.location.href,
+  });
 }
 
-window.addEventListener('cookie-consent', ((
-  e: CustomEvent<{ accepted: boolean }>,
-) => {
-  if (e.detail.accepted) {
-    actualizarConsentimiento();
-  } else {
-    denegarConsentimiento();
-  }
-}) as EventListener);
+function registrarOyentes(): void {
+  if (oyenteRegistrado) return;
+  oyenteRegistrado = true;
 
-document.addEventListener('astro:page-load', inicializar);
+  window.addEventListener('cookie-consent', ((
+    e: CustomEvent<{ accepted: boolean }>,
+  ) => {
+    if (e.detail.accepted) {
+      actualizarConsentimiento();
+      enviarGtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+      });
+    } else {
+      denegarConsentimiento();
+    }
+  }) as EventListener);
+}
+
+registrarOyentes();
+document.addEventListener('astro:page-load', procesarNavegacion);
 
 export {};

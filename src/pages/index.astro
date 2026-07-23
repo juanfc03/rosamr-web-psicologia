@@ -1,19 +1,33 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import MainPage from '@/components/MainPage.astro';
+import imgFoto from '@/assets/rosa-maria-ruiz-cano-psicologa-granada-frontal.jpeg';
 
-const titulo = 'Especialista en TCA · Psicóloga en Granada y online';
+const titulo = 'Rosa María Ruiz Cano · Psicóloga general sanitaria en Granada y online';
 const descripcion =
-  'Psicóloga en Granada especialista en trastornos de la conducta alimentaria (TCA). Terapia online y presencial para ansiedad, estrés, adicciones y dificultades emocionales.';
+  'Psicóloga general sanitaria en Granada y online. Especialista en TCA, violencia de género y terapia emocional para ansiedad, estrés y dificultades emocionales.';
 const canonica = `${Astro.site}`;
-const imagenOG = `${Astro.site}open-graph/index.png/`;
+const imagenOG = `${Astro.site}open-graph/index.png`;
+const altImagenOG = 'Rosa María Ruiz Cano, psicóloga general sanitaria especialista en TCA en Granada';
+
+const urlFoto = new URL(imgFoto.src, Astro.site).href;
 
 const esquema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
   name: 'Rosa María Ruiz Cano, Psicóloga General Sanitaria',
   description: descripcion,
-  image: imagenOG,
+  image: [
+    imagenOG,
+    {
+      '@type': 'ImageObject',
+      contentUrl: urlFoto,
+      url: urlFoto,
+      caption:
+        'Rosa María Ruiz Cano, psicóloga general sanitaria especialista en TCA en Granada',
+      representativeOfPage: true,
+    },
+  ],
   '@id': `${Astro.site}#localbusiness`,
   url: Astro.site,
   telephone: '+34674307408',
@@ -86,6 +100,7 @@ const esquema = {
   descripcion={descripcion}
   canonica={canonica}
   imagenOG={imagenOG}
+  altImagenOG={altImagenOG}
   esquema={esquema}
 >
   <MainPage />

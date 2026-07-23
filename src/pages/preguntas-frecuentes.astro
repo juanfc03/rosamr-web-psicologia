@@ -3,11 +3,12 @@ import Layout from '@/layouts/Layout.astro';
 import FAQPage from '@/components/FAQPage.astro';
 import { preguntas } from '@/data/faq';
 
-const titulo = 'Preguntas frecuentes sobre mi terapia psicológica';
+const titulo = 'Rosa María Ruiz Cano · Preguntas frecuentes sobre la terapia psicológica';
 const descripcion =
-  'Resuelve dudas sobre el precio de las sesiones, terapia online, duración del proceso y cómo empezar. Preguntas frecuentes antes de iniciar terapia.';
+  'Resuelve tus dudas sobre el precio de las sesiones, la terapia online, la duración del proceso y cómo empezar terapia con Rosa María Ruiz, psicóloga en Granada.';
 const canonica = `${Astro.site}preguntas-frecuentes/`;
-const imagenOG = `${Astro.site}open-graph/preguntas-frecuentes.png/`;
+const imagenOG = `${Astro.site}open-graph/preguntas-frecuentes.png`;
+const altImagenOG = 'Preguntas frecuentes sobre la terapia de Rosa María Ruiz Cano';
 
 const esquema = {
   '@context': 'https://schema.org',
@@ -31,6 +32,7 @@ const esquema = {
   descripcion={descripcion}
   canonica={canonica}
   imagenOG={imagenOG}
+  altImagenOG={altImagenOG}
   esquema={esquema}
 >
   <FAQPage />
