@@ -10,6 +10,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://rosamruizpsicologa.es',
   trailingSlash: 'always',
+  compressHTML: true,
 
   fonts: [
     {
