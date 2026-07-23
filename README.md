@@ -8,7 +8,6 @@ Página web profesional de Rosa María Ruiz Cano, psicóloga general sanitaria e
 - **Estilos:** [Tailwind CSS v4](https://tailwindcss.com) via `@tailwindcss/vite`
 - **Despliegue:** [Netlify](https://netlify.com) (hosting, formularios y redirecciones)
 - **Generación OG Images:** [astro-og-canvas](https://www.npmjs.com/package/astro-og-canvas)
-- **Generación PDF:** [jsPDF](https://www.npmjs.com/package/jspdf)
 - **Node:** ≥ 22.12.0
 
 ## Inicio rápido
