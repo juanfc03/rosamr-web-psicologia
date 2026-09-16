@@ -36,7 +36,7 @@
 ## Netlify Quirks
 
 - Contact form posts to Netlify Forms (`data-netlify="true"` + `netlify-honeypot="bot-field"` in `src/components/contacto/Form.astro`). No backend, no API route.
-- `netlify.toml` sets `pretty_urls = false` and 301-redirects `www.*` → apex.
+- `netlify.toml` 301-redirects `www.*` → apex and sets `X-Frame-Options` / `X-Content-Type-Options` headers. Trailing-slash normalization is handled by Netlify's default **Pretty URLs** — do **not** add redirect rules for it: Netlify matches paths ignoring the slash, so a `/ruta` → `/ruta/` rule also matches `/ruta/` and causes a redirect loop.
 - Google Analytics: `G-JMTQFPHQY1`. Consent stored in `localStorage` under `consent-cookies` (`accepted` | `denied`).
 
 ## Tailwind v4 Conventions
