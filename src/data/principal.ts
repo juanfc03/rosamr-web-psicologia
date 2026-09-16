@@ -49,7 +49,7 @@ export const tarifas = [
 ] as const satisfies readonly Tarifa[];
 
 export const MAP_EMBED =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3178.588981992678!2d-3.6157803!3d37.1862377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fddd7b389109%3A0x2d344db660ca25a0!2sCentro%20de%20Psicolog%C3%ADa%20%C3%81ngela%20Medina!5e0!3m2!1sen!2ses!4v1761856653627!5m2!1sen!2ses';
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50857.418629278916!2d-3.692028522491476!3d37.18624524754513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fd1c057c8c2f%3A0xddcd044d7db0ec8a!2sRosa%20M%20Ruiz%20psic%C3%B3loga!5e0!3m2!1ses!2ses!4v1789563681667!5m2!1ses!2ses';
 
 export const obtenerEstrellas = (n: number): boolean[] =>
   Array.from({ length: 5 }, (_, i) => i < n);
