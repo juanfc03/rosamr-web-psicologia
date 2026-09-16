@@ -20,7 +20,7 @@
 
 ## Path Aliases
 
-`@/` maps to `src/` (configured in both `astro.config.mjs` and `tsconfig.json`).
+`@/` maps to `src/` via the `paths` in `tsconfig.json` (Astro 7 resolves them natively with Vite's `resolve.tsconfigPaths`, so no manual Vite alias is needed).
 
 ## Architecture
 
@@ -66,6 +66,7 @@ Defined in `src/styles/global.css`:
 - External links: `target="_blank" rel="noopener noreferrer"` with Spanish `aria-label` noting new tab, e.g. `"X (se abre en una nueva pestaña)"`.
 - Accessibility: skip-to-content link, `aria-label` on icon-only buttons, `aria-current="page"` on active nav links (not on `<summary>`), `aria-expanded` on FAQ `<summary>`, `prefers-reduced-motion` respected.
 - Focus: `focus-visible:ring-2 focus-visible:ring-primario` throughout. The user explicitly chose `primario` for focus rings — do not switch to `ring-oscuro`.
+- Whitespace: never break the line between text and an inline element (`<span>`, `<strong>`, `<a>`). Astro trims that whitespace and words end up glued. Keep the space on the same line as the tag (`texto <span>…`) or use the `texto <span\n  >…</span\n>` style.
 
 ## TypeScript Conventions
 
