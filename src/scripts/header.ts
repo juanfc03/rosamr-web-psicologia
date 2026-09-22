@@ -69,6 +69,19 @@ function ocultarMenuMovil(): void {
   botonMovil.focus();
 }
 
+function ocultarMenuMovilInmediato(): void {
+  const menuMovil = document.getElementById(ID_MENU_MOVIL);
+  const botonMovil = document.getElementById(ID_BOTON_MOVIL);
+  if (!menuMovil || !botonMovil) return;
+  if (menuMovil.classList.contains('hidden')) return;
+
+  limpiarAnimaciones(menuMovil);
+  menuMovil.inert = true;
+  menuMovil.classList.add('hidden');
+  botonMovil.setAttribute('aria-expanded', 'false');
+  botonMovil.setAttribute('aria-label', 'Abrir menú de navegación');
+}
+
 function obtenerEnfocables(contenedor: HTMLElement): HTMLElement[] {
   return [
     ...contenedor.querySelectorAll<HTMLElement>(
@@ -206,7 +219,7 @@ function inicializarMenuMovil(): void {
 
   menu.querySelectorAll('a').forEach(enlace => {
     enlace.addEventListener('click', () => {
-      if (estaVisible()) ocultarMenuMovil();
+      ocultarMenuMovilInmediato();
     });
   });
 }
