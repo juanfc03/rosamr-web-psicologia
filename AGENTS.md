@@ -2,10 +2,11 @@
 
 ## Commands
 
-- `npm run dev` — dev server (localhost:4321)
-- `npm run build` — production build to `dist/`
-- `npm run preview` — preview production build locally
-- `npx astro check` — type check (no `npm` script; run manually)
+- `pnpm dev` — dev server (localhost:4321)
+- `pnpm build` — production build to `dist/`
+- `pnpm preview` — preview production build locally
+- `pnpm check` — type check (`astro check`)
+- Package manager: **pnpm** (`packageManager` field; `pnpm-lock.yaml`). Do not use npm/npx.
 - No lint or test scripts. Add new commands to `package.json` `scripts` if needed.
 
 ## Tech Stack

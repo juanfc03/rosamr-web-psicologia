@@ -13,8 +13,8 @@ Página web profesional de Rosa María Ruiz Cano, psicóloga general sanitaria e
 ## Inicio rápido
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 El servidor de desarrollo arranca en `http://localhost:4321`.
@@ -23,10 +23,10 @@ El servidor de desarrollo arranca en `http://localhost:4321`.
 
 | Comando | Descripción |
 |---------|-------------|
-| `npm run dev` | Servidor de desarrollo |
-| `npm run build` | Build de producción a `dist/` |
-| `npm run preview` | Preview del build localmente |
-| `npx astro check` | Verificación de tipos TypeScript |
+| `pnpm dev` | Servidor de desarrollo |
+| `pnpm build` | Build de producción a `dist/` |
+| `pnpm preview` | Preview del build localmente |
+| `pnpm check` | Verificación de tipos TypeScript |
 
 ## Estructura
 
