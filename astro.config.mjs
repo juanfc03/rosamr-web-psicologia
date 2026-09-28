@@ -9,6 +9,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://rosamruizpsicologa.es',
   trailingSlash: 'always',
+  compressHTML: true,
 
   fonts: [
     {
@@ -17,7 +18,17 @@ export default defineConfig({
       cssVariable: '--font-onest',
       weights: ['100 900'],
       fallbacks: ['Arial', 'Helvetica Neue', 'system-ui', 'sans-serif'],
-      display: 'fallback',
+      display: 'swap',
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Newsreader',
+      cssVariable: '--font-newsreader',
+      weights: [400],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: ['Georgia', 'Times New Roman', 'serif'],
+      display: 'swap',
     },
   ],
 

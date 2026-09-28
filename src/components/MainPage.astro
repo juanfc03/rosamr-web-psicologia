@@ -12,109 +12,120 @@ import {
   MAP_EMBED,
   obtenerEstrellas,
 } from '@/data/principal';
+
+const claseBoton =
+  'group inline-flex items-center gap-3 rounded-sm bg-tinta px-6 py-3.5 text-etiqueta text-papel transition-colors hover:bg-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel';
+const claseBotonSecundario =
+  'enlace-linea inline-flex items-center gap-2 rounded-sm py-3.5 text-etiqueta text-tinta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel';
+const claseMarcador = 'mt-2.5 h-px w-4 shrink-0 bg-rosa';
 ---
 
 <!-- Presentación -->
 <section
   id="presentacion"
-  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 pt-10 sm:px-6 sm:pt-14 md:px-8 lg:pt-20 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
   aria-labelledby="titulo-presentacion"
 >
-  <div class="grid items-center gap-8 lg:grid-cols-12">
-    <div class="order-1 lg:order-2 lg:col-span-5">
-      <div class="mx-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-        <figure class="m-0">
+  <div class="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+    <div class="lg:col-span-7 lg:col-start-1 lg:row-start-1">
+      <h1
+        id="titulo-presentacion"
+        class="font-display text-hero font-normal text-tinta text-balance"
+      >
+        Rosa María Ruiz Cano, <em class="not-italic text-rosa-profundo"
+          >psicóloga general sanitaria</em
+        > en Granada
+      </h1>
+    </div>
+
+    <div
+      class="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 lg:pt-12"
+    >
+      <div class="w-[82%] max-w-sm sm:mx-auto sm:w-full lg:mx-0 lg:max-w-none">
+        <figure class="relative m-0">
           <div
-            class="relative overflow-hidden rounded-3xl bg-linear-to-br from-primario/15 via-white to-primario/10 p-1 shadow-xl"
+            class="absolute inset-0 translate-x-2.5 translate-y-2.5 rounded-sm bg-rosa-tenue"
+            aria-hidden="true"
           >
-            <div class="overflow-hidden rounded-[20px] bg-white">
-              <Image
-                src={img}
-                width={1200}
-                height={1600}
-                quality={75}
-                widths={[320, 480, 560, 640, 800]}
-                sizes="(min-width:1024px) 38vw, calc(100vw - 2rem)"
-                loading="eager"
-                decoding="async"
-                fetchpriority="high"
-                alt="Rosa María Ruiz Cano, psicóloga especialista en TCA y ansiedad en Granada"
-                class="w-full aspect-3/4 object-cover"
-              />
-            </div>
+          </div>
+          <div
+            class="relative overflow-hidden rounded-sm border border-linea bg-papel-3"
+          >
+            <Image
+              src={img}
+              width={1200}
+              height={1600}
+              quality={78}
+              widths={[288, 384, 520, 720, 880]}
+              sizes="(min-width:1024px) 38vw, (min-width:640px) 24rem, 82vw"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              alt="Rosa María Ruiz Cano, psicóloga especialista en TCA y ansiedad en Granada"
+              class="w-full aspect-3/4 object-cover"
+            />
           </div>
           <figcaption class="sr-only">
             Foto profesional de Rosa María Ruiz Cano en la clínica.
           </figcaption>
         </figure>
-        <div class="mt-4 flex justify-center">
-          <Badge>Psicología basada en evidencia científica</Badge>
-        </div>
       </div>
     </div>
 
-    <div class="order-2 lg:order-1 lg:col-span-7">
-      <header class="space-y-4">
-        <h1
-          id="titulo-presentacion"
-          class="text-tam-mediano font-semibold leading-tight md:leading-snug text-oscuro p-0.5"
-        >
-          Rosa María Ruiz Cano, <span class="text-primario"
-            >psicóloga general sanitaria en Granada</span
-          >
-        </h1>
+    <div class="lg:col-span-7 lg:col-start-1 lg:row-start-2">
+      <div class="grid gap-6 medida">
+        <p class="text-entrada text-cuerpo">
+          Especializada en TCA, violencia de género y terapia emocional,
+          acompaño a personas que atraviesan <span class="text-rosa-profundo"
+            >trastornos alimentarios</span
+          > y dificultades relacionadas con el estrés o el malestar emocional. Ofrezco
+          terapia presencial en Granada y sesiones online, adaptándome a cada situación
+          y necesidad. También llevo casos de adicciones y problemas de pareja, entre
+          otros. Me apasiona comprender las historias personales detrás de cada síntoma
+          y acompañar a las personas en el proceso de construir un mayor equilibrio
+          emocional. Trabajo desde la empatía, la escucha activa y el respeto absoluto
+          hacia el ritmo de cada paciente.
+        </p>
 
-        <div
-          class="space-y-4 text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          <p>
-            Como <strong>psicóloga general sanitaria</strong> especializada en TCA,
-            violencia de género y terapia emocional, acompaño a personas que atraviesan <span class="text-primario">trastornos alimentarios</span> y dificultades
-            relacionadas con el estrés o el malestar emocional. Ofrezco terapia presencial
-            en Granada y sesiones online, adaptándome a cada situación y necesidad.
-            También llevo casos de adicciones y problemas de pareja, entre otros.
-            Me apasiona comprender las historias personales detrás de cada síntoma
-            y acompañar a las personas en el proceso de construir un mayor equilibrio
-            emocional. Trabajo desde la empatía, la escucha activa y el respeto absoluto
-            hacia el ritmo de cada paciente.
-            <br /><br />
-            Creo firmemente que la terapia es un espacio de colaboración, por eso
-            me gusta que cada proceso sea un <span class="text-primario"
-              >trabajo conjunto</span
-            >
-            en el que tú tengas un papel activo. Juntos podemos analizar lo que te
-            preocupa, identificar los patrones que se repiten y encontrar estrategias
-            que te ayuden a recuperar bienestar, sentido y dirección en tu vida.
-          </p>
+        <p class="text-parrafo text-atenuado">
+          Creo firmemente que la terapia es un espacio de colaboración, por eso
+          me gusta que cada proceso sea un <span class="text-rosa-profundo"
+            >trabajo conjunto</span
+          > en el que tú tengas un papel activo. Juntos podemos analizar lo que te
+          preocupa, identificar los patrones que se repiten y encontrar estrategias
+          que te ayuden a recuperar bienestar, sentido y dirección en tu vida.
+        </p>
 
-          <p>
-            Trabajo desde un enfoque basado en la <strong
-              >evidencia científica</strong
-            > y en el uso del <strong>análisis funcional</strong> de la conducta,
-            integrando herramientas de las <strong
-              >terapias de tercera generación</strong
-            >. Todo ello adaptado a tus necesidades, sin juicios, desde una
-            mirada humana y cercana.
-            <br /><br />
-            Mi objetivo es que la terapia se convierta en un espacio seguro donde
-            puedas conocerte mejor, comprender tus emociones y aprender a vivir de
-            una forma más libre, coherente y amable contigo misma/o.
-          </p>
-        </div>
-      </header>
+        <p class="text-parrafo text-atenuado">
+          Trabajo desde un enfoque basado en la
+          <strong class="font-medium text-tinta">evidencia científica</strong> y en
+          el uso del
+          <strong class="font-medium text-tinta">análisis funcional</strong> de la
+          conducta, integrando herramientas de las
+          <strong class="font-medium text-tinta"
+            >terapias de tercera generación</strong
+          >. Todo ello adaptado a tus necesidades, sin juicios, desde una mirada
+          humana y cercana.
+        </p>
 
-      <div class="flex items-center gap-3 mt-6">
-        <a
-          href="/pedir-cita/"
-          class="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 text-tam-principal font-medium text-white bg-primario rounded-lg hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primario"
-        >
+        <p class="text-parrafo text-atenuado">
+          Mi objetivo es que la terapia se convierta en un espacio seguro donde
+          puedas conocerte mejor, comprender tus emociones y aprender a vivir de
+          una forma más libre, coherente y amable contigo misma/o.
+        </p>
+      </div>
+
+      <div class="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3">
+        <a href="/pedir-cita/" class={claseBoton}>
           Pedir cita
-          <FlechaDerecha class="ms-2 size-2 sm:size-2.5 md:size-3 lg:size-4" />
+          <FlechaDerecha
+            class="size-3.5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+          />
         </a>
 
         <a
           href="/sobre-mi/"
-          class="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 text-tam-principal font-medium text-primario bg-white/80 rounded-lg ring-1 ring-primario/25 hover:text-primario/80 focus-visible:ring-2 focus-visible:ring-primario"
+          class={claseBotonSecundario}
           aria-label="Saber más sobre Rosa María Ruiz Cano"
         >
           Saber más
@@ -127,37 +138,27 @@ import {
 <!-- Opiniones -->
 <section
   id="opiniones"
-  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-14 sm:mt-16 md:mt-20 lg:mt-24 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-20 sm:mt-24 lg:mt-32 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
   aria-labelledby="titulo-opiniones"
 >
-  <header class="max-w-3xl space-y-4">
-    <div class="flex flex-wrap items-center gap-3">
+  <header class="revelar grid gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-9">
       <Pill>Opiniones de pacientes</Pill>
-      <Badge>Opiniones anónimas y adaptadas</Badge>
-    </div>
-
-    <h2
-      class="text-tam-mediano font-semibold tracking-tight text-oscuro text-balance"
-      id="titulo-opiniones"
-    >
-      Opiniones de pacientes sobre mí <span class="text-primario"
-        >terapia psicológica</span
+      <h2
+        id="titulo-opiniones"
+        class="mt-5 font-display text-titulo font-normal text-tinta text-balance"
       >
-    </h2>
-    <p class="leading-relaxed text-cuerpo text-tam-principal p-1">
-      Estas opiniones reflejan la experiencia anónima de pacientes que han
-      realizado terapia psicológica en Granada o en formato online conmigo.
-      Incluyen procesos relacionados con TCA, ansiedad, estrés y otras
-      dificultades emocionales. El contenido está adaptado para preservar la
-      confidencialidad. Si quieres leer más valoraciones verificadas, puedes
-      hacerlo en Doctoralia.
-    </p>
+        Opiniones de pacientes sobre mí <em
+          class="not-italic text-rosa-profundo">terapia psicológica</em
+        >
+      </h2>
+    </div>
   </header>
 
   <div
-    class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mt-4 sm:mt-5 md:mt-6 rounded-2xl border border-dashed border-slate-200 bg-white/70 p-3.5 sm:p-4 md:p-5 shadow-sm shadow-slate-200/60"
+    class="mt-10 grid gap-4 border-y border-linea py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-8"
   >
-    <p class="leading-relaxed text-cuerpo text-tam-principal">
+    <p class="medida text-parrafo leading-relaxed text-atenuado">
       Por privacidad, las opiniones se muestran sin nombre ni datos que permitan
       identificar a las personas. Si quieres consultar más valoraciones externas
       y verificadas, puedes hacerlo a través de la plataforma Doctoralia.
@@ -167,36 +168,36 @@ import {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Ver opiniones verificadas en Doctoralia (se abre en una pestaña nueva)"
-      class="inline-flex items-center justify-center rounded-lg border border-primario/40 bg-white/70 px-3 py-1.5 md:px-4 md:py-2 transition hover:border-primario hover:text-primario/90 text-primario font-medium text-tam-reducido"
+      class="enlace-linea inline-flex shrink-0 items-center gap-2 rounded-sm text-etiqueta text-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel"
     >
       Ver opiniones en Doctoralia
-      <span class="ms-1 sm:ms-1.5 text-tam-reducido" aria-hidden="true">↗</span>
+      <span aria-hidden="true">↗</span>
     </a>
   </div>
 
-  <div class="mt-7 md:mt-10 grid gap-4 md:gap-6 lg:grid-cols-3">
+  <div class="border-b border-linea divide-y divide-linea">
     {
       opiniones.map(op => (
-        <article
-          class="flex flex-col rounded-3xl border border-white/80 bg-white/80
-                      shadow-sm shadow-slate-200/70 transition hover:-translate-y-1
-                      hover:border-primario/50 hover:bg-white hover:shadow-md hover:shadow-pink-200/50
-                      p-3 sm:p-4 md:p-5"
-        >
-          <div class="flex items-center gap-1 md:gap-1.5 mb-1.5 md:mb-2">
-            {obtenerEstrellas(op.puntuacion).map(llena => (
-              <Estrella
-                filled={llena}
-                class="size-2.5 sm:size-3.5 md:size-5 lg:size-6"
-              />
-            ))}
+        <article class="revelar grid gap-5 py-9 md:grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)] md:gap-12 md:py-11">
+          <div class="space-y-3">
+            <div class="flex items-center gap-1">
+              {obtenerEstrellas(op.puntuacion).map(llena => (
+                <Estrella filled={llena} class="size-4" />
+              ))}
+            </div>
+            <p class="sr-only">{op.puntuacion} de 5 estrellas</p>
+            <p class="font-display text-parrafo leading-relaxed text-atenuado">
+              {op.tipoPaciente}
+            </p>
           </div>
-          <p class="sr-only">{op.puntuacion} de 5 estrellas</p>
-          <p class="mb-3 md:mb-4 leading-relaxed text-cuerpo text-tam-principal">
+          <p class="m-0 font-display text-cita text-tinta">
+            <span
+              class="me-1 align-top font-display text-3xl leading-none text-rosa"
+              aria-hidden="true"
+            >
+              &ldquo;
+            </span>
             {op.texto}
-          </p>
-          <p class="mt-auto font-medium text-atenuado text-tam-reducido">
-            {op.tipoPaciente}
           </p>
         </article>
       ))
@@ -207,61 +208,62 @@ import {
 <!-- Precios -->
 <section
   id="precios"
-  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-14 sm:mt-16 md:mt-20 lg:mt-24 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-20 sm:mt-24 lg:mt-32 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
   aria-labelledby="titulo-tarifas"
 >
-  <header class="max-w-3xl space-y-4">
+  <header class="revelar grid gap-8 lg:grid-cols-12 lg:items-end">
     <h2
       id="titulo-tarifas"
-      class="text-tam-mediano font-semibold tracking-tight text-oscuro text-balance"
+      class="lg:col-span-7 font-display text-titulo font-normal text-tinta text-balance"
     >
-      Precio de las sesiones de terapia, tanto <span class="text-primario"
-        >presencial como online</span
+      Precio de las sesiones de terapia, tanto <em
+        class="not-italic text-rosa-profundo">presencial como online</em
       >
     </h2>
 
-    <p class="leading-relaxed text-cuerpo text-tam-principal">
-      Las sesiones duran aproximadamente <strong>60 minutos</strong>. El precio
-      es el mismo en formato presencial u online para que puedas elegir el que
+    <p class="lg:col-span-5 medida text-parrafo text-atenuado">
+      Las sesiones duran aproximadamente
+      <strong class="font-medium text-tinta">60 minutos</strong>. El precio es
+      el mismo en formato presencial u online para que puedas elegir el que
       mejor encaje contigo.
     </p>
   </header>
 
-  <div class="mt-8 grid max-w-3xl gap-5 sm:grid-cols-2">
+  <div class="mt-10 border-t border-linea">
     {
       tarifas.map(t => (
-        <article class="flex flex-col rounded-2xl border border-white/70 bg-white/70 p-5 shadow-md shadow-slate-200/70">
-          <h3 class="font-semibold text-oscuro text-tam-base">{t.titulo}</h3>
-
-          <p class="mt-1 md:mt-1.5 text-atenuado text-tam-principal">
+        <article class="revelar grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-6 gap-y-2 border-b border-linea py-7 sm:gap-x-12 sm:py-8">
+          <h3 class="col-start-1 row-start-1 font-display text-subtitulo text-tinta">
+            {t.titulo}
+          </h3>
+          <p class="col-start-1 row-start-2 medida-estrecha text-parrafo leading-relaxed text-atenuado">
             {t.descripcion}
           </p>
-
-          <p
-            class="mt-3.5 md:mt-4 font-semibold text-oscuro text-xl sm:text-2xl md:text-3xl lg:text-[32px]"
-            aria-label="Precio: 60 euros"
-          >
-            {t.precio}
-            <span class="ms-1 md:ms-1.5 font-normal text-atenuado text-tam-reducido">
-              {t.duracion}
-            </span>
-          </p>
+          <div class="col-start-2 row-start-1 row-span-2 text-right">
+            <p
+              class="font-display text-titulo text-rosa-profundo"
+              aria-label="Precio: 60 euros"
+            >
+              {t.precio}
+            </p>
+            <span class="block text-etiqueta text-sutil">{t.duracion}</span>
+          </div>
         </article>
       ))
     }
   </div>
 
-  <p class="mt-4 md:mt-5 max-w-3xl leading-snug text-sutil text-tam-legal">
+  <p class="mt-5 medida text-menudo leading-relaxed text-sutil">
     Si tienes dudas sobre el formato que mejor se adapta a ti o sobre la forma
     de pago, puedes consultarlo al pedir tu cita.
   </p>
-  <div class="mt-6">
-    <a
-      href="/servicios/"
-      class="inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 rounded-lg bg-primario text-white font-medium text-tam-principal hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primario"
-    >
+
+  <div class="mt-8">
+    <a href="/servicios/" class={claseBoton}>
       Ver todos los servicios de terapia psicológica
-      <FlechaDerecha class="ms-2 size-2 sm:size-2.5 md:size-3 lg:size-4" />
+      <FlechaDerecha
+        class="size-3.5 transition-transform duration-200 ease-out group-hover:translate-x-1"
+      />
     </a>
   </div>
 </section>
@@ -270,98 +272,102 @@ import {
 <section
   id="localizacion"
   aria-labelledby="titulo-localizacion"
-  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-14 sm:mt-16 md:mt-20 lg:mt-24 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
+  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-20 sm:mt-24 lg:mt-32 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
 >
-  <header class="flex items-center justify-between gap-3">
+  <header
+    class="revelar flex flex-wrap items-end justify-between gap-4 border-b border-linea pb-5"
+  >
     <h2
       id="titulo-localizacion"
-      class="text-tam-mediano font-semibold tracking-tight text-oscuro"
+      class="max-w-2xl font-display text-titulo font-normal text-tinta text-balance"
     >
-      Consulta presencial en Granada, <span class="text-primario"
-        >Centro Ángela Medina</span
+      Consulta presencial en Granada, <em class="not-italic text-rosa-profundo"
+        >Centro Ángela Medina</em
       >
     </h2>
     <Badge>Chana, Granada</Badge>
   </header>
 
-  <div class="mt-6 flex flex-col gap-6 lg:flex-row lg:items-stretch">
-    <div class="space-y-3 min-w-0 lg:basis-[40%]">
-      <h3 class="font-semibold text-tam-base text-oscuro">
-        Consulta presencial
-      </h3>
-      <p class="text-tam-principal leading-relaxed text-cuerpo">
-        Te atiendo en <strong>Centro de Psicología Ángela Medina</strong>, un
-        espacio tranquilo y luminoso situado en el barrio de la Chana.
+  <div class="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-12">
+    <div class="revelar space-y-5 lg:col-span-5">
+      <h3 class="font-display text-apoyo text-tinta">Consulta presencial</h3>
+      <p class="medida text-parrafo text-cuerpo">
+        Te atiendo en
+        <strong class="font-medium text-tinta"
+          >Centro de Psicología Ángela Medina</strong
+        >, un espacio tranquilo y luminoso situado en el barrio de la Chana.
       </p>
-      <ul class="text-tam-principal leading-relaxed text-cuerpo">
-        <li>• Cita previa · Horario flexible</li>
-        <li>• Sesiones <em>online</em> y presenciales</li>
+      <ul class="space-y-2 text-parrafo text-cuerpo">
+        <li class="flex gap-3">
+          <span class={claseMarcador} aria-hidden="true"></span>
+          <span>Cita previa · Horario flexible</span>
+        </li>
+        <li class="flex gap-3">
+          <span class={claseMarcador} aria-hidden="true"></span>
+          <span>Sesiones <em class="italic">online</em> y presenciales</span>
+        </li>
       </ul>
-      <address class="not-italic text-tam-principal">
-        <span class="block font-medium text-oscuro">Centro Ángela Medina</span>
+      <address class="not-italic text-parrafo">
+        <span class="block font-medium text-tinta">Centro Ángela Medina</span>
         <span class="block text-cuerpo">C. Nécora, 7, Chana, 18003 Granada</span
         >
       </address>
-      <p class="mt-2">
+      <p>
         <a
           href="https://maps.google.com/?cid=15982435383475498122"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-primario underline underline-offset-2 hover:brightness-110"
+          class="enlace-linea rounded-sm text-menudo font-medium text-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel"
           aria-label="Abrir la ubicación de Rosa M. Ruiz en Google Maps (se abre en una nueva pestaña)"
         >
           Abrir en Google Maps
         </a>
       </p>
 
-      <p class="text-tam-legal text-atenuado">
+      <p class="medida text-menudo leading-relaxed text-sutil">
         El mapa de Google se bloquea hasta que aceptes cookies de terceros.
         Puedes cambiar tu decisión desde la <a
           href="/politica-de-cookies/"
-          class="text-primario underline underline-offset-2"
+          class="rounded-sm text-rosa-profundo underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa"
           >política de cookies</a
         >.
       </p>
     </div>
 
-    <div class="min-w-0 lg:basis-[60%]">
+    <div class="revelar lg:col-span-7">
       <div
-        class="relative overflow-hidden bg-gray-100 rounded-xl ring-1 ring-gray-300/60"
+        class="relative overflow-hidden rounded-sm border border-linea bg-papel-3"
       >
         <iframe
           id="mapa-iframe"
           data-mapa-src={MAP_EMBED}
-          title="Mapa — Rosa M. Ruiz, psicóloga en la Chana, Granada"
+          title="Mapa de la consulta: Rosa M. Ruiz, psicóloga en la Chana, Granada"
           loading="lazy"
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
-          class="block w-full aspect-video"
+          class="block w-full aspect-[4/3] lg:aspect-[3/2]"
           aria-hidden="true"></iframe>
 
         <div
           id="mapa-capa"
-          class="absolute inset-0 flex items-center justify-center p-4 overflow-y-auto bg-white/40 backdrop-blur-md"
+          class="absolute inset-0 flex items-center justify-center overflow-y-auto bg-papel/70 p-4 backdrop-blur-sm"
         >
           <div
-            class="m-auto max-w-md max-h-[85vh] p-2 text-center bg-white/70 rounded-2xl border border-white/50 shadow-xl sm:p-6"
+            class="m-auto max-h-[85vh] max-w-sm border border-linea bg-papel p-6 text-center"
           >
-            <div
-              class="inline-flex items-center justify-center p-3 mb-3 bg-primario/10 rounded-full ring-1 ring-primario/20 sm:mb-4"
-            >
-              <Localizacion class="size-6 text-primario md:size-7" />
-            </div>
-            <h4 class="font-semibold text-tam-principal text-oscuro">
+            <Localizacion class="mx-auto size-6 text-rosa md:size-7" />
+            <h4 class="mt-3 font-display text-apoyo text-tinta">
               Mapa de Google
             </h4>
-            <p class="mt-1 text-tam-reducido text-cuerpo">
+            <p class="mt-1 text-menudo text-atenuado">
               Debes aceptar las cookies para poder ver mapa.
             </p>
           </div>
         </div>
 
         <noscript>
-          <div class="absolute inset-0 grid place-items-center p-4 bg-white/80">
-            <p class="text-tam-principal text-center text-cuerpo">
+          <div class="absolute inset-0 grid place-items-center bg-papel p-4">
+            <p class="medida text-center text-menudo text-atenuado">
               El mapa necesita JavaScript para gestionar el consentimiento.
               Puedes ver la dirección arriba o abrir Google Maps manualmente.
             </p>

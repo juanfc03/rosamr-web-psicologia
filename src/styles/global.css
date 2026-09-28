@@ -1,57 +1,272 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primario: #d59fac;
+  /* Tipografía */
+  --font-sans: var(--font-onest);
+  --font-display: var(--font-newsreader);
 
-  --color-oscuro: var(--color-gray-800);
-  --color-cuerpo: var(--color-gray-700);
-  --color-atenuado: var(--color-gray-600);
-  --color-sutil: var(--color-gray-500);
+  /* Paleta editorial cálida: papel, tinta, arcilla y salvia */
+  --color-papel: #f6f1e9;
+  --color-papel-2: #efe8dd;
+  --color-papel-3: #e5dacb;
+
+  --color-tinta: #2b2521;
+  --color-tinta-2: #3b332d;
+  --color-cuerpo: #4c443e;
+  --color-atenuado: #6b625b;
+  --color-sutil: #6f6560;
+
+  --color-linea: #ded3c5;
+
+  --color-rosa: #b0687a;
+  --color-rosa-profundo: #8e4d5e;
+  --color-rosa-tenue: #ecd9dc;
+
+  --color-salvia: #6f7d6b;
+  --color-salvia-profundo: #55614f;
+
+  /* Alias de marca (anillos de foco) */
+  --color-primario: #8e4d5e;
 }
 
 html {
   font-family: var(--font-onest);
+  background-color: var(--color-papel);
+  color: var(--color-cuerpo);
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+::selection {
+  background-color: var(--color-rosa-tenue);
+  color: var(--color-tinta);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-@utility bg-main-gradient {
-  background-image: radial-gradient(
-    ellipse 80% 80% at 50% -20%,
-    rgba(120, 119, 198, 0.3),
-    rgba(255, 255, 255, 0)
-  );
+/* --- Tipografía fluida ---------------------------------------------------- */
+
+@utility text-hero {
+  font-size: clamp(2.75rem, 1.85rem + 5.4vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.022em;
 }
 
-@utility text-tam-principal {
-  @apply text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl;
+@utility text-titulo {
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.016em;
 }
 
-@utility text-tam-grande {
-  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+@utility text-subtitulo {
+  font-size: clamp(1.5rem, 1.25rem + 1.05vw, 2.1rem);
+  line-height: 1.14;
+  letter-spacing: -0.012em;
 }
 
-@utility text-tam-mayor {
-  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl;
+@utility text-apoyo {
+  font-size: clamp(1.2rem, 1.1rem + 0.45vw, 1.45rem);
+  line-height: 1.25;
+  letter-spacing: -0.008em;
 }
 
-@utility text-tam-mediano {
-  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl;
+@utility text-entrada {
+  font-size: clamp(1.08rem, 1rem + 0.5vw, 1.32rem);
+  line-height: 1.62;
 }
 
-@utility text-tam-base {
-  @apply text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl;
+@utility text-parrafo {
+  font-size: clamp(1rem, 0.97rem + 0.16vw, 1.09rem);
+  line-height: 1.72;
 }
 
-@utility text-tam-reducido {
-  @apply text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl;
+@utility text-cita {
+  font-size: clamp(1.25rem, 1.05rem + 0.95vw, 1.7rem);
+  line-height: 1.42;
+  letter-spacing: -0.008em;
 }
 
-@utility text-tam-legal {
-  @apply text-[11px] sm:text-xs md:text-sm lg:text-[15px] xl:text-base;
+@utility text-menudo {
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.06rem);
+  line-height: 1.6;
+}
+
+@utility text-etiqueta {
+  font-size: clamp(0.8rem, 0.75rem + 0.2vw, 0.92rem);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@utility text-menu {
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
+  line-height: 1.35;
+}
+
+@utility text-marca {
+  font-size: clamp(1.2rem, 1.02rem + 0.55vw, 1.55rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+/* --- Medidas de lectura --------------------------------------------------- */
+
+@utility medida {
+  max-width: 68ch;
+}
+
+@utility medida-estrecha {
+  max-width: 56ch;
+}
+
+@utility medida-cita {
+  max-width: 30ch;
+}
+
+/* --- Enlace con subrayado que se dibuja ----------------------------------- */
+
+@utility enlace-linea {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.28s cubic-bezier(0.23, 1, 0.32, 1);
+
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* --- Animación de aparición al hacer scroll (CSS, sin JS) ----------------- */
+
+@keyframes revelar-scroll {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .revelar {
+      animation: revelar-scroll linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 85%;
+    }
+  }
+}
+
+/* --- Prosa legal ---------------------------------------------------------- */
+
+.prosa-legal {
+  color: var(--color-cuerpo);
+}
+
+.prosa-legal header {
+  margin-bottom: 2.25rem;
+}
+
+.prosa-legal h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.016em;
+  color: var(--color-tinta);
+  text-wrap: balance;
+}
+
+.prosa-legal h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 1.25rem + 1.05vw, 2.05rem);
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+  color: var(--color-tinta);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  text-wrap: balance;
+}
+
+.prosa-legal h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.2rem, 1.1rem + 0.45vw, 1.4rem);
+  line-height: 1.25;
+  color: var(--color-tinta);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.prosa-legal p,
+.prosa-legal li {
+  font-size: clamp(1rem, 0.97rem + 0.16vw, 1.08rem);
+  line-height: 1.72;
+}
+
+.prosa-legal p {
+  margin-bottom: 1rem;
+}
+
+.prosa-legal ul,
+.prosa-legal ol {
+  margin-bottom: 1rem;
+}
+
+.prosa-legal a {
+  color: var(--color-rosa-profundo);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--color-rosa) 50%, transparent);
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 0.2s ease-out;
+}
+
+.prosa-legal a:hover {
+  text-decoration-color: var(--color-rosa-profundo);
+}
+
+.prosa-legal strong {
+  font-weight: 500;
+  color: var(--color-tinta);
+}
+
+.prosa-legal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.prosa-legal th,
+.prosa-legal td {
+  border-bottom: 1px solid var(--color-linea);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prosa-legal thead th {
+  border-bottom: 1px solid var(--color-tinta);
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-tinta);
 }

@@ -16,144 +16,75 @@ function esActivo(item: (typeof navegacion)[number]): boolean {
   return item.hijas.some(hija => rutaActual === hija.href);
 }
 
-// Clases reutilizables para estados de navegación
 const claseBaseNavegacion =
-  'px-3 py-2 text-tam-principal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro';
-const claseActiva = 'text-primario font-semibold';
-const claseInactiva = 'hover:text-primario/70';
+  'enlace-nav inline-flex items-center py-2 text-menu font-medium text-atenuado transition-colors hover:text-tinta focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel';
+const claseActiva = 'text-tinta';
+const claseInactiva = 'text-atenuado';
 ---
 
 <header
-  class="sticky top-0 inset-s-0 z-20 w-full border-b border-gray-400/40 bg-white/30 backdrop-blur-md mb-11 sm:mb-12 md:mb-14 lg:mb-16 xl:mb-20"
+  class="sticky top-0 z-20 w-full border-b border-linea bg-papel/85 backdrop-blur-md"
 >
-  <div class="flex items-center justify-between p-3 md:p-3.5">
-    <a
-      href="/"
-      class="inline-flex items-center justify-center gap-3 p-1"
-      aria-label="Rosa María Ruiz Cano — Ir a inicio"
-    >
-      <Image
-        src={logo}
-        alt="Logo de Rosa María Ruiz Cano"
-        class="h-12 sm:h-14 md:h-16 lg:h-18 xl:h-20 w-auto"
-        widths={[86, 112, 128, 144, 160]}
-        sizes="(min-width:1280px) 160px, (min-width:1024px) 144px, (min-width:768px) 128px, (min-width:640px) 112px, 86px"
-        decoding="async"
-        loading="eager"
-      />
-      <span
-        class="font-semibold leading-snug tracking-tight text-atenuado text-tam-base"
-        aria-hidden="true">Rosa M. Ruiz Cano</span
+  <div class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8">
+    <div class="flex items-center justify-between gap-4 py-4 md:py-5">
+      <a
+        href="/"
+        class="inline-flex items-center gap-3 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel"
+        aria-label="Rosa María Ruiz Cano, ir a inicio"
       >
-    </a>
+        <Image
+          src={logo}
+          alt="Logo de Rosa María Ruiz Cano"
+          class="h-9 sm:h-10 md:h-11 w-auto"
+          widths={[64, 80, 96, 112]}
+          sizes="(min-width:768px) 112px, (min-width:640px) 96px, 64px"
+          decoding="async"
+          loading="eager"
+        />
+        <span class="hidden sm:flex flex-col gap-1.5 leading-none" aria-hidden="true">
+          <span class="font-display text-marca leading-none text-tinta">
+            Rosa María Ruiz Cano
+          </span>
+          <span class="text-etiqueta text-sutil">Psicóloga General Sanitaria</span>
+        </span>
+      </a>
 
-    <!-- Navegación escritorio -->
-    <nav
-      class="hidden xl:flex items-center justify-center gap-6 xl:gap-12 font-medium text-tam-principal"
-      aria-label="Navegación principal"
-    >
-      {
-        navegacion.map(item =>
-          'href' in item ? (
-            <a
-              href={item.href}
-              aria-current={esActivo(item) ? 'page' : undefined}
-              class:list={{
-                [claseBaseNavegacion]: true,
-                [claseActiva]: esActivo(item),
-                [claseInactiva]: !esActivo(item),
-              }}
-            >
-              {item.etiqueta}
-            </a>
-          ) : (
-            <details class="relative group" name="navegacion-principal">
-              <summary
-                class={`flex items-center gap-1 cursor-pointer list-none rounded-md ${claseBaseNavegacion} ${esActivo(item) ? claseActiva : claseInactiva}`}
-              >
-                {item.etiqueta}
-                <Chevron class="transition-transform duration-200 group-open:rotate-180 xl:size-7" />
-              </summary>
-              <div class="absolute left-0 top-full min-w-48 rounded-lg border border-gray-200 bg-white/90 shadow-lg opacity-0 invisible -translate-y-1 desplegable">
-                <ul role="list">
-                  {item.hijas.map(hija => (
-                    <li>
-                      <a
-                        href={hija.href}
-                        aria-current={
-                          rutaActual === hija.href ? 'location' : undefined
-                        }
-                        class="block px-4 py-2 text-tam-reducido text-cuerpo hover:bg-gray-100 hover:text-primario/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro"
-                      >
-                        {hija.etiqueta}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </details>
-          ),
-        )
-      }
-    </nav>
-
-    <div class="flex items-center gap-3">
-      <button
-        type="button"
-        id="abrir-menu-movil"
-        aria-label="Abrir menú de navegación"
-        aria-controls="menu-movil"
-        aria-expanded="false"
-        class="inline-flex items-center justify-center xl:hidden cursor-pointer size-10 sm:size-11 md:size-12 lg:size-13 rounded-lg text-atenuado hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro"
+      <!-- Navegación escritorio -->
+      <nav
+        class="hidden xl:flex items-center gap-6 2xl:gap-9"
+        aria-label="Navegación principal"
       >
-        <Menu class="size-7 sm:size-8 md:size-9 lg:size-10" />
-      </button>
-      {
-        Object.values(redes).map(({ href, descripcion, Icono }) => (
-          <a
-            href={href}
-            target="_blank"
-            rel="me noopener noreferrer"
-            aria-label={`${descripcion} (se abre en una pestaña nueva)`}
-            class="group inline-flex items-center justify-center p-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro"
-          >
-            <Icono class="text-cuerpo transition-transform duration-150 ease-out group-hover:scale-110 group-active:scale-95 size-6 sm:size-6 md:size-7 lg:size-8 xl:size-9" />
-          </a>
-        ))
-      }
-    </div>
-  </div>
-
-  <nav
-    id="menu-movil"
-    aria-label="Navegación principal móvil"
-    class="hidden rounded-lg p-4 text-sm sm:text-base md:text-lg lg:text-xl font-medium bg-white/30"
-    inert
-  >
-    <ul class="space-y-1.5" role="list">
-      {
-        navegacion.map(item =>
-          'href' in item ? (
-            <li>
+        {
+          navegacion.map(item =>
+            'href' in item ? (
               <a
                 href={item.href}
                 aria-current={esActivo(item) ? 'page' : undefined}
-                class={`block rounded-md px-3 py-2 text-tam-principal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro ${esActivo(item) ? claseActiva : claseInactiva}`}
+                data-activo={esActivo(item) ? '' : undefined}
+                class:list={[
+                  claseBaseNavegacion,
+                  esActivo(item) ? claseActiva : claseInactiva,
+                ]}
               >
                 {item.etiqueta}
               </a>
-            </li>
-          ) : (
-            <li class="rounded-md">
-              <details class="group desplegable-movil-detalle">
+            ) : (
+              <details class="relative" name="navegacion-principal">
                 <summary
-                  class={`flex items-center cursor-pointer list-none rounded-md px-3 py-2 text-tam-principal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro ${esActivo(item) ? claseActiva : claseInactiva}`}
+                  data-activo={esActivo(item) ? '' : undefined}
+                  class:list={[
+                    claseBaseNavegacion,
+                    'group cursor-pointer list-none gap-1 rounded-sm',
+                    esActivo(item) ? claseActiva : claseInactiva,
+                  ]}
                 >
                   {item.etiqueta}
-                  <Chevron class="ms-1 transition-transform group-open:rotate-180 size-3 sm:size-4 md:size-5 lg:size-6" />
+                  <Chevron class="size-4 text-rosa transition-transform duration-200 ease-out group-open:rotate-180" />
                 </summary>
-                <div class="opacity-0 invisible -translate-y-1 desplegable">
-                  <ul class="ms-3 ps-3 py-1 border-s border-gray-200">
+                <div
+                  class="desplegable invisible absolute start-0 top-full z-10 min-w-52 border border-linea bg-papel py-2 shadow-[0_20px_40px_-28px_rgba(43,37,33,0.6)]"
+                >
+                  <ul role="list">
                     {item.hijas.map(hija => (
                       <li>
                         <a
@@ -161,7 +92,7 @@ const claseInactiva = 'hover:text-primario/70';
                           aria-current={
                             rutaActual === hija.href ? 'location' : undefined
                           }
-                          class="block px-2 py-2 text-tam-reducido hover:text-primario/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oscuro"
+                          class="block px-4 py-2.5 text-menu text-cuerpo transition-colors hover:bg-papel-2 hover:text-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-inset"
                         >
                           {hija.etiqueta}
                         </a>
@@ -170,22 +101,134 @@ const claseInactiva = 'hover:text-primario/70';
                   </ul>
                 </div>
               </details>
-            </li>
-          ),
-        )
-      }
-    </ul>
+            ),
+          )
+        }
+      </nav>
+
+      <div class="flex items-center gap-1 sm:gap-2">
+        {
+          Object.values(redes).map(({ href, descripcion, Icono }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="me noopener noreferrer"
+              aria-label={`${descripcion} (se abre en una pestaña nueva)`}
+              class="group inline-flex items-center justify-center rounded-sm p-2 text-atenuado transition-colors hover:text-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel"
+            >
+              <Icono class="size-[1.4rem] md:size-6" />
+            </a>
+          ))
+        }
+
+        <button
+          type="button"
+          id="abrir-menu-movil"
+          aria-label="Abrir menú de navegación"
+          aria-controls="menu-movil"
+          aria-expanded="false"
+          class="inline-flex cursor-pointer items-center justify-center rounded-sm p-2 text-tinta transition-colors hover:text-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel xl:hidden"
+        >
+          <Menu class="size-7" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <nav
+    id="menu-movil"
+    aria-label="Navegación principal móvil"
+    class="hidden absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto border-b border-linea bg-papel shadow-[0_28px_50px_-30px_rgba(43,37,33,0.65)]"
+    inert
+  >
+    <div class="mx-auto 2xl:max-w-screen-2xl px-4 py-4 sm:px-6 md:px-8">
+      <ul class="space-y-1" role="list">
+        {
+          navegacion.map(item =>
+            'href' in item ? (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={esActivo(item) ? 'page' : undefined}
+                  data-activo={esActivo(item) ? '' : undefined}
+                  class:list={[
+                    'enlace-nav block py-2.5 text-subtitulo font-display leading-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel',
+                    esActivo(item) ? claseActiva : claseInactiva,
+                  ]}
+                >
+                  {item.etiqueta}
+                </a>
+              </li>
+            ) : (
+              <li>
+                <details class="desplegable-movil-detalle">
+                  <summary
+                    data-activo={esActivo(item) ? '' : undefined}
+                    class:list={[
+                      'enlace-nav group flex cursor-pointer list-none items-center justify-between py-2.5 font-display text-subtitulo leading-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel',
+                      esActivo(item) ? claseActiva : claseInactiva,
+                    ]}
+                  >
+                    {item.etiqueta}
+                    <Chevron class="size-4 text-rosa transition-transform duration-200 ease-out group-open:rotate-180" />
+                  </summary>
+                  <div
+                    class="desplegable invisible ms-1 border-s border-linea ps-4"
+                  >
+                    <ul class="py-1.5">
+                      {item.hijas.map(hija => (
+                        <li>
+                          <a
+                            href={hija.href}
+                            aria-current={
+                              rutaActual === hija.href ? 'location' : undefined
+                            }
+                            class="block py-2.5 text-menu text-cuerpo transition-colors hover:text-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-inset"
+                          >
+                            {hija.etiqueta}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </details>
+              </li>
+            ),
+          )
+        }
+      </ul>
+    </div>
   </nav>
 </header>
 
 <script src="../scripts/header.ts"></script>
 
 <style>
-  @reference "@/styles/global.css";
+  @reference '@/styles/global.css';
 
-  @media (prefers-reduced-motion: reduce) {
-    .group-open\:rotate-180 {
-      transition: none;
-    }
+  .enlace-nav {
+    position: relative;
+  }
+
+  .enlace-nav::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: -0.15rem;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .enlace-nav:hover::after,
+  .enlace-nav:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .enlace-nav[data-activo]::after {
+    background-color: var(--color-rosa);
+    transform: scaleX(1);
   }
 </style>

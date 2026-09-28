@@ -1,12 +1,10 @@
-<div
-  class="px-6 py-3 md:px-8 md:py-4 bg-white/20 rounded-2xl border border-white/30 shadow-lg"
->
-  <header class="space-y-2 md:space-y-4">
-    <h2 class="font-semibold text-tam-mediano text-oscuro text-center">
-      Pide tu cita <span class="text-primario">ahora</span>
+<div class="revelar border-t border-linea pt-8 md:pt-10">
+  <header class="space-y-4">
+    <h2 class="font-display text-titulo font-normal text-tinta">
+      Pide tu cita <em class="not-italic text-rosa-profundo">ahora</em>
     </h2>
 
-    <p class="mt-3 text-tam-principal leading-relaxed text-cuerpo text-justify">
+    <p class="medida text-parrafo text-atenuado">
       Rellena este formulario para solicitar una cita o enviarme tu consulta. Te
       contactaré para coordinar día y hora. Recuerda que también puedes
       contactarme por <a
@@ -14,18 +12,20 @@
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp (se abre en una nueva pestaña)"
-        class="text-primario underline underline-offset-2 hover:brightness-110"
-      >WhatsApp</a> o <a
+        class="rounded-sm text-rosa-profundo underline decoration-rosa/40 decoration-1 underline-offset-4 transition-colors hover:decoration-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa"
+        >WhatsApp</a
+      > o <a
         href="mailto:rosamruizpsicologa@gmail.com"
-        class="text-primario underline underline-offset-2 hover:brightness-110"
-      >Email</a>.
+        class="rounded-sm text-rosa-profundo underline decoration-rosa/40 decoration-1 underline-offset-4 transition-colors hover:decoration-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa"
+        >Email</a
+      >.
     </p>
   </header>
 
   <form
     name="contacto"
     method="POST"
-    class="mt-8 space-y-5"
+    class="mt-10 grid gap-7"
     data-netlify="true"
     netlify-honeypot="bot-field"
   >
@@ -107,18 +107,18 @@
       </label>
     </div>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-start gap-3">
       <input
         type="checkbox"
         id="acepto_privacidad"
         name="acepto_privacidad"
         required
-        class="mt-0.5 size-6 rounded border border-gray-300 text-primario focus-visible:ring-2 focus-visible:ring-primario md:size-7"
+        class="mt-1 size-5 shrink-0 cursor-pointer rounded-sm border border-linea accent-rosa-profundo focus-visible:ring-2 focus-visible:ring-rosa"
       />
-      <label for="acepto_privacidad" class="text-tam-principal text-atenuado">
+      <label for="acepto_privacidad" class="text-parrafo text-atenuado">
         He leído y acepto la <a
           href="/politica-de-privacidad/"
-          class="text-primario underline underline-offset-2 hover:brightness-110"
+          class="rounded-sm text-rosa-profundo underline decoration-rosa/40 decoration-1 underline-offset-4 transition-colors hover:decoration-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa"
           >política de privacidad</a
         >.
       </label>
@@ -126,7 +126,7 @@
 
     <button
       type="submit"
-      class="px-4 py-3 md:px-5 md:py-4 w-full text-center font-medium text-white bg-primario rounded-lg hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-primario cursor-pointer text-tam-principal"
+      class="w-full cursor-pointer rounded-sm bg-tinta px-6 py-4 text-center text-etiqueta text-papel transition-colors hover:bg-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel"
     >
       Enviar solicitud
     </button>
@@ -137,7 +137,7 @@
 
 <div
   id="form-toast"
-  class="pointer-events-none fixed bottom-6 right-6 z-50 max-w-sm translate-x-full rounded-lg px-5 py-4 text-tam-principal text-white shadow-lg opacity-0 transition-all duration-500"
+  class="pointer-events-none fixed bottom-6 right-6 z-50 max-w-sm translate-x-full rounded-sm px-5 py-4 text-parrafo text-white opacity-0 shadow-[0_20px_45px_-24px_rgba(43,37,33,0.8)] transition-[opacity,translate] duration-500 ease-out"
   role="status"
   aria-live="polite"
 >
@@ -146,22 +146,22 @@
 <script src="../../scripts/formulario-contacto.ts"></script>
 
 <style>
-  @reference "@/styles/global.css";
+  @reference '@/styles/global.css';
 
   .entrada-formulario {
-    @apply mt-1 block w-full rounded-lg border border-gray-300 bg-white/60 px-3 py-2 text-cuerpo placeholder:text-sutil/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primario focus-visible:border-primario;
+    @apply mt-2 block w-full border-b border-linea bg-transparent px-0 py-2 text-parrafo text-tinta placeholder:text-sutil focus-visible:border-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel;
   }
 
   .etiqueta-formulario {
-    @apply block text-tam-principal text-cuerpo font-medium;
+    @apply block text-etiqueta text-atenuado;
   }
 
   .toast-exito {
-    background-color: #15803d;
+    background-color: var(--color-salvia-profundo);
   }
 
   .toast-error {
-    background-color: #991b1b;
+    background-color: var(--color-rosa-profundo);
   }
 
   #form-toast.mostrar {

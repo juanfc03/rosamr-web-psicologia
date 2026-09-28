@@ -2,38 +2,39 @@
 import { Image } from 'astro:assets';
 import img from '@/assets/rosa-maria-ruiz-cano-psicologa-granada-sentada.jpeg';
 import Pill from './utils/Pill.astro';
+
+const claseEnlace =
+  'rounded-sm text-rosa-profundo underline decoration-rosa/40 decoration-1 underline-offset-4 transition-colors hover:decoration-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa';
+const claseMarcador = 'mt-2.5 h-px w-4 shrink-0 bg-rosa';
 ---
 
-<section class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8">
-  <article
-    class="grid gap-10 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:items-start"
-  >
-    <div class="space-y-8">
-      <header class="space-y-4">
-        <Pill>Sobre mí</Pill>
-        <h1
-          class="text-tam-mediano font-semibold leading-tight md:leading-snug text-oscuro p-0.5"
-        >
-          Mi recorrido como profesional de la <span class="text-primario"
-            >psicología</span
-          > sanitaria
-        </h1>
+<section
+  class="mx-auto 2xl:max-w-screen-2xl px-4 pt-10 sm:px-6 sm:pt-14 md:px-8 lg:pt-20"
+>
+  <article class="grid gap-12 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-7">
+      <Pill>Sobre mí</Pill>
+      <h1
+        class="mt-5 font-display text-titulo font-normal text-tinta text-balance"
+      >
+        Mi recorrido como profesional de la <em class="not-italic text-rosa-profundo"
+          >psicología</em
+        > sanitaria
+      </h1>
 
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          Como psicóloga general sanitaria acompaño a personas con dificultades
-          relacionadas con la comida y el cuerpo (trastornos alimentarios), así
-          como con problemas de <strong>ansiedad</strong>, <strong
-            >estrés</strong
-          > o experiencias de <strong>violencia de género</strong>. Atiendo en
-          formato presencial en Granada y también online, siempre desde un
-          enfoque clínico y basado en la evidencia.
+      <div class="revelar mt-8 grid gap-6 medida">
+        <p class="text-entrada text-cuerpo">
+          Acompaño a personas con dificultades relacionadas con la comida y el
+          cuerpo (trastornos alimentarios), así como con problemas de
+          <strong class="font-medium text-tinta">ansiedad</strong>,
+          <strong class="font-medium text-tinta">estrés</strong> o experiencias
+          de
+          <strong class="font-medium text-tinta">violencia de género</strong>.
+          Atiendo en formato presencial en Granada y también online, siempre
+          desde un enfoque clínico y basado en la evidencia.
         </p>
 
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
+        <p class="text-parrafo text-atenuado">
           Me gradué en la Universidad de Granada y posteriormente hice el Máster
           en Psicología General Sanitaria en la misma institución. Mi
           trayectoria combina práctica clínica y formación investigadora,
@@ -42,210 +43,233 @@ import Pill from './utils/Pill.astro';
           la conducta, adaptando el tratamiento a la historia y ritmo de cada
           persona.
         </p>
-      </header>
+      </div>
 
-      <section class="space-y-4" aria-labelledby="formacion">
-        <h2
-          id="formacion"
-          class="text-tam-reducido font-semibold uppercase tracking-wide text-sutil p-0.5"
+      <div class="mt-12 space-y-12">
+        <section
+          class="revelar border-t border-linea pt-8 space-y-4"
+          aria-labelledby="formacion"
         >
-          Formación y experiencia en salud mental
-        </h2>
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          A lo largo de mi formación he tenido la oportunidad de colaborar con
-          diferentes entidades y asociaciones. En <strong>ADANER Granada</strong
-          > he ejercido como psicóloga, participando activamente en programas de apoyo
-          a personas con problemas alimentarios y a sus familias. También he formado
-          parte de <strong>Granabip</strong>, asociación centrada en el
-          acompañamiento de personas con trastorno bipolar.
-        </p>
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          En el ámbito clínico, he realizado prácticas en centros de referencia
-          como <strong>ELCA</strong>, una unidad multidisciplinar especializada en
-          trastornos de la conducta alimentaria, y en la <strong
-            >Clínica de Psicología de la Universidad de Granada</strong
-          >, donde consolidé un enfoque integrador y basado en la evidencia.
-        </p>
-      </section>
+          <h2
+            id="formacion"
+            class="font-display text-subtitulo text-tinta text-balance"
+          >
+            Formación y experiencia en salud mental
+          </h2>
+          <p class="medida text-parrafo text-cuerpo">
+            A lo largo de mi formación he tenido la oportunidad de colaborar con
+            diferentes entidades y asociaciones. En
+            <strong class="font-medium text-tinta">ADANER Granada</strong> he
+            ejercido como psicóloga, participando activamente en programas de
+            apoyo a personas con problemas alimentarios y a sus familias.
+            También he formado parte de
+            <strong class="font-medium text-tinta">Granabip</strong>, asociación
+            centrada en el acompañamiento de personas con trastorno bipolar.
+          </p>
+          <p class="medida text-parrafo text-cuerpo">
+            En el ámbito clínico, he realizado prácticas en centros de
+            referencia como
+            <strong class="font-medium text-tinta">ELCA</strong>, una unidad
+            multidisciplinar especializada en trastornos de la conducta
+            alimentaria, y en la
+            <strong class="font-medium text-tinta"
+              >Clínica de Psicología de la Universidad de Granada</strong
+            >, donde consolidé un enfoque integrador y basado en la evidencia.
+          </p>
+        </section>
 
-      <section class="space-y-4" aria-labelledby="investigacion">
-        <h2
-          id="investigacion"
-          class="text-tam-reducido font-semibold uppercase tracking-wide text-sutil p-0.5"
+        <section
+          class="revelar border-t border-linea pt-8 space-y-4"
+          aria-labelledby="investigacion"
         >
-          Mi labor en la investigación
-        </h2>
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          He formado parte del grupo de investigación <strong
-            >Gestastress-Childstress</strong
-          >, centrado en el estudio del estrés materno y su impacto en el
-          desarrollo infantil. Mi trabajo incluyó la evaluación de bebés desde
-          los 6 meses hasta niños de 4 años, aplicando diferentes medidas de
-          desarrollo y comportamiento.
-        </p>
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          Además, participé en la recogida de muestras de pelo y el análisis de
-          cortisol capilar, con el objetivo de estudiar la relación entre los
-          niveles de estrés materno y el desarrollo temprano de los niños.
-        </p>
-      </section>
+          <h2
+            id="investigacion"
+            class="font-display text-subtitulo text-tinta text-balance"
+          >
+            Mi labor en la investigación
+          </h2>
+          <p class="medida text-parrafo text-cuerpo">
+            He formado parte del grupo de investigación
+            <strong class="font-medium text-tinta"
+              >Gestastress-Childstress</strong
+            >, centrado en el estudio del estrés materno y su impacto en el
+            desarrollo infantil. Mi trabajo incluyó la evaluación de bebés desde
+            los 6 meses hasta niños de 4 años, aplicando diferentes medidas de
+            desarrollo y comportamiento.
+          </p>
+          <p class="medida text-parrafo text-cuerpo">
+            Además, participé en la recogida de muestras de pelo y el análisis
+            de cortisol capilar, con el objetivo de estudiar la relación entre
+            los niveles de estrés materno y el desarrollo temprano de los niños.
+          </p>
+        </section>
 
-      <section class="space-y-4" aria-labelledby="compromiso-social">
-        <h2
-          id="compromiso-social"
-          class="text-tam-reducido font-semibold uppercase tracking-wide text-sutil p-0.5"
+        <section
+          class="revelar border-t border-linea pt-8 space-y-4"
+          aria-labelledby="compromiso-social"
         >
-          Compromiso social y prevención de la violencia de género
-        </h2>
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          Entiendo la psicología también como una herramienta de cambio social.
-          He colaborado en iniciativas como el <strong>Punto Violeta</strong> en Jódar
-          y en Granada, contribuyendo a la prevención y sensibilización frente a la <strong
-            >violencia de género</strong
-          > y acompañando a mujeres en situaciones
-          de especial vulnerabilidad.
-        </p>
-      </section>
+          <h2
+            id="compromiso-social"
+            class="font-display text-subtitulo text-tinta text-balance"
+          >
+            Compromiso social y prevención de la violencia de género
+          </h2>
+          <p class="medida text-parrafo text-cuerpo">
+            Entiendo la psicología también como una herramienta de cambio
+            social. He colaborado en iniciativas como el
+            <strong class="font-medium text-tinta">Punto Violeta</strong> en
+            Jódar y en Granada, contribuyendo a la prevención y sensibilización
+            frente a la
+            <strong class="font-medium text-tinta">violencia de género</strong> y
+            acompañando a mujeres en situaciones de especial vulnerabilidad.
+          </p>
+        </section>
 
-      <section class="space-y-4" aria-labelledby="actividad-profesional">
-        <h2
-          id="actividad-profesional"
-          class="text-tam-reducido font-semibold uppercase tracking-wide text-sutil p-0.5"
+        <section
+          class="revelar border-t border-linea pt-8 space-y-4"
+          aria-labelledby="actividad-profesional"
         >
-          Actividad profesional y atención terapéutica
-        </h2>
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          Actualmente ejerzo como <strong>psicóloga sanitaria</strong> por cuenta
-          propia y en coordinación con el <strong>Centro Ángela Medina</strong>.
-          También colaboro con la <a
-            href="https://www.felupus.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-primario underline underline-offset-2 hover:brightness-110"
-            >Federación Española de Lupus</a
-          >, donde realizo sesiones individuales y talleres centrados en la
-          gestión emocional, el dolor crónico y el bienestar psicológico. Si
-          quieres conocer mi trabajo terapéutico, puedes visitar la página de <a
-            href="/servicios/"
-            class="text-primario underline underline-offset-2 hover:brightness-110"
-            >Servicios</a
-          >.
-        </p>
-      </section>
+          <h2
+            id="actividad-profesional"
+            class="font-display text-subtitulo text-tinta text-balance"
+          >
+            Actividad profesional y atención terapéutica
+          </h2>
+          <p class="medida text-parrafo text-cuerpo">
+            Actualmente ejerzo como
+            <strong class="font-medium text-tinta">psicóloga sanitaria</strong>
+            por cuenta propia y en coordinación con el
+            <strong class="font-medium text-tinta">Centro Ángela Medina</strong
+            >. También colaboro con la <a
+              href="https://www.felupus.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class={claseEnlace}
+              >Federación Española de Lupus</a
+            >, donde realizo sesiones individuales y talleres centrados en la
+            gestión emocional, el dolor crónico y el bienestar psicológico. Si
+            quieres conocer mi trabajo terapéutico, puedes visitar la página de
+            <a href="/servicios/" class={claseEnlace}>Servicios</a>.
+          </p>
+        </section>
 
-      <section class="space-y-4" aria-labelledby="formacion-continua">
-        <h2
-          id="formacion-continua"
-          class="text-tam-reducido font-semibold uppercase tracking-wide text-sutil p-0.5"
+        <section
+          class="revelar border-t border-linea pt-8 space-y-4"
+          aria-labelledby="formacion-continua"
         >
-          Formación continua y mirada internacional
-        </h2>
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          Me mantengo en <strong>formación continua</strong> a través de cursos y
-          jornadas sobre análisis funcional de la conducta, psicooncología, violencia
-          de género y trastornos alimentarios, entre otros.
-        </p>
-        <p
-          class="text-pretty leading-relaxed text-cuerpo text-tam-principal p-1"
-        >
-          Mi experiencia internacional en la <strong
-            >Fontys University of Applied Sciences</strong
-          > (Países Bajos) me
-          permitió ampliar la mirada sobre el trabajo interdisciplinar y la salud
-          psicológica en contextos diversos, enriqueciendo mi forma de entender el
-          acompañamiento terapéutico.
-        </p>
-      </section>
+          <h2
+            id="formacion-continua"
+            class="font-display text-subtitulo text-tinta text-balance"
+          >
+            Formación continua y mirada internacional
+          </h2>
+          <p class="medida text-parrafo text-cuerpo">
+            Me mantengo en
+            <strong class="font-medium text-tinta">formación continua</strong> a
+            través de cursos y jornadas sobre análisis funcional de la conducta,
+            psicooncología, violencia de género y trastornos alimentarios, entre
+            otros.
+          </p>
+          <p class="medida text-parrafo text-cuerpo">
+            Mi experiencia internacional en la
+            <strong class="font-medium text-tinta"
+              >Fontys University of Applied Sciences</strong
+            >
+            (Países Bajos) me permitió ampliar la mirada sobre el trabajo
+            interdisciplinar y la salud psicológica en contextos diversos,
+            enriqueciendo mi forma de entender el acompañamiento terapéutico.
+          </p>
+        </section>
+      </div>
     </div>
 
     <aside
       aria-labelledby="tipos-casos"
-      class="space-y-6 rounded-2xl border border-white/40 bg-white/50 p-5 shadow-lg sm:p-6 lg:self-start lg:sticky lg:top-36"
+      class="space-y-8 lg:col-span-5 lg:self-start lg:sticky lg:top-28"
     >
-      <figure class="mb-4">
-        <Image
-          src={img}
-          width={1200}
-          height={800}
-          position="bottom"
-          quality={75}
-          widths={[640, 800, 960, 1200]}
-          sizes="(min-width:1024px) 38vw, 80vw"
-          loading="eager"
-          decoding="async"
-          fetchpriority="high"
-          alt="Rosa María Ruiz Cano, Psicóloga Sanitaria en la Clínica Angela Medina"
-          class="w-full rounded-2xl object-cover object-center"
-        />
+      <figure class="m-0">
+        <div class="overflow-hidden rounded-sm bg-papel-3">
+          <Image
+            src={img}
+            width={1200}
+            height={1600}
+            quality={78}
+            widths={[480, 640, 800, 960]}
+            sizes="(min-width:1024px) 40vw, 100vw"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            alt="Rosa María Ruiz Cano, Psicóloga Sanitaria en la Clínica Angela Medina"
+            class="w-full aspect-3/4 object-cover"
+          />
+        </div>
         <figcaption class="sr-only">
           Rosa María Ruiz Cano, Psicóloga General Sanitaria especialista en TCA,
           en su consulta de Granada.
         </figcaption>
       </figure>
 
-      <div class="space-y-2">
-        <p
-          class="text-tam-reducido font-semibold uppercase tracking-wide text-sutil"
+      <div class="space-y-3 border-t border-linea pt-6">
+        <p class="text-etiqueta text-sutil">En resumen</p>
+        <h3
+          id="tipos-casos"
+          class="font-display text-apoyo text-tinta text-balance"
         >
-          En resumen
-        </p>
-        <h3 id="tipos-casos" class="text-tam-base font-semibold text-oscuro">
           ¿Con qué tipo de casos trabajo?
         </h3>
-        <p class="text-pretty leading-relaxed text-cuerpo text-tam-principal">
-          Acompaño sobre todo a personas con <strong
+        <p class="text-parrafo text-cuerpo">
+          Acompaño sobre todo a personas con
+          <strong class="font-medium text-tinta"
             >trastornos de la conducta alimentaria</strong
-          >, dificultades con la <strong>imagen corporal</strong> y la <strong
-            >autoestima</strong
-          >, así como problemas de <strong>ansiedad</strong>, <strong>estrés</strong>
-          y procesos de <strong>violencia de género</strong> o salud física compleja.
+          >, dificultades con la
+          <strong class="font-medium text-tinta">imagen corporal</strong> y la
+          <strong class="font-medium text-tinta">autoestima</strong>, así como
+          problemas de
+          <strong class="font-medium text-tinta">ansiedad</strong>,
+          <strong class="font-medium text-tinta">estrés</strong> y procesos de
+          <strong class="font-medium text-tinta">violencia de género</strong> o
+          salud física compleja.
           <br />
-          <a
-            href="/servicios/"
-            class="text-primario underline underline-offset-2 hover:brightness-110"
-            >Ver servicios de terapia para TCA, ansiedad y violencia de género.</a
+          <a href="/servicios/" class={claseEnlace}
+            >Ver servicios de terapia para TCA, ansiedad y violencia de
+            género.</a
           >
         </p>
       </div>
 
-      <div class="space-y-2">
-        <h4
-          class="text-tam-reducido font-semibold uppercase tracking-wide text-sutil"
-        >
+      <div class="space-y-3 border-t border-linea pt-6">
+        <h4 class="font-display text-apoyo text-tinta">
           Ámbitos en los que he trabajado
         </h4>
-        <ul
-          class="list-disc space-y-1 pl-5 leading-relaxed text-cuerpo text-tam-principal"
-        >
-          <li>Trastornos de la conducta alimentaria (TCA).</li>
-          <li>Apoyo a familias y entorno cercano.</li>
-          <li>Trastorno bipolar y salud mental grave.</li>
-          <li>Violencia de género y prevención.</li>
-          <li>Dolor crónico y enfermedades autoinmunes (Lupus).</li>
+        <ul class="space-y-2 text-parrafo text-cuerpo">
+          <li class="flex gap-3">
+            <span class={claseMarcador} aria-hidden="true"></span>
+            <span>Trastornos de la conducta alimentaria (TCA).</span>
+          </li>
+          <li class="flex gap-3">
+            <span class={claseMarcador} aria-hidden="true"></span>
+            <span>Apoyo a familias y entorno cercano.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class={claseMarcador} aria-hidden="true"></span>
+            <span>Trastorno bipolar y salud mental grave.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class={claseMarcador} aria-hidden="true"></span>
+            <span>Violencia de género y prevención.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class={claseMarcador} aria-hidden="true"></span>
+            <span>Dolor crónico y enfermedades autoinmunes (Lupus).</span>
+          </li>
         </ul>
       </div>
 
-      <div class="space-y-2">
-        <h4
-          class="text-tam-reducido font-semibold uppercase tracking-wide text-sutil"
-        >
+      <div class="space-y-3 border-t border-linea pt-6">
+        <h4 class="font-display text-apoyo text-tinta">
           Lo que puedes esperar de la terapia
         </h4>
-        <p class="text-pretty leading-relaxed text-cuerpo text-tam-principal">
+        <p class="text-parrafo text-cuerpo">
           Un espacio seguro donde no hace falta que tengas todo claro para
           empezar. Podemos ir poniendo nombre a lo que te ocurre, comprender por
           qué se sostiene en tu vida y buscar juntos formas más amables y
@@ -253,15 +277,15 @@ import Pill from './utils/Pill.astro';
         </p>
       </div>
 
-      <div class="pt-2">
-        <p class="text-tam-reducido text-atenuado mb-2">
+      <div class="space-y-3 border-t border-linea pt-6">
+        <p class="text-menudo text-atenuado">
           Atención confidencial. Solicita tu cita y coordinamos el horario
           juntos.
         </p>
 
         <a
           href="/pedir-cita/"
-          class="inline-flex items-center justify-center px-4 py-3 md:px-5 md:py-4 w-full text-center font-medium text-white bg-primario rounded-lg hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primario text-tam-principal"
+          class="inline-flex w-full items-center justify-center rounded-sm bg-tinta px-5 py-3.5 text-center text-etiqueta text-papel transition-colors hover:bg-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel"
         >
           Pedir una cita
         </a>
