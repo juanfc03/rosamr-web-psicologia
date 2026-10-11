@@ -20,7 +20,7 @@ export const opiniones = [
   {
     texto:
       'Rosa es una gran profesional. Su cercanía y asertividad facilitan cada sesión y ayudan a avanzar hacia los objetivos terapéuticos. En mi caso, me está proporcionando herramientas muy útiles para trabajar los aspectos que más me afectan en el día a día. Muy recomendable.',
-    tipoPaciente: 'Usuario atravesando conflictos de pareja',
+    tipoPaciente: 'Paciente en proceso de gestión del estrés y malestar',
     puntuacion: 5,
   },
 ] as const satisfies readonly Opinion[];

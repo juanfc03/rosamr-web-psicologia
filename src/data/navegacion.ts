@@ -32,8 +32,8 @@ export const navegacion = [
         href: '/servicios/#habilidades-sociales-fobias',
       },
       {
-        etiqueta: 'Pareja, duelo, burnout',
-        href: '/servicios/#pareja-duelo-burnout',
+        etiqueta: 'Duelo y burnout',
+        href: '/servicios/#duelo-burnout',
       },
       { etiqueta: 'Violencia de género', href: '/servicios/#violencia-genero' },
     ],

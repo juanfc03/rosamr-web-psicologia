@@ -25,12 +25,12 @@ export const bloquesServicios = [
     ],
   },
   {
-    titulo: 'Problemas de pareja, duelo y burnout',
-    id: 'pareja-duelo-burnout',
+    titulo: 'Duelo y burnout',
+    id: 'duelo-burnout',
     descripcion:
-      'Hay momentos en los que el cuerpo y las emociones señalan una sobrecarga. Dificultades de pareja, duelos o un desgaste emocional provocado por el trabajo pueden afectar al bienestar. La terapia ofrece un espacio para comprender lo que sucede, regular el impacto emocional y recuperar una sensación de dirección y cuidado personal.',
+      'Hay momentos en los que el cuerpo y las emociones señalan una sobrecarga. Procesos de duelo, pérdidas importantes o un desgaste emocional provocado por el trabajo pueden afectar al bienestar. La terapia ofrece un espacio para comprender lo que sucede, regular el impacto emocional y recuperar una sensación de dirección y cuidado personal.',
     bullets: [
-      'Conflictos de pareja, pérdidas importantes y cansancio extremo asociado al trabajo u otros cuidados.',
+      'Pérdidas importantes, procesos de duelo y cansancio extremo asociado al trabajo u otros cuidados.',
     ],
   },
   {
