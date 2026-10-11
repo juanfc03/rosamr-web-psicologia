@@ -14,7 +14,7 @@ const paginas = {
   servicios: {
     titulo: 'Servicios de terapia',
     descripcion: 'Atención profesional y personalizada',
-    subtitulo: 'Terapia individual, de pareja y familiar en Granada y online.',
+    subtitulo: 'Terapia individual en Granada y online.',
   },
   'pedir-cita': {
     titulo: 'Reserva tu cita',
