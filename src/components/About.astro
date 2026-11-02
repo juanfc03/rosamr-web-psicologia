@@ -1,7 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import img from '@/assets/rosa-maria-ruiz-cano-psicologa-granada-sentada.jpeg';
+import Estrella from '@/components/icons/Estrella.astro';
 import Pill from './utils/Pill.astro';
+import { opiniones, obtenerEstrellas } from '@/data/principal';
 
 const claseEnlace =
   'rounded-sm text-rosa-profundo underline decoration-rosa/40 decoration-1 underline-offset-4 transition-colors hover:decoration-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa';
@@ -24,163 +26,129 @@ const claseMarcador = 'mt-2.5 h-px w-4 shrink-0 bg-rosa';
 
       <div class="revelar mt-8 grid gap-6 medida">
         <p class="text-entrada text-cuerpo">
-          Acompaño a personas con dificultades relacionadas con la comida y el
-          cuerpo (trastornos alimentarios), así como con problemas de
-          <strong class="font-medium text-tinta">ansiedad</strong>,
-          <strong class="font-medium text-tinta">estrés</strong> o experiencias
-          de
-          <strong class="font-medium text-tinta">violencia de género</strong>.
-          Atiendo en formato presencial en Granada y también online, siempre
-          desde un enfoque clínico y basado en la evidencia.
+          Actualmente ejerzo como <strong class="font-medium text-tinta"
+            >psicóloga sanitaria</strong
+          > por cuenta propia, en coordinación con el <strong
+            class="font-medium text-tinta"
+            >Centro Ángela Medina</strong
+          >, y atiendo tanto en consulta presencial en Granada como online.
+          Además, colaboro con la <a
+            href="https://www.felupus.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Federación Española de Lupus (se abre en una nueva pestaña)"
+            class={claseEnlace}
+          >Federación Española de Lupus</a
+          >, donde realizo sesiones individuales y talleres sobre gestión
+          emocional, dolor crónico y bienestar psicológico. Si quieres conocer
+          mi trabajo terapéutico, puedes visitar la página de <a
+            href="/servicios/"
+            class={claseEnlace}
+          >Servicios</a>.
         </p>
 
         <p class="text-parrafo text-atenuado">
-          Me gradué en la Universidad de Granada y posteriormente hice el Máster
-          en Psicología General Sanitaria en la misma institución. Mi
-          trayectoria combina práctica clínica y formación investigadora,
-          centrándome en la intervención para el estrés, la imagen corporal y la
-          salud emocional. Trabajo desde la empatía y el análisis funcional de
-          la conducta, adaptando el tratamiento a la historia y ritmo de cada
-          persona.
+          Mi trayectoria previa incluye la experiencia como psicóloga en <strong
+            class="font-medium text-tinta"
+            >ADANER Granada</strong
+          >, con personas con problemas alimentarios y sus familias, y las
+          prácticas en <strong class="font-medium text-tinta"
+            >ELCA</strong
+          >, unidad especializada en trastornos de la conducta alimentaria, y
+          en la <strong class="font-medium text-tinta"
+            >Clínica de Psicología de la Universidad de Granada</strong
+          >. También he formado parte de <strong
+            class="font-medium text-tinta"
+            >Granabip</strong
+          >, con personas con trastorno bipolar, y del grupo de investigación
+          <strong class="font-medium text-tinta"
+            >Gestastress-Childstress</strong
+          >, estudiando el estrés materno y el desarrollo infantil. Me acompaña
+          un compromiso con la prevención de la <strong
+            class="font-medium text-tinta"
+            >violencia de género</strong
+          > a través de iniciativas como el <strong
+            class="font-medium text-tinta"
+            >Punto Violeta</strong
+          > en Jódar y Granada, y una formación continua en análisis funcional
+          y trastornos alimentarios, enriquecida por mi experiencia
+          internacional en la <strong
+            class="font-medium text-tinta"
+            >Fontys University of Applied Sciences</strong
+          >.
         </p>
       </div>
 
-      <div class="mt-12 space-y-12">
-        <section
-          class="revelar border-t border-linea pt-8 space-y-4"
-          aria-labelledby="formacion"
-        >
-          <h2
-            id="formacion"
-            class="font-display text-subtitulo text-tinta text-balance"
-          >
-            Formación y experiencia en salud mental
-          </h2>
-          <p class="medida text-parrafo text-cuerpo">
-            A lo largo de mi formación he tenido la oportunidad de colaborar con
-            diferentes entidades y asociaciones. En
-            <strong class="font-medium text-tinta">ADANER Granada</strong> he
-            ejercido como psicóloga, participando activamente en programas de
-            apoyo a personas con problemas alimentarios y a sus familias.
-            También he formado parte de
-            <strong class="font-medium text-tinta">Granabip</strong>, asociación
-            centrada en el acompañamiento de personas con trastorno bipolar.
-          </p>
-          <p class="medida text-parrafo text-cuerpo">
-            En el ámbito clínico, he realizado prácticas en centros de
-            referencia como
-            <strong class="font-medium text-tinta">ELCA</strong>, una unidad
-            multidisciplinar especializada en trastornos de la conducta
-            alimentaria, y en la
-            <strong class="font-medium text-tinta"
-              >Clínica de Psicología de la Universidad de Granada</strong
-            >, donde consolidé un enfoque integrador y basado en la evidencia.
-          </p>
-        </section>
-
-        <section
-          class="revelar border-t border-linea pt-8 space-y-4"
-          aria-labelledby="investigacion"
-        >
-          <h2
-            id="investigacion"
-            class="font-display text-subtitulo text-tinta text-balance"
-          >
-            Mi labor en la investigación
-          </h2>
-          <p class="medida text-parrafo text-cuerpo">
-            He formado parte del grupo de investigación
-            <strong class="font-medium text-tinta"
-              >Gestastress-Childstress</strong
-            >, centrado en el estudio del estrés materno y su impacto en el
-            desarrollo infantil. Mi trabajo incluyó la evaluación de bebés desde
-            los 6 meses hasta niños de 4 años, aplicando diferentes medidas de
-            desarrollo y comportamiento.
-          </p>
-          <p class="medida text-parrafo text-cuerpo">
-            Además, participé en la recogida de muestras de pelo y el análisis
-            de cortisol capilar, con el objetivo de estudiar la relación entre
-            los niveles de estrés materno y el desarrollo temprano de los niños.
-          </p>
-        </section>
-
-        <section
-          class="revelar border-t border-linea pt-8 space-y-4"
-          aria-labelledby="compromiso-social"
-        >
-          <h2
-            id="compromiso-social"
-            class="font-display text-subtitulo text-tinta text-balance"
-          >
-            Compromiso social y prevención de la violencia de género
-          </h2>
-          <p class="medida text-parrafo text-cuerpo">
-            Entiendo la psicología también como una herramienta de cambio
-            social. He colaborado en iniciativas como el
-            <strong class="font-medium text-tinta">Punto Violeta</strong> en
-            Jódar y en Granada, contribuyendo a la prevención y sensibilización
-            frente a la
-            <strong class="font-medium text-tinta">violencia de género</strong> y
-            acompañando a mujeres en situaciones de especial vulnerabilidad.
-          </p>
-        </section>
-
-        <section
-          class="revelar border-t border-linea pt-8 space-y-4"
-          aria-labelledby="actividad-profesional"
-        >
-          <h2
-            id="actividad-profesional"
-            class="font-display text-subtitulo text-tinta text-balance"
-          >
-            Actividad profesional y atención terapéutica
-          </h2>
-          <p class="medida text-parrafo text-cuerpo">
-            Actualmente ejerzo como
-            <strong class="font-medium text-tinta">psicóloga sanitaria</strong>
-            por cuenta propia y en coordinación con el
-            <strong class="font-medium text-tinta">Centro Ángela Medina</strong
-            >. También colaboro con la <a
-              href="https://www.felupus.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class={claseEnlace}
-              >Federación Española de Lupus</a
-            >, donde realizo sesiones individuales y talleres centrados en la
-            gestión emocional, el dolor crónico y el bienestar psicológico. Si
-            quieres conocer mi trabajo terapéutico, puedes visitar la página de
-            <a href="/servicios/" class={claseEnlace}>Servicios</a>.
-          </p>
-        </section>
-
-        <section
-          class="revelar border-t border-linea pt-8 space-y-4"
-          aria-labelledby="formacion-continua"
-        >
-          <h2
-            id="formacion-continua"
-            class="font-display text-subtitulo text-tinta text-balance"
-          >
-            Formación continua y mirada internacional
-          </h2>
-          <p class="medida text-parrafo text-cuerpo">
-            Me mantengo en
-            <strong class="font-medium text-tinta">formación continua</strong> a
-            través de cursos y jornadas sobre análisis funcional de la conducta,
-            psicooncología, violencia de género y trastornos alimentarios, entre
-            otros.
-          </p>
-          <p class="medida text-parrafo text-cuerpo">
-            Mi experiencia internacional en la
-            <strong class="font-medium text-tinta"
-              >Fontys University of Applied Sciences</strong
+      <!-- Opiniones -->
+      <section
+        id="opiniones"
+        class="mt-16 sm:mt-20 lg:mt-24 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
+        aria-labelledby="titulo-opiniones"
+      >
+        <header class="revelar grid gap-8">
+          <div>
+            <Pill>Opiniones de pacientes</Pill>
+            <h2
+              id="titulo-opiniones"
+              class="mt-5 font-display text-subtitulo font-normal text-tinta text-balance"
             >
-            (Países Bajos) me permitió ampliar la mirada sobre el trabajo
-            interdisciplinar y la salud psicológica en contextos diversos,
-            enriqueciendo mi forma de entender el acompañamiento terapéutico.
+              Opiniones de pacientes sobre mí <em
+                class="not-italic text-rosa-profundo">terapia psicológica</em
+              >
+            </h2>
+          </div>
+        </header>
+
+        <div
+          class="mt-8 grid gap-4 border-y border-linea py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-8"
+        >
+          <p class="text-parrafo leading-relaxed text-atenuado">
+            Por privacidad, las opiniones se muestran sin nombre ni datos que
+            permitan identificar a las personas. Si quieres consultar más
+            valoraciones externas y verificadas, puedes hacerlo a través de la
+            plataforma Doctoralia.
           </p>
-        </section>
-      </div>
+          <a
+            href="https://www.doctoralia.es/rosa-m-ruiz/psicologo/granada"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ver opiniones verificadas en Doctoralia (se abre en una pestaña nueva)"
+            class="enlace-linea inline-flex shrink-0 items-center gap-2 rounded-sm text-etiqueta text-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel"
+          >
+            Ver opiniones en Doctoralia
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div class="border-b border-linea divide-y divide-linea">
+          {
+            opiniones.map(op => (
+              <article class="revelar grid gap-5 py-8 md:py-10">
+                <div class="space-y-3">
+                  <div class="flex items-center gap-1">
+                    {obtenerEstrellas(op.puntuacion).map(llena => (
+                      <Estrella filled={llena} class="size-4" />
+                    ))}
+                  </div>
+                  <p class="sr-only">{op.puntuacion} de 5 estrellas</p>
+                  <p class="font-display text-parrafo leading-relaxed text-atenuado">
+                    {op.tipoPaciente}
+                  </p>
+                </div>
+                <p class="m-0 font-display text-cita text-tinta">
+                  <span
+                    class="me-1 align-top font-display text-3xl leading-none text-rosa"
+                    aria-hidden="true"
+                  >
+                    &ldquo;
+                  </span>
+                  {op.texto}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
     </div>
 
     <aside

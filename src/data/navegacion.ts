@@ -16,12 +16,17 @@ export const navegacion = [
     etiqueta: 'Inicio',
     hijas: [
       { etiqueta: 'Presentación', href: '/#presentacion' },
-      { etiqueta: 'Opiniones', href: '/#opiniones' },
       { etiqueta: 'Precios', href: '/#precios' },
       { etiqueta: 'Localización', href: '/#localizacion' },
     ],
   },
-  { etiqueta: 'Sobre mí', href: '/sobre-mi/' },
+  {
+    etiqueta: 'Sobre mí',
+    hijas: [
+      { etiqueta: 'Mi recorrido', href: '/sobre-mi/' },
+      { etiqueta: 'Opiniones', href: '/sobre-mi/#opiniones' },
+    ],
+  },
   {
     etiqueta: 'Servicios',
     hijas: [

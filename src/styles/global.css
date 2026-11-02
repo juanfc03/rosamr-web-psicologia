@@ -95,9 +95,9 @@ html {
 }
 
 @utility text-cita {
-  font-size: clamp(1.25rem, 1.05rem + 0.95vw, 1.7rem);
-  line-height: 1.42;
-  letter-spacing: -0.008em;
+  font-size: clamp(1.12rem, 1rem + 0.55vw, 1.4rem);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
 }
 
 @utility text-menudo {

@@ -2,15 +2,11 @@
 import { Image } from 'astro:assets';
 import img from '@/assets/rosa-maria-ruiz-cano-psicologa-granada-frontal.jpeg';
 import FlechaDerecha from '@/components/icons/FlechaDerecha.astro';
-import Estrella from '@/components/icons/Estrella.astro';
 import Localizacion from '@/components/icons/Localizacion.astro';
 import Badge from '@/components/utils/Badge.astro';
-import Pill from '@/components/utils/Pill.astro';
 import {
-  opiniones,
   tarifas,
   MAP_EMBED,
-  obtenerEstrellas,
 } from '@/data/principal';
 
 const claseBoton =
@@ -34,7 +30,7 @@ const claseMarcador = 'mt-2.5 h-px w-4 shrink-0 bg-rosa';
       >
         Rosa María Ruiz Cano, <em class="not-italic text-rosa-profundo"
           >psicóloga general sanitaria</em
-        > en Granada
+        >
       </h1>
     </div>
 
@@ -75,42 +71,31 @@ const claseMarcador = 'mt-2.5 h-px w-4 shrink-0 bg-rosa';
     <div class="lg:col-span-7 lg:col-start-1 lg:row-start-2">
       <div class="grid gap-6 medida">
         <p class="text-entrada text-cuerpo">
-          Especialista en trastornos de la conducta alimentaria (TCA), violencia
-          de género y terapia emocional, acompaño a personas que atraviesan <span
-            class="text-rosa-profundo">trastornos alimentarios</span
-          > y dificultades relacionadas con el estrés o el malestar emocional. Ofrezco
-          terapia presencial en Granada y sesiones online, adaptándome a cada situación
-          y necesidad. Me apasiona comprender las historias personales detrás de cada
-          conducta y acompañar a las personas en el proceso de construir un mayor
-          equilibrio emocional. Trabajo desde la empatía, la escucha activa y el respeto
-          absoluto hacia el ritmo de cada paciente.
+          Soy psicóloga especializada en <span class="text-rosa-profundo"
+            >trastornos de la conducta alimentaria</span
+          >. Además, atiendo a diario otros malestares como la ansiedad, la
+          depresión, la autoestima, el trastorno obsesivo compulsivo o las
+          dificultades relacionales, tanto en Granada como online.
         </p>
 
         <p class="text-parrafo text-atenuado">
-          Creo firmemente que la terapia es un espacio de colaboración, por eso
-          me gusta que cada proceso sea un <span class="text-rosa-profundo"
-            >trabajo conjunto</span
-          > en el que tú tengas un papel activo. Juntos podemos analizar lo que te
-          preocupa, identificar los patrones que se repiten y encontrar estrategias
-          que te ayuden a recuperar bienestar, sentido y dirección en tu vida.
-        </p>
-
-        <p class="text-parrafo text-atenuado">
-          Trabajo desde un enfoque basado en la
-          <strong class="font-medium text-tinta">evidencia científica</strong> y en
-          el uso del
-          <strong class="font-medium text-tinta">análisis funcional</strong> de la
-          conducta, integrando herramientas de las
+          Me interesa entender la historia que hay detrás de cada conducta.
+          Trabajo con
+          <strong class="font-medium text-tinta">evidencia científica</strong>,
+          <strong class="font-medium text-tinta">análisis funcional</strong> y herramientas
+          de
           <strong class="font-medium text-tinta"
             >terapias de tercera generación</strong
-          >. Todo ello adaptado a tus necesidades, sin juicios, desde una mirada
-          humana y cercana.
+          >, siempre desde la escucha, sin juicios y respetando tu ritmo.
         </p>
 
         <p class="text-parrafo text-atenuado">
-          Mi objetivo es que la terapia se convierta en un espacio seguro donde
-          puedas conocerte mejor, comprender tus emociones y aprender a vivir de
-          una forma más libre, coherente y amable contigo misma/o.
+          Creo que la terapia es un <span class="text-rosa-profundo"
+            >trabajo en equipo</span
+          >. Juntas/os podemos identificar lo que se repite, entender lo que te
+          pasa, de dónde viene y qué camino elegir para que el bienestar sea
+          nuestra dirección. Mi objetivo es que sea un espacio seguro donde
+          conocerte mejor y vivir de forma más libre y amable contigo misma/o.
         </p>
       </div>
 
@@ -131,76 +116,6 @@ const claseMarcador = 'mt-2.5 h-px w-4 shrink-0 bg-rosa';
         </a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Opiniones -->
-<section
-  id="opiniones"
-  class="mx-auto 2xl:max-w-screen-2xl px-4 sm:px-6 md:px-8 mt-20 sm:mt-24 lg:mt-32 scroll-mt-28 sm:scroll-mt-32 md:scroll-mt-36 lg:scroll-mt-40"
-  aria-labelledby="titulo-opiniones"
->
-  <header class="revelar grid gap-8 lg:grid-cols-12">
-    <div class="lg:col-span-9">
-      <Pill>Opiniones de pacientes</Pill>
-      <h2
-        id="titulo-opiniones"
-        class="mt-5 font-display text-titulo font-normal text-tinta text-balance"
-      >
-        Opiniones de pacientes sobre mí <em
-          class="not-italic text-rosa-profundo">terapia psicológica</em
-        >
-      </h2>
-    </div>
-  </header>
-
-  <div
-    class="mt-10 grid gap-4 border-y border-linea py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-8"
-  >
-    <p class="medida text-parrafo leading-relaxed text-atenuado">
-      Por privacidad, las opiniones se muestran sin nombre ni datos que permitan
-      identificar a las personas. Si quieres consultar más valoraciones externas
-      y verificadas, puedes hacerlo a través de la plataforma Doctoralia.
-    </p>
-    <a
-      href="https://www.doctoralia.es/rosa-m-ruiz/psicologo/granada"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Ver opiniones verificadas en Doctoralia (se abre en una pestaña nueva)"
-      class="enlace-linea inline-flex shrink-0 items-center gap-2 rounded-sm text-etiqueta text-rosa-profundo focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rosa focus-visible:ring-offset-2 focus-visible:ring-offset-papel"
-    >
-      Ver opiniones en Doctoralia
-      <span aria-hidden="true">↗</span>
-    </a>
-  </div>
-
-  <div class="border-b border-linea divide-y divide-linea">
-    {
-      opiniones.map(op => (
-        <article class="revelar grid gap-5 py-9 md:grid-cols-[minmax(0,1fr)_minmax(0,1.8fr)] md:gap-12 md:py-11">
-          <div class="space-y-3">
-            <div class="flex items-center gap-1">
-              {obtenerEstrellas(op.puntuacion).map(llena => (
-                <Estrella filled={llena} class="size-4" />
-              ))}
-            </div>
-            <p class="sr-only">{op.puntuacion} de 5 estrellas</p>
-            <p class="font-display text-parrafo leading-relaxed text-atenuado">
-              {op.tipoPaciente}
-            </p>
-          </div>
-          <p class="m-0 font-display text-cita text-tinta">
-            <span
-              class="me-1 align-top font-display text-3xl leading-none text-rosa"
-              aria-hidden="true"
-            >
-              &ldquo;
-            </span>
-            {op.texto}
-          </p>
-        </article>
-      ))
-    }
   </div>
 </section>
 
