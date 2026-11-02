@@ -41,11 +41,16 @@ const claseInactiva = 'text-atenuado';
           decoding="async"
           loading="eager"
         />
-        <span class="hidden sm:flex flex-col gap-1.5 leading-none" aria-hidden="true">
+        <span
+          class="hidden sm:flex flex-col gap-1.5 leading-none"
+          aria-hidden="true"
+        >
           <span class="font-display text-marca leading-none text-tinta">
-            Rosa María Ruiz Cano
+            Rosa M. Ruiz Cano
           </span>
-          <span class="text-etiqueta text-sutil">Psicóloga General Sanitaria</span>
+          <span class="text-etiqueta text-sutil"
+            >Psicóloga General Sanitaria</span
+          >
         </span>
       </a>
 
@@ -81,9 +86,7 @@ const claseInactiva = 'text-atenuado';
                   {item.etiqueta}
                   <Chevron class="size-4 text-rosa transition-transform duration-200 ease-out group-open:rotate-180" />
                 </summary>
-                <div
-                  class="desplegable invisible absolute start-0 top-full z-10 min-w-52 border border-linea bg-papel py-2 shadow-[0_20px_40px_-28px_rgba(43,37,33,0.6)]"
-                >
+                <div class="desplegable invisible absolute start-0 top-full z-10 min-w-52 border border-linea bg-papel py-2 shadow-[0_20px_40px_-28px_rgba(43,37,33,0.6)]">
                   <ul role="list">
                     {item.hijas.map(hija => (
                       <li>
@@ -172,9 +175,7 @@ const claseInactiva = 'text-atenuado';
                     {item.etiqueta}
                     <Chevron class="size-4 text-rosa transition-transform duration-200 ease-out group-open:rotate-180" />
                   </summary>
-                  <div
-                    class="desplegable invisible ms-1 border-s border-linea ps-4"
-                  >
+                  <div class="desplegable invisible ms-1 border-s border-linea ps-4">
                     <ul class="py-1.5">
                       {item.hijas.map(hija => (
                         <li>
